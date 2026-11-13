@@ -37,10 +37,15 @@ func TestPillThinkingLevel(t *testing.T) {
 		label := thinkText(long)
 		snap(a, session.Snapshot{Kind: store.KindTranscribe, State: session.Composing, CanSkip: true, LLM: session.Model{ID: "zhipu"}, Thinking: long, Partial: "so the release moves to thursday"})
 		tt := hudTester(a.overlayView, a.ov.w+2*layout.Pad, a.ov.h+2*layout.Pad)
+		t.Logf("DBG0 ov.w %v shown %v textW %v", a.ov.w, a.ov.shown, a.ov.textW)
 		frames(tt)
+		t.Logf("DBG1 ov.w %v textW %v", a.ov.w, a.ov.textW)
 		a.overlaySync() // the labels measured
+		w1, _, ex1 := a.overlaySize(a.ov.mode)
+		t.Logf("DBG2 ov.w %v size %v exact %v live %+v think %v", a.ov.w, w1, ex1, a.ov.live, a.pillThinks(a.ov.mode))
 		tt.SetSize(a.ov.w+2*layout.Pad, a.ov.h+2*layout.Pad)
 		frames(tt)
+		t.Logf("DBG3 ov.w %v textW %v", a.ov.w, a.ov.textW)
 		r, ok := tt.Find(label)
 		if !ok {
 			t.Fatalf("%s: no %q in %q", c.lang, label, firstTexts(tt))
