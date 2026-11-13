@@ -27,6 +27,7 @@ func TestPillThinkingLevel(t *testing.T) {
 		lines, top bool
 	}{{"en", false, false}, {"zh-Hans", false, true}, {"en", true, true}, {"zh-Hans", true, false}} {
 		a, _, _ := newTestApp(t)
+		a.measureHook = nil // the view measures its texts, as on the Mac: a guess may be narrower than Linux's fonts
 		a.updateSettings(func(s *settings.Settings) {
 			s.Overlay.LiveLines, s.General.Language = c.lines, c.lang
 			s.Providers.LLM = []settings.Provider{{ID: "zhipu"}}
@@ -37,24 +38,14 @@ func TestPillThinkingLevel(t *testing.T) {
 		label := thinkText(long)
 		snap(a, session.Snapshot{Kind: store.KindTranscribe, State: session.Composing, CanSkip: true, LLM: session.Model{ID: "zhipu"}, Thinking: long, Partial: "so the release moves to thursday"})
 		tt := hudTester(a.overlayView, a.ov.w+2*layout.Pad, a.ov.h+2*layout.Pad)
-		t.Logf("DBG0 ov.w %v shown %v textW %v", a.ov.w, a.ov.shown, a.ov.textW)
 		frames(tt)
-		t.Logf("DBG1 ov.w %v textW %v", a.ov.w, a.ov.textW)
 		a.overlaySync() // the labels measured
-		w1, _, ex1 := a.overlaySize(a.ov.mode)
-		t.Logf("DBG2 ov.w %v size %v exact %v live %+v think %v", a.ov.w, w1, ex1, a.ov.live, a.pillThinks(a.ov.mode))
 		tt.SetSize(a.ov.w+2*layout.Pad, a.ov.h+2*layout.Pad)
 		frames(tt)
-		t.Logf("DBG3 ov.w %v textW %v", a.ov.w, a.ov.textW)
 		r, ok := tt.Find(label)
 		if !ok {
 			t.Fatalf("%s: no %q in %q", c.lang, label, firstTexts(tt))
 		}
-		for _, l := range append([]string{label, i18n.T("Use transcript")}, tt.Texts()...) {
-			q, _ := tt.Find(l)
-			t.Logf("DBG %s lines %v: %q at %+v", c.lang, c.lines, l, q)
-		}
-		t.Logf("DBG ov.w %v textW %v", a.ov.w, a.ov.textW)
 		if right := float32(layout.Pad + a.ov.w); r.X+r.W > right {
 			t.Errorf("%s lines %v: the capsule ends at %v, past the face's %v", c.lang, c.lines, r.X+r.W, right)
 		}

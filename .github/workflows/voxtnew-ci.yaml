@@ -129,7 +129,7 @@ jobs:
       # and a result does not change with what a test does not see (the
       # fonts, a flake): without it a run after a green one says "(cached)".
       - name: Go tests
-        run: CGO_ENABLED=0 go test -count=1 -v -run "TestPillThinkingLevel$|TestSkipLLMPill" . | grep -E "DBG|FAIL|ok|past"
+        run: CGO_ENABLED=0 go test -count=1 ./...
 
       - name: MyGo vet
         run: go tool mygo vet .
