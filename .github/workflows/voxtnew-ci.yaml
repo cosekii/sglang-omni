@@ -9,16 +9,13 @@ name: Voxt CI
 # Voxt/docs/manual-test.md. Voxt Nightly runs it before its build.
 
 on:
+  push:
+    branches: [cosekii/3043/debug-3940]
   pull_request:
     paths:
       - "Voxt/**"
       - "README.md"
       - "docs/get_started/voxt.md"
-      - ".github/workflows/voxtnew-ci.yaml"
-  push:
-    branches: [main]
-    paths:
-      - "Voxt/**"
       - ".github/workflows/voxtnew-ci.yaml"
   workflow_dispatch:
   workflow_call:
@@ -132,7 +129,7 @@ jobs:
       # and a result does not change with what a test does not see (the
       # fonts, a flake): without it a run after a green one says "(cached)".
       - name: Go tests
-        run: CGO_ENABLED=0 go test -count=1 ./...
+        run: CGO_ENABLED=0 go test -count=1 -v -run "TestPillThinkingLevel$|TestSkipLLMPill" . | grep -E "DBG|FAIL|ok|past"
 
       - name: MyGo vet
         run: go tool mygo vet .

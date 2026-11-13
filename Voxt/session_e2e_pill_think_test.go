@@ -45,6 +45,11 @@ func TestPillThinkingLevel(t *testing.T) {
 		if !ok {
 			t.Fatalf("%s: no %q in %q", c.lang, label, firstTexts(tt))
 		}
+		for _, l := range append([]string{label, i18n.T("Use transcript")}, tt.Texts()...) {
+			q, _ := tt.Find(l)
+			t.Logf("DBG %s lines %v: %q at %+v", c.lang, c.lines, l, q)
+		}
+		t.Logf("DBG ov.w %v textW %v", a.ov.w, a.ov.textW)
 		if right := float32(layout.Pad + a.ov.w); r.X+r.W > right {
 			t.Errorf("%s lines %v: the capsule ends at %v, past the face's %v", c.lang, c.lines, r.X+r.W, right)
 		}
