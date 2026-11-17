@@ -4,12 +4,20 @@ All notable changes to Voxt. The format follows [Keep a Changelog](https://keepa
 
 ## [Unreleased]
 
+### Fixed
+
+- **Rewrite reads a copied image even when its preferred form cannot be decoded**: when the clipboard's first image format does not decode, Rewrite now tries the image's other formats, and a copied image file that was deleted or damaged after copying falls back to the file's preview on the clipboard, instead of the language model getting no image. Copied text and files that are not images still send no image, as before.
+
 ### Changed
 
 - **Transcribe and Translate stream into the answer card too**: with the answer card on, a translation and Transcribe's cleaned-up text now show in the card as the language model writes them, as Rewrite's answer already did. You no longer wait in the recording window until the whole text is in. Stop keeps the translation written so far. Transcribe's card offers Use transcript instead of Stop (the cancel shortcut does the same): it puts all of what you said in the card as recognised, because a clean-up stopped part way would lose the rest. Another language picked in the card, or another thinking level, streams over the card's text, and the old text comes back if that fails. Retry and Transcribe again in History show the new result in the details as it is written. With the answer card off, the result still goes in whole once it is ready.
 - **While the language model works, the recording window shows what it got**: the line under the recording window now shows the recognised text as it went to the language model (the final recognition, with your dictionary's aliases replaced), instead of the last live text of a streaming speech model, which can differ. A speech model that does not stream still shows no text there, and without a language model the window works as before.
 
 ### 中文
+
+#### 修复
+
+- **复制的图片首选形式无法解码时，改写仍会读到图片**：剪贴板上第一个图片格式解码失败时，改写现在会依次尝试该图片的其他格式；复制后被删除或损坏的图片文件，会回退到剪贴板上该文件的预览图，语言模型不会再收不到图片。复制的文本和非图片文件照旧不发送图片。
 
 #### 变更
 

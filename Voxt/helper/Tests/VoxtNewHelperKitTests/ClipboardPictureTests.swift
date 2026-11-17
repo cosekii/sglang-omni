@@ -88,4 +88,22 @@ final class ClipboardPictureTests: XCTestCase {
         await expectNoImage(types: finder, data: [UTType.tiff.identifier: imageData(10, 10)], file: doc, maxSide: 1600,
                      "a text file: not its icon")
     }
+
+    func testFallsBackFromUnreadableImageFileToItsPicture() async throws {
+        let dir = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: dir) }
+        let tiff = UTType.tiff.identifier
+        // Finder puts the file, its name as text and its icon; the file itself
+        // is gone or unreadable by the time the picture is drawn.
+        let finder = [UTType.fileURL.identifier, text, tiff]
+        let broken = dir.appendingPathComponent("photo.png")
+        try Data(imageData(30, 60).prefix(8)).write(to: broken)
+        let fromIcon = await decode(types: finder, data: [tiff: imageData(12, 24, type: .tiff)], file: broken, maxSide: 1600)
+        XCTAssertEqual(fromIcon.map { [$0.width, $0.height] }, [12, 24], "a corrupt image file falls back to its icon")
+
+        let deleted = dir.appendingPathComponent("gone.png")
+        let fromDeleted = await decode(types: finder, data: [tiff: imageData(12, 24, type: .tiff)], file: deleted, maxSide: 1600)
+        XCTAssertEqual(fromDeleted.map { [$0.width, $0.height] }, [12, 24], "a deleted image file falls back to its icon")
+    }
 }

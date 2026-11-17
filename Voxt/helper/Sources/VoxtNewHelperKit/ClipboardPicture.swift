@@ -29,9 +29,15 @@ public enum ClipboardPicture {
         }
         if let file {
             guard UTType(filenameExtension: file.pathExtension)?.conforms(to: .image) == true else { return nil }
-            return thumbnail(CGImageSourceCreateWithURL(file as CFURL, nil))
+            if let image = thumbnail(CGImageSourceCreateWithURL(file as CFURL, nil)) {
+                return image
+            }
+            // An unreadable image file (deleted or corrupt) still has its
+            // other representations: they picture the file, not the text
+            // next to them, so the text rule below does not apply.
+        } else if types.contains(UTType.utf8PlainText.identifier) {
+            return nil
         }
-        guard !types.contains(UTType.utf8PlainText.identifier) else { return nil }
         for type in imageTypes where types.contains(type) {
             if let bytes = await dataForType(type), let image = thumbnail(CGImageSourceCreateWithData(bytes as CFData, nil)) {
                 return image

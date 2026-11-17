@@ -11,10 +11,17 @@ enum ClipboardImage {
             let changeCount = pb.changeCount
             let types = pb.types ?? []
             let file = (pb.readObjects(forClasses: [NSURL.self], options: [.urlReadingFileURLsOnly: true]) as? [URL])?.first
-            if file != nil || types.contains(.string) {
-                return (types.map(\.rawValue), file, changeCount, nil)
-            }
             let items = pb.pasteboardItems ?? []
+            if file != nil {
+                // The file's fallback representations live on its own item.
+                guard let index = items.firstIndex(where: { $0.types.contains(.fileURL) }) else {
+                    return (types.map(\.rawValue), file, changeCount, nil)
+                }
+                return (items[index].types.map(\.rawValue), file, changeCount, index)
+            }
+            if types.contains(.string) {
+                return (types.map(\.rawValue), nil, changeCount, nil)
+            }
             // Pick the item the preferred format would have come from.
             // Its alternatives must represent that same item.
             for type in ClipboardPicture.imageTypes {
