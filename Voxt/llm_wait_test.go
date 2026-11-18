@@ -63,9 +63,9 @@ func TestLLMWaitRow(t *testing.T) {
 	inView("zh-Hans", "10 分钟")
 }
 
-// TestLLMWaitSavedCustom (#3941): every custom wait an earlier version
-// could save keeps its value and duration and shows as what it is, not
-// as the nearest preset.
+// TestLLMWaitSavedCustom (#3941, #4034): every custom wait an earlier
+// version could save keeps its value and duration and shows its actual
+// minutes, without reintroducing the custom-minutes editor.
 func TestLLMWaitSavedCustom(t *testing.T) {
 	a, _, tt := newTestApp(t)
 	a.navigate(remotePath)
@@ -95,6 +95,9 @@ func TestLLMWaitSavedCustom(t *testing.T) {
 			}
 			if !hasExact(tt, label) {
 				t.Errorf("the wait shows %q, not its own %q: texts %q", firstTexts(tt), label, firstTexts(tt))
+			}
+			if hasExact(tt, "Custom…") || hasExact(tt, "Wait for the language model in minutes") {
+				t.Errorf("the legacy wait exposes the removed custom editor: %q", firstTexts(tt))
 			}
 		})
 	}

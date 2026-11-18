@@ -45,6 +45,29 @@ func reopenModels(a *app) {
 	a.openModels()
 }
 
+func TestModelsSettingsBody(t *testing.T) {
+	host, err := loadMeetingDemoHost("testdata/meeting")
+	if err != nil {
+		t.Fatal(err)
+	}
+	selectMeetingDemoFixture(t, host, "en/models-download-fresh")
+	tester := ui.NewTester(func(c *ui.Context) {
+		ui.Scroll(c.Key("models-body-scroll")).Grow(1).Children(func() {
+			pageColumn(c).Children(func() {
+				modelsSettingsBody(c, host.modelsViewState(), host, &host.modelsUI, modelsPageViews{})
+			})
+		})
+	}, 1000, 1600)
+	frames(tester)
+	if !hasExact(tester, "On this Mac") || hasExact(tester, "Speech models") {
+		t.Fatalf("body chrome: %q", tester.Texts())
+	}
+	clickControl(t, tester, "Download Qwen3-ASR 0.6B (4bit)")
+	if !slices.Equal(host.calls, []string{"downloadModel " + models.ASRFast}) {
+		t.Fatalf("calls %q", host.calls)
+	}
+}
+
 func TestModelsPage(t *testing.T) {
 	a, _, tt := newTestApp(t)
 	tt.SetSize(windowWidth, 4800) // the retired models are below the speech model cards

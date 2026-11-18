@@ -10,10 +10,15 @@ import (
 	"github.com/egoist/mygo/ui"
 	"github.com/sgl-project/sglang-omni/Voxt/internal/compose"
 	"github.com/sgl-project/sglang-omni/Voxt/internal/hotkey"
+	"github.com/sgl-project/sglang-omni/Voxt/internal/i18n"
 	"github.com/sgl-project/sglang-omni/Voxt/internal/session"
 	"github.com/sgl-project/sglang-omni/Voxt/internal/settings"
 	"github.com/sgl-project/sglang-omni/Voxt/internal/store"
 )
+
+func composedFeaturePreview(a *app, feature string) (compose.Output, error) {
+	return composeFeaturePreview(a.prefs, feature, a.fui(feature).prompt, a.glossaryTerms, i18n.CurrentTranslator())
+}
 
 func TestPromptSaveUsesFullSystem(t *testing.T) {
 	a, tt := pageTester(t, "/translate")
@@ -27,7 +32,7 @@ func TestPromptSaveUsesFullSystem(t *testing.T) {
 	if p := a.lib.settings.Get().Features.Translate.Prompt; p != custom {
 		t.Fatalf("saved %q", p)
 	}
-	out, err := a.composedPreview(hotkey.Translate)
+	out, err := composedFeaturePreview(a, hotkey.Translate)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -244,7 +249,7 @@ func TestTranslateBuiltinPromptKeepsTarget(t *testing.T) {
 	a.savePrompt(hotkey.Translate)
 	click(t, tt, "Target language for Translate")
 	click(t, tt, "Japanese")
-	out, err := a.composedPreview(hotkey.Translate)
+	out, err := composedFeaturePreview(a, hotkey.Translate)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -287,7 +292,7 @@ func TestTranslateWarnsPromptIgnoresTarget(t *testing.T) {
 		if has(tt, warning) {
 			t.Fatalf("warning after adding the variable to %q", own)
 		}
-		out, err := a.composedPreview(hotkey.Translate)
+		out, err := composedFeaturePreview(a, hotkey.Translate)
 		if err != nil || !strings.Contains(out.System, "into Simplified Chinese.") {
 			t.Fatalf("composed %q, %v", out.System, err)
 		}
@@ -331,13 +336,13 @@ func TestFeaturePageShowsFilledRequest(t *testing.T) {
 	if !strings.Contains(a.fui(hotkey.Translate).prompt, "{{TARGET_LANGUAGE}}") {
 		t.Fatalf("rules field %q", a.fui(hotkey.Translate).prompt)
 	}
-	in := a.previewInput(hotkey.Translate)
+	in := previewInputFor(a.prefs, hotkey.Translate, a.fui(hotkey.Translate).prompt, i18n.CurrentTranslator())
 	target := compose.LanguageName(in.TargetLanguage, compose.TemplateSet(in.MainLanguage))
 	if !has(tt, "The Target language menu on the Translate page. Translate only. Now: "+target) {
 		t.Errorf("no note for {{TARGET_LANGUAGE}} = %q", target)
 	}
 	click(t, tt, "What the language model receives")
-	out, err := a.composedPreview(hotkey.Translate)
+	out, err := composedFeaturePreview(a, hotkey.Translate)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -363,7 +368,7 @@ func TestFeaturePageFilledRequestEdges(t *testing.T) {
 		t.Errorf("empty variable not shown as none in %q", tt.Texts())
 	}
 	click(t, tt, "What the language model receives")
-	out, err := a.composedPreview(hotkey.Translate)
+	out, err := composedFeaturePreview(a, hotkey.Translate)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -390,7 +395,7 @@ func TestPreviewIsTheWholePrompt(t *testing.T) {
 		})
 		click(t, tt, "Your rules")
 		click(t, tt, "What the language model receives")
-		out, err := a.composedPreview(feature)
+		out, err := composedFeaturePreview(a, feature)
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -405,14 +410,14 @@ func TestPreviewIsTheWholePrompt(t *testing.T) {
 			t.Errorf("%s: the preview still splits system / user", feature)
 		}
 		// What a session sends with the saved rules (run_listen.go, write.go).
-		sent := a.previewInput(feature)
+		sent := previewInputFor(a.prefs, feature, a.fui(feature).prompt, i18n.CurrentTranslator())
 		sent.TaskPrompt, sent.Dictionary = promptOf(a.prefs, feature), session.PromptDictionary(a.prefs)
 		if want, _ := compose.Build(sent); wholePrompt(want) != whole {
 			t.Errorf("%s: the preview is not what is sent:\n%s\n---\n%s", feature, whole, wholePrompt(want))
 		}
 		// The dictionary switched off leaves it out, as a session does.
 		a.updateSettings(func(s *settings.Settings) { s.Dictionary.NotesOff = true })
-		if out, _ := a.composedPreview(feature); strings.Contains(out.System, "Roth") {
+		if out, _ := composedFeaturePreview(a, feature); strings.Contains(out.System, "Roth") {
 			t.Errorf("%s: the dictionary shows while off", feature)
 		}
 		// The glossary's enabled terms are in the preview, as a session
@@ -424,14 +429,14 @@ func TestPreviewIsTheWholePrompt(t *testing.T) {
 		}
 		a.updateSettings(func(s *settings.Settings) { s.Dictionary.Glossary = true })
 		a.loadGlossaryTerms()
-		out, err = a.composedPreview(feature)
+		out, err = composedFeaturePreview(a, feature)
 		if err != nil {
 			t.Fatal(err)
 		}
 		if whole = wholePrompt(out); !strings.Contains(whole, "Zephyrion") {
 			t.Errorf("%s: no glossary term in %q", feature, whole)
 		}
-		sent = a.previewInput(feature)
+		sent = previewInputFor(a.prefs, feature, a.fui(feature).prompt, i18n.CurrentTranslator())
 		sent.TaskPrompt, sent.Dictionary = promptOf(a.prefs, feature), session.PromptDictionary(a.prefs)
 		if terms, _ := repo.List(context.Background(), ""); a.prefs.Dictionary.Enabled && a.prefs.Dictionary.Glossary {
 			for _, tm := range terms {
@@ -503,7 +508,7 @@ func TestPreviewFollowsTheDictionary(t *testing.T) {
 		t.Fatal(err)
 	}
 	a.loadDict()
-	out, err := a.composedPreview(hotkey.Transcribe)
+	out, err := composedFeaturePreview(a, hotkey.Transcribe)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -516,9 +521,9 @@ func TestPreviewFollowsTheDictionary(t *testing.T) {
 	if err := repo.Put(context.Background(), store.Term{ID: "g2", Term: "Quixotica", Enabled: true}); err != nil {
 		t.Fatal(err)
 	}
-	a.dv.query = "quix"
+	a.dictUI.query = "quix"
 	a.loadDict()
-	out, err = a.composedPreview(hotkey.Transcribe)
+	out, err = composedFeaturePreview(a, hotkey.Transcribe)
 	if err != nil {
 		t.Fatal(err)
 	}

@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"slices"
+	"strings"
 	"testing"
 	"time"
 
@@ -124,6 +125,47 @@ func TestNoteCopyEditAndCancel(t *testing.T) {
 	}
 }
 
+func TestNoteSaveFailurePreservesDraft(t *testing.T) {
+	a, _, tt := newTestApp(t)
+	tt.SetSize(windowWidth, 1200)
+	note := store.Note{ID: "n1", Text: "original", CreatedAt: time.Now(), AppName: "Slack"}
+	if err := a.lib.store.Notes().Put(context.Background(), note); err != nil {
+		t.Fatal(err)
+	}
+	a.navigate("/notes")
+	frames(tt)
+	click(t, tt, "Edit original")
+	tt.Key(ui.Cmd, ui.KeyA)
+	tt.Type("unsaved draft")
+	a.lib.close()
+	a.saveNoteEdit(note.ID, "unsaved draft")
+	if a.nvUI.saving || a.nvUI.editID != note.ID || a.nvUI.draft != "unsaved draft" {
+		t.Fatalf("failed save lost the editor state: %+v", a.nvUI)
+	}
+	if len(a.toasts) == 0 || !strings.Contains(a.toasts[len(a.toasts)-1], "Could not save the note:") {
+		t.Fatalf("failed save did not report the error: %q", a.toasts)
+	}
+}
+
+func TestNotesPageModelTracksNoteEditor(t *testing.T) {
+	a, _, _ := newTestApp(t)
+	at := time.Now().Add(-time.Hour)
+	if err := a.lib.store.Notes().Put(context.Background(), store.Note{ID: "n1", Text: "original", CreatedAt: at, AppName: "Slack"}); err != nil {
+		t.Fatal(err)
+	}
+	a.loadNotes()
+	a.nvUI.editID, a.nvUI.draft, a.nvUI.saving = "n1", "draft", true
+	model := a.notesPageModel(time.Now())
+	row := model.Rows[0]
+	if !row.Editing || row.Draft != "draft" || !row.Saving || !strings.HasSuffix(row.TimeText, " · Slack") {
+		t.Fatalf("editor row: %+v", row)
+	}
+	a.nvUI.draft = "changed draft"
+	if got := a.notesPageModel(time.Now()).Rows[0].Draft; got != "changed draft" {
+		t.Fatalf("cached draft %q", got)
+	}
+}
+
 // TestNoteNotices: a saved note says so in the overlay; one that could
 // not be saved says the answer card shows it.
 func TestNoteNotices(t *testing.T) {
@@ -192,4 +234,51 @@ func notesShots(t *testing.T, a *app, tt *ui.Tester, save func(string)) {
 	click(t, tt, i18n.T("Edit %s", noteExcerpt(note.Text)))
 	save("page-notes-edit")
 	click(t, tt, i18n.T("Cancel"))
+}
+
+func TestNotesPageModelAppliesCompletedRead(t *testing.T) {
+	a, _, _ := newTestApp(t)
+	repo := a.lib.store.Notes()
+	if err := repo.Put(context.Background(), store.Note{ID: "note-1", Text: "first", CreatedAt: time.Now()}); err != nil {
+		t.Fatal(err)
+	}
+	posts := make(chan func(), 8)
+	a.postQueue = func(fn func()) { posts <- fn }
+	a.navigate("/notes")
+	model := a.notesPageModel(time.Now())
+	if !model.Loading || len(model.Rows) != 0 {
+		t.Fatalf("initial model: loading %t, rows %d", model.Loading, len(model.Rows))
+	}
+	drainPosts(posts)
+	model = a.notesPageModel(time.Now())
+	if model.Loading || len(model.Rows) != 1 {
+		t.Fatalf("completed model: loading %t, rows %d", model.Loading, len(model.Rows))
+	}
+	if err := repo.Put(context.Background(), store.Note{ID: "note-2", Text: "second", CreatedAt: time.Now()}); err != nil {
+		t.Fatal(err)
+	}
+	a.loadNotes()
+	drainPosts(posts)
+	if model := a.notesPageModel(time.Now()); len(model.Rows) != 2 {
+		t.Fatalf("reloaded model has %d rows", len(model.Rows))
+	}
+}
+
+func TestNotesPageModelTracksShortcutConflicts(t *testing.T) {
+	a, _, _ := newTestApp(t)
+	if problems := a.notesPageModel(time.Now()).Shortcut.Problems; len(problems) != 0 {
+		t.Fatalf("initial problems %q", problems)
+	}
+	a.updateSettings(func(s *settings.Settings) {
+		s.Features.Transcribe.Hotkeys = []settings.Hotkey{{Keys: settings.DefaultNote, Trigger: settings.TriggerTap}}
+	})
+	if problems := a.notesPageModel(time.Now()).Shortcut.Problems; len(problems) == 0 {
+		t.Fatal("new Transcribe conflict is missing")
+	}
+	a.updateSettings(func(s *settings.Settings) {
+		s.Features.Transcribe.Hotkeys = []settings.Hotkey{{Keys: settings.DefaultTranscribe, Trigger: settings.TriggerTap}}
+	})
+	if problems := a.notesPageModel(time.Now()).Shortcut.Problems; len(problems) != 0 {
+		t.Fatalf("removed conflict remains %q", problems)
+	}
 }

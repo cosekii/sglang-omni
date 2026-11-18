@@ -81,6 +81,24 @@ func TestAnnouncements(t *testing.T) {
 		has(tt, longAnnouncementLine) || has(tt, "The fourth line is only in the full notes.") || has(tt, "Welcome to Voxt") {
 		t.Fatalf("short card for the running version: %q", tt.Texts())
 	}
+	found := false
+	for _, notice := range a.noticesModel() {
+		if notice.ID != "announcement/n2" {
+			continue
+		}
+		found = true
+		if len(notice.SummaryLines) != 3 || notice.ActionLabel != "What's new" {
+			t.Fatalf("announcement view state: %+v", notice)
+		}
+		for _, line := range notice.SummaryLines {
+			if len([]rune(line)) > announcementSummaryRunes {
+				t.Errorf("summary line has %d runes: %q", len([]rune(line)), line)
+			}
+		}
+	}
+	if !found {
+		t.Fatal("announcement is missing from the notice view state")
+	}
 	click(t, tt, "What's new")
 	if !a.announceShownOpen || !has(tt, "Done") || !hasSuffix(tt, " · Version 2.0.3") ||
 		!has(tt, longAnnouncementLine) || !has(tt, "The fourth line is only in the full notes.") {
@@ -129,8 +147,12 @@ func TestAnnouncements(t *testing.T) {
 	if has(bt, "Voxt 2.0.3 is out") || has(bt, "Welcome to Voxt") {
 		t.Errorf("seen ones again: %q", bt.Texts())
 	}
+	b.upd = nil // What's new does not depend on the updater.
 	b.navigate("/settings/about")
 	see(t, bt, "What's new in 2.0.3")
+	if got := countText(bt, "What's new in 2.0.3"); got != 1 {
+		t.Fatalf("What's new rows: %d", got)
+	}
 	click(t, bt, "Read")
 	if !b.announceShownOpen || !has(bt, "The fourth line is only in the full notes.") {
 		t.Errorf("Settings full notes: %q", bt.Texts())

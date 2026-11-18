@@ -1,0 +1,8 @@
+{
+  "name": "start-unknown-source",
+  "kind": "start",
+  "start": {
+    "code": "meeting.start.failed",
+    "text": "Could not start the meeting: capture failed"
+  }
+}

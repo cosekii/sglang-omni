@@ -6,7 +6,9 @@ import (
 
 	"github.com/sgl-project/sglang-omni/Voxt/internal/deliver"
 	"github.com/sgl-project/sglang-omni/Voxt/internal/dict"
+	"github.com/sgl-project/sglang-omni/Voxt/internal/i18n"
 	"github.com/sgl-project/sglang-omni/Voxt/internal/session"
+	"github.com/sgl-project/sglang-omni/Voxt/internal/settings"
 	"github.com/sgl-project/sglang-omni/Voxt/internal/store"
 )
 
@@ -57,6 +59,29 @@ func TestTranscribeDictionaryHighlights(t *testing.T) {
 	})
 }
 
+func TestTryBuilderDictionaryHighlights(t *testing.T) {
+	const result = "  Voxt uses SGLang.  "
+	state := buildTryCardViewState(i18n.NewTranslator("en"), tryCardStateInput{Mine: true,
+		Snapshot: session.Snapshot{ID: "try-dictionary", Kind: store.KindTranscribe, State: session.Done,
+			Result: result, Highlights: testDictionaryHighlights(result)}})
+	if state.Ended == nil || len(state.Ended.Highlights) != 2 || state.Ended.Highlights[0] != (dictionaryHighlightSpan{Start: 0, End: 4}) || state.Ended.Highlights[1] != (dictionaryHighlightSpan{Start: 10, End: 16}) {
+		t.Fatalf("Try result spans: %+v", state.Ended)
+	}
+}
+
+func TestOnboardingTryBuilderDictionaryHighlights(t *testing.T) {
+	const result = "  Voxt uses SGLang.  "
+	const sessionID = "onboarding-dictionary"
+	state := buildOnboardingTry(i18n.NewTranslator("en"), onboardingViewStateInput{
+		Step: obTranscribe, Settings: settings.Defaults(), Tries: map[int]string{obTranscribe: sessionID},
+		Session: session.Snapshot{ID: sessionID, Kind: store.KindTranscribe, State: session.Done,
+			Result: result, Highlights: testDictionaryHighlights(result)},
+	})
+	if len(state.Card.Highlights) != 2 || state.Card.Highlights[0] != (dictionaryHighlightSpan{Start: 0, End: 4}) || state.Card.Highlights[1] != (dictionaryHighlightSpan{Start: 10, End: 16}) {
+		t.Fatalf("onboarding Try result spans: %+v", state.Card.Highlights)
+	}
+}
+
 // TestRedoDropsOldHighlights: a redo streams a new draft over the card;
 // the old answer's spans must not mark it (or slice outside it).
 func TestRedoDropsOldHighlights(t *testing.T) {
@@ -71,8 +96,9 @@ func TestRedoDropsOldHighlights(t *testing.T) {
 	a.overlaySync()
 	a.answer.redo = "t2"
 	snap(a, session.Snapshot{ID: "t2", Kind: store.KindTranscribe, State: session.Composing, Card: true, Draft: "短一些。"})
-	if v := a.cardNow(); v.text != "短一些。" || v.highlights != nil {
-		t.Errorf("the redo keeps the old spans over %q: %+v", v.text, v.highlights)
+	card := a.cachedCard()
+	if text := cardTextForTest(card); text != "短一些。" || card.LiveCount != 1 || len(card.Live[0].Highlights) != 0 {
+		t.Errorf("the redo keeps the old spans over %q: %+v", text, card.Live[0])
 	}
 	a.overlaySync()
 	tt := cardTester(t, a)

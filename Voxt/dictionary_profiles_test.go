@@ -5,6 +5,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/sgl-project/sglang-omni/Voxt/internal/core"
 	"github.com/sgl-project/sglang-omni/Voxt/internal/i18n"
 	"github.com/sgl-project/sglang-omni/Voxt/internal/store"
 )
@@ -39,7 +40,7 @@ func TestDictionaryProfileControls(t *testing.T) {
 	if err := tt.ChooseMenuItem("Rename “Work”…"); err != nil {
 		t.Fatal(err)
 	}
-	a.dictProfiles.editName = "Office"
+	a.dictUI.profiles.editName = "Office"
 	click(t, tt, "Save")
 	profiles, _ = a.lib.store.Dictionary().Profiles(context.Background())
 	if profiles[1].Name != "Office" || !profiles[1].Active || !has(tt, "Office") {
@@ -62,6 +63,27 @@ func TestDictionaryProfileControls(t *testing.T) {
 		t.Errorf("the last profile can be deleted: %v", err)
 	}
 	tt.CloseMenu()
+}
+
+func TestDictionaryProfilesViewState(t *testing.T) {
+	input := dictionaryProfilesStateInput{
+		Profiles:   []store.DictionaryProfile{{ID: "default", Name: "Default", Active: true}, {ID: "work", Name: "Work"}},
+		DeleteOpen: true, DeleteID: "work",
+	}
+	translator := i18n.NewTranslator("zh-Hans")
+	state := buildDictionaryProfilesViewState(translator, input)
+	if state.Rows[0].Name != "默认" || state.Rows[0].RawName != "Default" || state.Rows[1].Name != "Work" || state.Delete.Name != "Work" {
+		t.Fatalf("profile view state: %+v", state)
+	}
+	for _, test := range []struct {
+		err  error
+		code string
+	}{{core.ErrExists, "exists"}, {core.ErrInvalid, "invalid"}, {context.Canceled, "generic"}} {
+		input.Edit.Err = test.err
+		if got := buildDictionaryProfilesViewState(translator, input).Edit.ErrorCode; got != test.code {
+			t.Errorf("%v: error code %q, want %q", test.err, got, test.code)
+		}
+	}
 }
 
 func TestDictionaryProfileExternalSwitch(t *testing.T) {
@@ -128,7 +150,7 @@ func TestDictionaryTermDialogStaysInItsProfile(t *testing.T) {
 
 	// Open Alpha's editor in Default, switch to Work, then save.
 	a.openTerm(store.Term{ID: "t1", Term: "Alpha", Enabled: true})
-	a.dv.edit.term = "AlphaTwo"
+	a.dictUI.edit.term = "AlphaTwo"
 	a.switchDictionaryProfile("work")
 	a.submitTerm()
 	if got := terms(t, a); len(got) != 1 || got[0].Term != "WorkAlpha" {
@@ -145,7 +167,7 @@ func TestDictionaryTermDialogStaysInItsProfile(t *testing.T) {
 	a.switchDictionaryProfile("default")
 	a.openTerm(store.Term{ID: "t1", Term: "AlphaTwo", Enabled: true})
 	a.switchDictionaryProfile("work")
-	a.deleteTerm(store.Term{ID: a.dv.edit.id, Term: a.dv.edit.original, ProfileID: a.dv.edit.profile})
+	a.deleteTerm(store.Term{ID: a.dictUI.edit.id, Term: a.dictUI.edit.original, ProfileID: a.dictUI.edit.profile})
 	if got := terms(t, a); len(got) != 1 || got[0].Term != "WorkAlpha" {
 		t.Fatalf("the delete took Work's term: %+v", got)
 	}
@@ -167,6 +189,14 @@ func TestDictionaryProfileDefaultTranslated(t *testing.T) {
 	if !has(tt, "默认") {
 		t.Errorf("the built-in profile is not translated: %q", firstTexts(tt))
 	}
+	click(t, tt, i18n.T("Profile actions"))
+	if err := tt.ChooseMenuItem(i18n.T("Rename “%s”…", "默认")); err != nil {
+		t.Fatal(err)
+	}
+	if got := a.dictUI.profiles.editName; got != "Default" {
+		t.Errorf("rename edited the translated name %q instead of the stored name", got)
+	}
+	click(t, tt, i18n.T("Cancel"))
 	a.openURL("voxtnew://dictionary/profile?name=默认")
 	for _, toast := range a.toasts {
 		t.Errorf("switch by the translated name toasted %q", toast)

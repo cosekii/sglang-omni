@@ -1,15 +1,18 @@
 package main
 
-import (
-	"github.com/egoist/mygo/ui"
-	"github.com/sgl-project/sglang-omni/Voxt/internal/dict"
-)
+import "github.com/egoist/mygo/ui"
 
-func dictionaryText(c *ui.Context, text string, highlights []dict.Span) ui.Element {
+// dictionaryHighlightSpan is a JSON-safe byte range in displayed text.
+type dictionaryHighlightSpan struct {
+	Start int `json:"start"`
+	End   int `json:"end"`
+}
+
+func dictionaryText(context *ui.Context, text string, highlights []dictionaryHighlightSpan) ui.Element {
 	if len(highlights) == 0 {
-		return ui.Text(c, text)
+		return ui.Text(context, text)
 	}
-	k := tok(c.Theme())
+	theme := tok(context.Theme())
 	spans := make([]ui.Span, 0, 2*len(highlights)+1)
 	plain := func(from, to int) {
 		if to > from {
@@ -25,11 +28,11 @@ func dictionaryText(c *ui.Context, text string, highlights []dict.Span) ui.Eleme
 		plain(at, start)
 		if end > start {
 			spans = append(spans, ui.Span{
-				Text: text[start:end], Background: k.AccentSoft, Radius: 3,
+				Text: text[start:end], Background: theme.AccentSoft, Radius: 3,
 			})
 		}
 		at = end
 	}
 	plain(at, len(text))
-	return ui.RichText(c, spans...).Label(text)
+	return ui.RichText(context, spans...).Label(text)
 }
