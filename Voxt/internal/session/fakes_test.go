@@ -391,7 +391,8 @@ type fakeLLM struct {
 
 	mu       sync.Mutex
 	reqs     []llm.Request
-	answered int // the requests answered so far
+	answered int           // the requests answered so far
+	onAnswer chan struct{} // gets a value after each answer (answerSignal)
 }
 
 func (f *fakeLLM) Chat(ctx context.Context, req llm.Request) (llm.Response, error) {
@@ -440,6 +441,12 @@ func (f *fakeLLM) Chat(ctx context.Context, req llm.Request) (llm.Response, erro
 	}
 	f.mu.Lock()
 	f.answered++
+	if f.onAnswer != nil {
+		select {
+		case f.onAnswer <- struct{}{}:
+		default: // a value already waits
+		}
+	}
 	f.mu.Unlock()
 	return llm.Response{Text: text, FinishReason: f.finish, ImagesDropped: f.drop}, nil
 }
@@ -454,6 +461,17 @@ func (f *fakeLLM) answeredCount() int {
 	f.mu.Lock()
 	defer f.mu.Unlock()
 	return f.answered
+}
+
+// answerSignal gets a value after each answer from now on; recheck
+// answeredCount after each.
+func (f *fakeLLM) answerSignal() <-chan struct{} {
+	f.mu.Lock()
+	defer f.mu.Unlock()
+	if f.onAnswer == nil {
+		f.onAnswer = make(chan struct{}, 1)
+	}
+	return f.onAnswer
 }
 
 // fakeText is the app in front.
