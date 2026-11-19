@@ -62,11 +62,20 @@ type sessionState struct {
 	// noticeSeq numbers them, so that a notice's timer hides only itself.
 	notice    *sessionNotice
 	noticeSeq int
-	// hotkeysSent is the hotkey.configure last sent (as JSON), so the
-	// same one is not sent again; carbon the accelerators registered
-	// with MyGo while the event tap is missing.
-	hotkeysSent string
-	carbon      []string
+	// hotkeysSent is the newest hotkey.configure requested, so the same
+	// one is not sent again. Sequence numbers let a newer close supersede
+	// an older open even after a timeout. carbon is the accelerators
+	// registered with MyGo while the event tap is missing.
+	hotkeysSent             string
+	hotkeyConfigureSequence uint64
+	hotkeyStatusSequence    uint64
+	hotkeyCardIdentity      string
+	hotkeyCardGeneration    uint64
+	carbon                  []string
+	// hotkeyGen numbers the hotkey.configure requests sent (1 on the
+	// first). The helper applies only a newer one and reports it on the
+	// events it decides under it; hotkeyFired drops the rest.
+	hotkeyGen int64
 	// keysListening: a shortcut field takes pressed keys (key_recorder.go),
 	// and the shortcuts are off meanwhile; keysHeard is this frame's.
 	keysListening, keysHeard bool
@@ -275,7 +284,7 @@ func (a *app) sessionChanged(s session.Snapshot) {
 	if s.State.Ended() && !was.State.Ended() {
 		a.sessionEnded(s)
 	}
-	if s.State.Live() != was.State.Live() {
+	if s.State.Live() != was.State.Live() || (s.State == session.Recording) != (was.State == session.Recording) {
 		a.syncHotkeys()
 	}
 	for _, fn := range a.afterSession { // events.go: the menu bar, the overlay
@@ -343,9 +352,7 @@ func (a *app) sessionEnded(s session.Snapshot) {
 	} else if copied != nil {
 		a.showNotice(*copied)
 	}
-	if s.State != session.Cancelled {
-		a.historyChanged()
-	}
+	a.historyChanged()
 }
 
 // showNotice shows a notice in the overlay; it hides by itself.
