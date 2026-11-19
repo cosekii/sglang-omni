@@ -11,6 +11,12 @@ All notable changes to Voxt. The format follows [Keep a Changelog](https://keepa
 - **Rewrite can deliberately send selected text and a copied image together**: the new Settings → Privacy → Text and a copied image together switch sends both when you mean it. It defaults off — on fresh installs and on upgraded settings that never touched it — so an earlier copied image cannot take over a text Rewrite; an explicit choice is kept.
 - **Single-letter keys on the answer card** (#4127): while the answer card shows, press c to copy the answer and r to insert it over the selection, as the card's Copy and Insert buttons do. The keys bind from the first streaming draft and only while the card is actually visible; a notice or an insertion unbinds them, and a late event cannot act on a newer card. During IME composition bare keys go to the editor, while modified shortcuts and mouse bindings still work. If your cancel shortcut is c or r, it keeps priority and only the other card key is advertised. A stalled or timed-out open cannot reinstall c/r after a newer close unbinds them. Without Accessibility the card keys do not work, like the cancel shortcut.
 - **Return finishes dictation**: while Transcribe records, press Return to stop recording and finish through the same path as the stop shortcut. Voxt consumes that Return instead of sending it again after insertion. The Transcribe page has a Return finishes dictation switch, on by default, for users who need Return for a newline while recording.
+- **Long dictations are cleaned up while you speak**: once a recording passes a minute, the speech model finishes stretch after stretch while you keep talking, and Voxt can send each finished stretch to the language model right away. When you stop, only the remaining text is left, so the cleaned text arrives sooner. Voxt waits until Stop instead when the short-input thinking threshold has not been reached, or glossary prompting is on and your dictionary has more than 30 enabled terms. The original recognised text stays in History.
+
+### Changed
+
+- **Settings → Privacy and the README explain local and API data paths** (#4159): they list the text and optional images a language-model request can contain, distinguish requests that stay on this Mac from those sent to an external provider, and cover Translate's fallback. The README gives the same local-versus-API breakdown for speech recognition.
+- **The personal dictionary no longer points to where each feature shows its whole request**: the caption under the Markdown notes is removed; the feature pages still show the request itself.
 
 ### Fixed
 
@@ -25,6 +31,7 @@ All notable changes to Voxt. The format follows [Keep a Changelog](https://keepa
 - **The answer card lets go of a formula preview it no longer shows**: hiding or closing the card closes its previews; an answer that ends up as plain text drops the preview and the height it had measured, so the card no longer keeps a gap or a stale formula, and a finished stream measures its final height instead of keeping the half-rendered one.
 - **Rewrite answers no longer show echoed input tags** (#4313): when the language model repeats `<selected_text>` or `<instruction>` around your selection or instruction, the answer card removes those tags and keeps the text inside them. Only a pair that wraps the whole answer or exactly your selection or instruction goes; tags that belong in the answer, such as a prompt template you asked for, stay.
 - **Recording time keeps seconds after ten minutes**: the recording preview sizes its timer to the full duration, so times such as 10:59 and 61:05 no longer lose their seconds.
+- **Paused toasts no longer wake Voxt while it is in the background**: a toast's fade-out now starts only after its paused display lifetime resumes and ends. Plain toasts and toasts with an action stay visible in the background and expire after you return.
 
 ### 中文
 
@@ -35,6 +42,12 @@ All notable changes to Voxt. The format follows [Keep a Changelog](https://keepa
 - **改写可以明确同时发送选中文字和复制的图片**：设置 → 隐私 →“同时发送选中文字和复制的图片”打开后，两者一起发送。默认关闭——新安装和升级前没碰过这个开关的设置都一样——避免早前复制的图片取代选中文字成为改写输入；明确选过的值保留。
 - **答案卡片的单字母键**（#4127）：答案卡片显示时，按 c 复制回答、按 r 把回答插入选中的位置，和卡片上的“复制”“插入”按钮一样。第一段流式文字出现时就绑定，卡片实际可见才有效；通知盖住卡片或插入时解绑，迟到的按键事件不会作用于新卡片。中文输入法有组合文字时，裸键先给编辑器，带修饰键的快捷键和鼠标绑定仍照常触发。取消键如果也是 c 或 r，取消键优先，只提示另一个卡片键。旧 open 卡住或超时后，新 close 仍会解绑，旧请求完成时不会把 c/r 装回去。没有辅助功能时，卡片键和取消键一样不生效。
 - **按回车完成转录**：转录录音时，按回车停止录音，走和停止快捷键相同的后续流程。这个回车会被消费，插入结果后不会再发送一次。转录页新增“按回车完成转录”开关，默认打开；录音时需要回车换行的用户可以关闭。
+- **长口述边录边整理**：录音超过一分钟后，语音识别模型每整理好一段语音，Voxt 可以立即把这一段发给语言模型整理；你停下时只剩剩余文字需要整理，整理好的文字到得更快。还没到“短输入不思考”的门槛，或语言模型使用术语表且启用词条超过 30 条时，Voxt 会等到停止后再整理全文。识别原文照常保留在历史里。
+
+#### 变更
+
+- **“设置 → 隐私”和 README 说明本机与 API 两条数据路径**（#4159）：列出语言模型请求可能包含的文字和可选图片，区分留在本机的请求和发给外部服务商的请求，并说明翻译使用备用模型时的数据去向。README 也分别说明了语音识别在本机和通过 API 运行时的数据路径。
+- **个人词典不再说明各功能在哪里显示完整请求**：Markdown 笔记下方的说明文字已删除，各功能页面仍会显示完整请求。
 
 #### 修复
 
@@ -49,6 +62,7 @@ All notable changes to Voxt. The format follows [Keep a Changelog](https://keepa
 - **回答卡片释放不再显示的公式预览**：隐藏或关闭卡片时关闭预览；回答最终是纯文本时丢掉预览和它量出的高度，卡片不再留空白或显示过时的公式；流式输出结束后按最终渲染重新测量高度。
 - **改写回答不再显示重复的输入标签**（#4313）：语言模型重复输出 `<selected_text>` 或 `<instruction>` 标签时，答案卡片会去掉标签，保留标签内的文字。只去掉包住整段回答、或正好包住你的选中文字或指令的那一对；回答本身需要的标签（比如你要的提示词模板）保留。
 - **录音超过 10 分钟仍显示秒数**：录音预览按完整时长调整计时文字的宽度，10:59、61:05 等时长不再丢失秒数。
+- **暂停的提示不再让后台的 Voxt 反复唤醒**：提示只会在暂停的显示计时恢复并结束后淡出。普通提示和带按钮的提示在后台保留，回到前台后继续计时并消失。
 
 ## [2.1.1] - 2026-11-17
 
