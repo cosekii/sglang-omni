@@ -213,7 +213,7 @@ func TestWrite(t *testing.T) {
 				req := model.requests()[0]
 				user := req.Messages[len(req.Messages)-1].Content
 				if req.Skill != llm.SkillRewrite || req.Format != llm.FormatText ||
-					user != "<instruction>\nhello VoxtNew\n</instruction>\n\n<selected_text>\nhey team, ship friday?\n</selected_text>" ||
+					user != "<selected_text>\nhey team, ship friday?\n</selected_text>\n\n<instruction>\nhello VoxtNew\n</instruction>" ||
 					strings.Contains(req.Messages[0].Content, "Reading the instruction") {
 					t.Errorf("request %+v", req)
 				}
@@ -328,14 +328,14 @@ func TestWrite(t *testing.T) {
 		},
 		{
 			// Text selected since goes with the follow-up, its own block
-			// after the instruction, and with its turn (#3816).
+			// before the instruction, and with its turn (#3816).
 			name: "a follow-up with a new selection", kind: store.KindRewrite, sel: &fakeSelector{text: "Ben: tests passed"}, llm: &fakeLLM{text: "Team: Friday, tests pass."},
 			req:   StartRequest{Previous: []compose.Turn{{Instruction: "more formal", Selection: "ship friday", Answer: compose.Answer{Content: "Team: we ship on Friday."}}}},
 			speak: true, states: "recording recognizing composing done", state: Done, result: "Team: Friday, tests pass.", card: deliver.ReasonCard,
 			check: func(t *testing.T, h *harness, end Snapshot, model *fakeLLM, sel *fakeSelector) {
 				msgs := model.requests()[0].Messages
 				if len(msgs) != 4 || !strings.Contains(msgs[1].Content, "<selected_text>\nship friday") ||
-					msgs[3].Content != "<instruction>\nhello VoxtNew\n</instruction>\n\n<selected_text>\nBen: tests passed\n</selected_text>" || end.Selection != "Ben: tests passed" {
+					msgs[3].Content != "<selected_text>\nBen: tests passed\n</selected_text>\n\n<instruction>\nhello VoxtNew\n</instruction>" || end.Selection != "Ben: tests passed" {
 					t.Errorf("messages %+v, end %+v", msgs, end)
 				}
 				if e := h.hist.all()[0]; e.SourceText != "Ben: tests passed" {
@@ -544,6 +544,38 @@ func TestTranslateFallback(t *testing.T) {
 				t.Errorf("entries %+v", es)
 			}
 		})
+	}
+}
+
+// TestRewriteFallbackDropsTheFirstModelsTitle: the first model streamed
+// a title before it failed. Once the fallback takes over, no snapshot
+// and no history entry shows that title next to the fallback's name:
+// the swap starts the answer over, as asking again does.
+func TestRewriteFallbackDropsTheFirstModelsTitle(t *testing.T) {
+	boom := errors.New("503 overloaded")
+	main, fallback := &fakeLLM{hang: true, hangOn: 1, hangDelta: `{"title":"First model's title","content":"Half`}, &fakeLLM{err: boom}
+	h := newHarness(t, &fakeFile{text: " hello aura link "}, main, func(c *Config, _ *settings.Settings) {
+		c.Select = &fakeSelector{}
+		c.WriteTimeout = time.Second
+	})
+	h.fallback = fallback
+	id, err := h.m.Start(StartRequest{Kind: store.KindRewrite, Target: slack})
+	if err != nil {
+		t.Fatal(err)
+	}
+	h.speak(id, 3)
+	h.rec.waitFor(t, "the first model's title", func(s Snapshot) bool { return s.State == Composing && s.Title == "First model's title" })
+	end := h.rec.wait(t)
+	if end.State != Failed || end.Problem == nil || end.Problem.Code != ProblemLLM || end.LLM.ID != "ollama" {
+		t.Errorf("end %+v", end)
+	}
+	for _, s := range h.rec.all() {
+		if s.LLM.ID == "ollama" && s.Title == "First model's title" {
+			t.Errorf("the fallback's snapshot keeps the first model's title: %+v", s)
+		}
+	}
+	if es := h.hist.all(); len(es) != 1 || es[0].LLMProvider != "ollama" || es[0].Title != "" {
+		t.Errorf("entries %+v", es)
 	}
 }
 
