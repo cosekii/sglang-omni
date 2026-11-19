@@ -158,6 +158,21 @@ jobs:
           go-version-file: Voxt/go.mod
           cache-dependency-path: Voxt/go.sum
 
+      - name: SQLite library for the MyGo plugin
+        id: sqlite
+        run: |
+          dir="$(go list -m -f '{{.Dir}}' github.com/egoist/mygo)/plugins/sqlite"
+          read -r url sum < <(jq -r '.libraries[0].files["darwin-arm64"] | "\(.url) \(.sha256)"' "$dir/mygo-plugin.json")
+          echo "sha=$sum" >> "$GITHUB_OUTPUT"
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+
+      - name: Fetch and verify the SQLite library
+        run: |
+          lib="$RUNNER_TEMP/libmygo-sqlite3.dylib"
+          curl -fsSL --retry 3 -o "$lib" "${{ steps.sqlite.outputs.url }}"
+          echo "${{ steps.sqlite.outputs.sha }}  $lib" | shasum -a 256 -c -
+          echo "MYGO_SQLITE_LIBRARY=$lib" >> "$GITHUB_ENV"
+
       - name: Headless helper and fake-model tests
         working-directory: ${{ github.workspace }}
         run: Voxt/scripts/mac-e2e.sh
