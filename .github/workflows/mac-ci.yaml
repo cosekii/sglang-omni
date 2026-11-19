@@ -109,7 +109,7 @@ jobs:
   native-runtime:
     name: native runtime (build + protocol)
     needs: [preflight]
-    if: needs.preflight.outputs.run_mac == 'true' && needs.preflight.outputs.run_native_runtime == 'true'
+    if: github.event_name != 'workflow_dispatch' && needs.preflight.outputs.run_mac == 'true' && needs.preflight.outputs.run_native_runtime == 'true'
     runs-on: macos-26
     timeout-minutes: 30
     steps:
@@ -168,7 +168,7 @@ jobs:
   voxtnew-swift:
     name: Voxt helper tests
     needs: [preflight]
-    if: needs.preflight.outputs.run_mac == 'true' && needs.preflight.outputs.run_voxt_helper == 'true'
+    if: github.event_name != 'workflow_dispatch' && needs.preflight.outputs.run_mac == 'true' && needs.preflight.outputs.run_voxt_helper == 'true'
     runs-on: macos-26
     timeout-minutes: 45
     steps:
@@ -176,3 +176,20 @@ jobs:
 
       - name: Helper tests
         run: swift test --package-path Voxt/helper
+
+  voxt-mac-e2e-probe:
+    name: Voxt Mac E2E probe
+    needs: [preflight]
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: macos-26
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: Voxt/go.mod
+          cache-dependency-path: Voxt/go.sum
+
+      - name: Headless helper and fake-model tests
+        run: Voxt/scripts/mac-e2e.sh
