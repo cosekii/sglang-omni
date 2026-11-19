@@ -142,3 +142,22 @@ jobs:
 
       - name: Vendored MyGo is MyGo with the patches
         run: scripts/vendor-mygo.sh --check
+
+  voxt-mac-e2e-probe:
+    name: Voxt Mac E2E probe
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: macos-26
+    timeout-minutes: 15
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_26.5.app/Contents/Developer
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: Voxt/go.mod
+          cache-dependency-path: Voxt/go.sum
+
+      - name: Headless helper and fake-model tests
+        working-directory: ${{ github.workspace }}
+        run: Voxt/scripts/mac-e2e.sh
