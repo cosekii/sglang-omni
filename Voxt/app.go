@@ -5,6 +5,7 @@ import (
 )
 
 // app is VoxtNew's UI state: the view state of every page, and handles
+// (probe: an app-only change to exercise Mac CI's path selection)
 // to the domain (the library, the helper). Every field is read and
 // written on the main thread: work on other goroutines reaches it through
 // post.
