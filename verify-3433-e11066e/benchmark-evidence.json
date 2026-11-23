@@ -1,0 +1,63 @@
+{
+  "base": "d80161dc34d7",
+  "pr": "e11066ebfa60",
+  "method": "Real benchmark main() and local SeedTTS loader; network sweep and heavyweight integrations replaced with test doubles.",
+  "base_nested_missing_parent": {
+    "exception": "FileNotFoundError",
+    "output_exists": false,
+    "output_is_file": false
+  },
+  "base_existing_parent": {
+    "exception": null,
+    "output_exists": true,
+    "output_is_file": true,
+    "schema_version": 2,
+    "results": [],
+    "provenance": {
+      "test_provenance": true
+    },
+    "num_samples": 1
+  },
+  "pr_nested_missing_parent": {
+    "exception": null,
+    "output_exists": true,
+    "output_is_file": true,
+    "schema_version": 2,
+    "results": [],
+    "provenance": {
+      "test_provenance": true
+    },
+    "num_samples": 1
+  },
+  "pr_existing_parent_rerun": {
+    "exception": null,
+    "output_exists": true,
+    "output_is_file": true,
+    "schema_version": 2,
+    "results": [],
+    "provenance": {
+      "test_provenance": true
+    },
+    "num_samples": 1
+  },
+  "pr_relative_output": {
+    "exception": null,
+    "output_exists": true,
+    "output_is_file": true,
+    "schema_version": 2,
+    "results": [],
+    "provenance": {
+      "test_provenance": true
+    },
+    "num_samples": 1
+  },
+  "pr_parent_is_file": {
+    "exception": "FileExistsError",
+    "output_exists": false,
+    "output_is_file": false
+  },
+  "parent_file_preserved": true,
+  "py_compile": "pass",
+  "diff_check": "pass",
+  "regression_coverage": "Existing checked-in main() test uses an existing parent and also passes on base; nested-parent regression test is absent."
+}
