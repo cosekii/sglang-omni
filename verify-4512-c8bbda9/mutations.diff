@@ -1,0 +1,20 @@
+--- a/src/common/tokenizer.cpp
++++ b/no-merge-clear/src/common/tokenizer.cpp
+@@ -200,7 +200,6 @@
+       // filled every container before throwing, so all of them are reset
+       // before falling through.
+       vocabulary_.clear();
+-      merge_ranks_.clear();
+       added_token_index_by_id_.clear();
+       added_tokens_.clear();
+       tokens_by_id_.clear();
+--- a/src/common/tokenizer.cpp
++++ b/no-added-index-clear/src/common/tokenizer.cpp
+@@ -201,7 +201,6 @@
+       // before falling through.
+       vocabulary_.clear();
+       merge_ranks_.clear();
+-      added_token_index_by_id_.clear();
+       added_tokens_.clear();
+       tokens_by_id_.clear();
+       split_pattern_ = std::make_unique<Pcre2Regex>();

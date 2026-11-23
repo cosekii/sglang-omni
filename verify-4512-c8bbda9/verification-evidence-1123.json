@@ -1,0 +1,46 @@
+{
+  "round": 1123,
+  "pr": 4512,
+  "head": "c8bbda92f3504ec4fc65b3abaf0736ae807bbe54",
+  "result": "pass",
+  "must": 0,
+  "should": 0,
+  "environment": {
+    "os": "27.2.1",
+    "architecture": "arm64",
+    "mlx": "0.32.5 at pinned commit fc344c986c4169d99f76b5d95ae6b4a58a359a63",
+    "isolated_worktree_build_home": true,
+    "real_voxt_data_or_model_cache_accessed": false
+  },
+  "delta_from_previous_verified_head": {
+    "previous": "4a510827445266b9b9b98189abd62c451a4a34e4",
+    "files_changed": [
+      "sglang_omni_mlx/native/tests/tokenizer_preference_test.cpp"
+    ],
+    "production_source_unchanged": true
+  },
+  "checks": {
+    "exact_head_and_clean_worktree": "pass",
+    "git_diff_check": "pass",
+    "tokenizer_preference_test_build": "pass",
+    "checked_in_test": "pass; three runs with fresh isolated TMPDIRs and fixture cleanup after every run",
+    "preference_equivalence_fallback_and_error_cases": "pass through the full checked-in test",
+    "merge_rank_reset_regression": "pass on the current head; removing only merge_ranks_.clear() caused the new checked-in assertion to fail with exit 134",
+    "added_token_index_reset_regression": "pass on the current head; removing only added_token_index_by_id_.clear() caused the new checked-in assertion to fail with exit 134",
+    "restored_current_head_control": "pass",
+    "previous_should_closed": "pass; tokenizer_preference_test.cpp:202-250 now covers both previously missing reset cases",
+    "mac_ci_native_runtime": "pass; the job built and invoked tokenizer_preference_test",
+    "code_review": "Must 0; Should 0"
+  },
+  "ci": {
+    "workflow": "Mac CI",
+    "run": "https://github.com/sgl-project/sglang-omni/actions/runs/45204953169",
+    "native_runtime_job": "https://github.com/sgl-project/sglang-omni/actions/runs/45204953169/job/137800256091"
+  },
+  "not_covered": [
+    "Production model weights, real-audio transcription and recognition accuracy",
+    "Startup and first-result latency, physical-cold-disk behavior, and the PR's 90-100 ms timing claim",
+    "Real Whisper tokenizer metadata was exercised at the previous head and not repeated for this test-only increment",
+    "Voxt App UI, release comparison and UI screenshots; this PR changes no App UI"
+  ]
+}

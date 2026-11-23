@@ -1,0 +1,3 @@
+no-merge-clear=expected_failure_exit_134
+no-added-index-clear=expected_failure_exit_134
+restored_current=pass
