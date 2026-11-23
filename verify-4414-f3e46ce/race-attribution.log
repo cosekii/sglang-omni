@@ -1,0 +1,111 @@
+HEAD
+f3e46ced36e23b0da2ff089898be37e0eee78f56
+PARENT
+d2619c16571148c4dea6695bf2a8208d9616457f
+BASE
+c15bfc80bf873fb339dfc576658d060412653cb5
+
+SUBSCRIBE/NOTIFY BLAME
+aaf9c7a7db7 (Steve H 2026-11-09 09:38:54 -0800 401) // Subscribe calls fn whenever the snapshot changes.
+aaf9c7a7db7 (Steve H 2026-11-09 09:38:54 -0800 402) func (m *Manager) Subscribe(fn func(Snapshot)) (cancel func()) {
+aaf9c7a7db7 (Steve H 2026-11-09 09:38:54 -0800 403) 	m.mu.Lock()
+aaf9c7a7db7 (Steve H 2026-11-09 09:38:54 -0800 404) 	m.subs = append(m.subs, fn)
+aaf9c7a7db7 (Steve H 2026-11-09 09:38:54 -0800 405) 	m.mu.Unlock()
+aaf9c7a7db7 (Steve H 2026-11-09 09:38:54 -0800 406) 	fn(m.Current())
+aaf9c7a7db7 (Steve H 2026-11-09 09:38:54 -0800 407) 	return func() {
+aaf9c7a7db7 (Steve H 2026-11-09 09:38:54 -0800 408) 		m.mu.Lock()
+aaf9c7a7db7 (Steve H 2026-11-09 09:38:54 -0800 409) 		defer m.mu.Unlock()
+aaf9c7a7db7 (Steve H 2026-11-09 09:38:54 -0800 410) 		for i, f := range m.subs {
+aaf9c7a7db7 (Steve H 2026-11-09 09:38:54 -0800 411) 			if fmt.Sprintf("%p", f) == fmt.Sprintf("%p", fn) {
+aaf9c7a7db7 (Steve H 2026-11-09 09:38:54 -0800 412) 				m.subs = append(m.subs[:i], m.subs[i+1:]...)
+aaf9c7a7db7 (Steve H 2026-11-09 09:38:54 -0800 413) 				return
+aaf9c7a7db7 (Steve H 2026-11-09 09:38:54 -0800 414) 			}
+aaf9c7a7db7 (Steve H 2026-11-09 09:38:54 -0800 415) 		}
+aaf9c7a7db7 (Steve H 2026-11-09 09:38:54 -0800 416) 	}
+aaf9c7a7db7 (Steve H 2026-11-09 09:38:54 -0800 459) func (m *Manager) notify(s Snapshot) {
+aaf9c7a7db7 (Steve H 2026-11-09 09:38:54 -0800 460) 	for _, fn := range m.subs {
+aaf9c7a7db7 (Steve H 2026-11-09 09:38:54 -0800 461) 		fn(s)
+aaf9c7a7db7 (Steve H 2026-11-09 09:38:54 -0800 462) 	}
+aaf9c7a7db7 (Steve H 2026-11-09 09:38:54 -0800 463) }
+
+INTRODUCING COMMIT
+aaf9c7a7db [Voxt] Meetings (C1) and Dock setting import (FB17) (#3716)
+
+PR CHANGE TO MANAGER
+diff --git a/Voxt/internal/meeting/manager.go b/Voxt/internal/meeting/manager.go
+index 84ca6a7e7e..32c2201de7 100644
+--- a/Voxt/internal/meeting/manager.go
++++ b/Voxt/internal/meeting/manager.go
+@@ -82,6 +82,8 @@ func (m *Manager) Start(ctx context.Context, req StartRequest) (string, error) {
+ 		m.mu.Unlock()
+ 		return "", ErrBusy
+ 	}
++	// A timed-out track can outlive an interrupted meeting; it must not own the new archive or transcript.
++	m.tracks = map[Source]*track{}
+ 	started := m.cfg.Now()
+ 	id := core.NewID(started)
+ 	m.id = id
+
+HEAD TEST ADDS CANCELLATION
+67- 
+68- func TestOldPCMDoesNotEnterNextMeeting(t *testing.T) {
+69-+	testOldPCMIsolation(t, false, meeting.ModeRecording)
+70-+}
+71-+
+72:+func TestOldPCMDoesNotEnterNextMeetingAfterFinalFailure(t *testing.T) {
+73-+	testOldPCMIsolation(t, true, meeting.ModeSubtitles)
+74-+}
+75-+
+76-+func testOldPCMIsolation(t *testing.T, failFinal bool, nextMode meeting.Mode) {
+77- 	audio := &pcmCrossAudio{}
+--
+107-@@ -511,6 +531,18 @@ func TestOldPCMDoesNotEnterNextMeeting(t *testing.T) {
+108- 	case <-time.After(2 * time.Second):
+109- 		t.Fatal("old PCM did not reach the old transcriber")
+110- 	}
+111-+	interrupted := make(chan struct{}, 1)
+112:+	cancelSubscribe := func() {}
+113-+	if failFinal {
+114:+		cancelSubscribe = m.Subscribe(func(s meeting.Snapshot) {
+115-+			if s.State == meeting.StateInterrupted {
+116-+				select {
+117-+				case interrupted <- struct{}{}:
+118-+				default:
+119-+				}
+--
+132-+		select {
+133-+		case <-interrupted:
+134-+		case <-time.After(2 * time.Second):
+135-+			t.Fatal("meeting A's final pass did not fail")
+136-+		}
+137:+		cancelSubscribe()
+138-+		settingsMu.Lock()
+139-+		noFinalPass = true
+140-+		settingsMu.Unlock()
+141-+	}
+142-+	idB, err := m.Start(ctx, meeting.StartRequest{Mode: nextMode})
+
+PRODUCTION SUBSCRIBE CALLER
+70-		Updated: func(id string) { a.post(func() { a.meetingUpdated(id) }) },
+71-	})
+72:	a.meetMgr.Subscribe(func(s meeting.Snapshot) {
+73-		a.post(func() { a.meetingChanged(s) })
+74-	})
+
+PRODUCTION REACHABILITY REVIEW
+Only production Manager.Subscribe caller:
+69-		},
+70-		Updated: func(id string) { a.post(func() { a.meetingUpdated(id) }) },
+71-	})
+72:	a.meetMgr.Subscribe(func(s meeting.Snapshot) {
+73-		a.post(func() { a.meetingChanged(s) })
+74-	})
+75-	a.meetSnap = a.meetMgr.Current()
+The returned cancellation is discarded; no production unsubscribe caller exists.
+All Manager.Subscribe cancellation callers are tests:
+Voxt/internal/meeting/playthrough_test.go:150:	cancel := m.Subscribe(func(snap meeting.Snapshot) {
+Voxt/internal/meeting/playthrough_test.go:158:	t.Cleanup(cancel)
+Voxt/internal/meeting/manager_test.go:535:	cancelSubscribe := func() {}
+Voxt/internal/meeting/manager_test.go:537:		cancelSubscribe = m.Subscribe(func(s meeting.Snapshot) {
+Voxt/internal/meeting/manager_test.go:562:		cancelSubscribe()
+Conclusion: the exact-head race is real in the new failed-finalize regression and the public Subscribe cancellation API, but no current App path calls the cancellation. Subscribe/notify predate the PR; f3e46ced36 adds the racing test call. Keep Must 1 because the required exact-head meeting race run fails; do not claim a reproduced production App race.

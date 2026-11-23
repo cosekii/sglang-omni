@@ -1,0 +1,10 @@
+PR #4414 exact head f3e46ced36e23b0da2ff089898be37e0eee78f56
+Result: FAIL; Must 1, Should 0.
+Queued PCM/transcript/WAV controls: PASS after restoration.
+Independent fail-first mutations: detach, archive ownership, transcriber ownership all failed for their intended assertions.
+Meeting race: FAIL twice in TestOldPCMDoesNotEnterNextMeetingAfterFinalFailure; cancelSubscribe write at manager.go:412 vs watchDisk/notify read at manager.go:460.
+Production scope: current App discards Manager.Subscribe cancellation; no production unsubscribe caller. Subscribe/notify predate PR; new regression exposes the API/test race.
+Real App: two system-audio failures preserved original error and recovered; normal tail, persistence, Chinese, settings, 800x520 and 1200x800 passed. GUI Pause/Resume not exposed by background controls.
+Full CGO_ENABLED=0 go test -p=1 -parallel=1 -count=1 -skip ^TestPageSanitizesTranscriptInBrowser$ ./...: PASS (71 output lines, no FAIL).
+Build helper/App, codesign, gofmt, MyGo vet, i18n, reports/changelog/behavior, diff check: PASS.
+Release App restored as PID 74951. Release cleanup remains paused at Feed Check 45254966331; beta Appcast not run; draft-2.1.3.done absent.

@@ -1,0 +1,9 @@
+
+=== detach ===
+EXPECTED FAILURE: detach
+
+=== archive ===
+EXPECTED FAILURE: archive
+
+=== transcriber ===
+EXPECTED FAILURE: transcriber

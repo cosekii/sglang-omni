@@ -1,0 +1,6 @@
+--- FAIL: TestOldPCMDoesNotEnterNextMeetingAfterFinalFailure (5.02s)
+    manager_test.go:578: meeting B received meeting A's queued transcript: [{ID:01M850F0J3CE5VJP28W2JBW3G7 Source:mic Speaker:me Start:384.042µs End:384.042µs Text:queued words from A Translation: Final:true StoreIdx:0}]
+    manager_test.go:596: meeting A PCM was written to meeting B WAV
+FAIL
+FAIL	github.com/sgl-project/sglang-omni/Voxt/internal/meeting	5.117s
+FAIL

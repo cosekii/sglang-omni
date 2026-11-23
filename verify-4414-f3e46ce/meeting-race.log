@@ -1,0 +1,57 @@
+==================
+WARNING: DATA RACE
+Write at 0x00c0018c1b10 by goroutine 257:
+  github.com/sgl-project/sglang-omni/Voxt/internal/meeting.(*Manager).Subscribe.func1()
+      /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/opencode/voxt-verify-4414/Voxt/internal/meeting/manager.go:412 +0x26c
+  github.com/sgl-project/sglang-omni/Voxt/internal/meeting_test.testOldPCMIsolation()
+      /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/opencode/voxt-verify-4414/Voxt/internal/meeting/manager_test.go:562 +0xb70
+  github.com/sgl-project/sglang-omni/Voxt/internal/meeting_test.TestOldPCMDoesNotEnterNextMeetingAfterFinalFailure()
+      /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/opencode/voxt-verify-4414/Voxt/internal/meeting/manager_test.go:484 +0x38
+  testing.tRunner()
+      /Users/shuohuang/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.4.darwin-arm64/src/testing/testing.go:2195 +0x164
+  testing.(*T).Run.gowrap1()
+      /Users/shuohuang/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.4.darwin-arm64/src/testing/testing.go:2260 +0x34
+
+Previous read at 0x00c0018c1b10 by goroutine 258:
+  github.com/sgl-project/sglang-omni/Voxt/internal/meeting.(*Manager).notify()
+      /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/opencode/voxt-verify-4414/Voxt/internal/meeting/manager.go:460 +0x18c
+  github.com/sgl-project/sglang-omni/Voxt/internal/meeting.(*Manager).refreshProblem()
+      /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/opencode/voxt-verify-4414/Voxt/internal/meeting/manager.go:551 +0x14c
+  github.com/sgl-project/sglang-omni/Voxt/internal/meeting.(*Manager).noteFreeSpace()
+      /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/opencode/voxt-verify-4414/Voxt/internal/meeting/manager.go:540 +0x94
+  github.com/sgl-project/sglang-omni/Voxt/internal/meeting.(*Manager).watchDisk()
+      /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/opencode/voxt-verify-4414/Voxt/internal/meeting/disk_watch.go:18 +0x16c
+  github.com/sgl-project/sglang-omni/Voxt/internal/meeting.(*Manager).Start.gowrap1()
+      /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/opencode/voxt-verify-4414/Voxt/internal/meeting/manager.go:148 +0x40
+
+Goroutine 257 (running) created at:
+  testing.(*T).Run()
+      /Users/shuohuang/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.4.darwin-arm64/src/testing/testing.go:2260 +0x7bc
+  testing.runTests.func1()
+      /Users/shuohuang/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.4.darwin-arm64/src/testing/testing.go:2744 +0x74
+  testing.tRunner()
+      /Users/shuohuang/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.4.darwin-arm64/src/testing/testing.go:2195 +0x164
+  testing.runTests()
+      /Users/shuohuang/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.4.darwin-arm64/src/testing/testing.go:2742 +0x7a0
+  testing.(*M).Run()
+      /Users/shuohuang/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.4.darwin-arm64/src/testing/testing.go:2602 +0xb38
+  main.main()
+      _testmain.go:292 +0x100
+
+Goroutine 258 (finished) created at:
+  github.com/sgl-project/sglang-omni/Voxt/internal/meeting.(*Manager).Start()
+      /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/opencode/voxt-verify-4414/Voxt/internal/meeting/manager.go:148 +0xec0
+  github.com/sgl-project/sglang-omni/Voxt/internal/meeting_test.testOldPCMIsolation()
+      /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/opencode/voxt-verify-4414/Voxt/internal/meeting/manager_test.go:524 +0x694
+  github.com/sgl-project/sglang-omni/Voxt/internal/meeting_test.TestOldPCMDoesNotEnterNextMeetingAfterFinalFailure()
+      /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/opencode/voxt-verify-4414/Voxt/internal/meeting/manager_test.go:484 +0x38
+  testing.tRunner()
+      /Users/shuohuang/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.4.darwin-arm64/src/testing/testing.go:2195 +0x164
+  testing.(*T).Run.gowrap1()
+      /Users/shuohuang/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.4.darwin-arm64/src/testing/testing.go:2260 +0x34
+==================
+--- FAIL: TestOldPCMDoesNotEnterNextMeetingAfterFinalFailure (5.01s)
+    testing.go:1867: race detected during execution of test
+FAIL
+FAIL	github.com/sgl-project/sglang-omni/Voxt/internal/meeting	33.123s
+FAIL

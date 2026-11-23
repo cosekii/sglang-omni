@@ -1,0 +1,5 @@
+--- FAIL: TestOldPCMDoesNotEnterNextMeeting (5.01s)
+    manager_test.go:596: meeting A PCM was written to meeting B WAV
+FAIL
+FAIL	github.com/sgl-project/sglang-omni/Voxt/internal/meeting	5.106s
+FAIL
