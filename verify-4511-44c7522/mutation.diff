@@ -1,0 +1,11 @@
+--- /Users/shuohuang/voxt-dev-setup/3043/uiux/shots/verify-4511/behavior-1121/current/src/moss/moss_model.cpp	2026-11-23 06:33:13
++++ /Users/shuohuang/voxt-dev-setup/3043/uiux/shots/verify-4511/behavior-1121/old/src/moss/moss_model.cpp	2026-11-23 06:33:14
+@@ -35,7 +35,7 @@
+ // projection.
+ WeightMap LoadedWeights(WeightMap weights) {
+   // A prequantized checkpoint already carries its own output projection.
+-  weights.emplace(
++  weights.insert_or_assign(
+       std::string(kDecoderPrefix) + ".output_projection.weight",
+       weights.at(std::string(kDecoderPrefix) + ".embed_tokens.weight"));
+   weights.erase("lm_head.weight");

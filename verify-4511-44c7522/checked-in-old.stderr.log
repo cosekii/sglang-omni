@@ -1,0 +1,1 @@
+libc++abi: terminating due to uncaught exception of type std::invalid_argument: [quantized_matmul] The weight matrix should be uint32 but received float32
