@@ -1,0 +1,6 @@
+--- FAIL: TestRound1127OldPCMCannotUseReplacementTranscriber (5.01s)
+    zz_pcm_cross_test.go:169: meeting A PCM was sent to meeting B transcriber: [2 2]
+    zz_pcm_cross_test.go:172: meeting A PCM was written to meeting B WAV
+FAIL
+FAIL	github.com/sgl-project/sglang-omni/Voxt/internal/meeting	5.202s
+FAIL

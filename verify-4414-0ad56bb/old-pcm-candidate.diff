@@ -1,0 +1,23 @@
+--- /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/opencode/voxt-verify-4414/Voxt/internal/meeting/track.go	2026-11-23 10:31:55
++++ internal/meeting/track.go	2026-11-23 10:46:07
+@@ -67,16 +67,13 @@
+ 			if !ok {
+ 				return
+ 			}
+-			_ = m.archive.Write(src, data)
+ 			m.mu.Lock()
+-			var tr *trackTranscriber
+-			if tx := m.tracks[src]; tx != nil {
+-				tr = tx.transcribe
++			if m.tracks[src] == tr && m.archive != nil {
++				_ = m.archive.Write(src, data)
+ 			}
+-			runCtx := m.runCtx
+ 			m.mu.Unlock()
+-			if tr != nil && runCtx != nil {
+-				_ = tr.onPCM(runCtx, data)
++			if tx != nil {
++				_ = tx.onPCM(ctx, data)
+ 			}
+ 		}
+ 	}()
