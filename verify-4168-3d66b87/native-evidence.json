@@ -1,0 +1,87 @@
+{
+  "head": "3d66b8732c46be93041e247d03be33ca7a9eb0f7",
+  "schema_test": "pass",
+  "plain_repeat": [
+    {
+      "event": "moss_native_timing",
+      "audio_ms": 1085,
+      "native_chunk_count": 1,
+      "native_split_ms": 0.012208,
+      "frontend_build_ms": 623.990458,
+      "frontend_eval_ms": 400.091875,
+      "decoder_prefill_ms": 400.100042,
+      "autoregressive_decode_ms": 43.500583,
+      "result_rebuild_ms": 0.047417,
+      "cache_clear_ms": 4.007417,
+      "native_total_ms": 1071.669791,
+      "generated_token_count": 19,
+      "verify_round_count": 0,
+      "proposed_draft_token_count": 0,
+      "accepted_draft_token_count": 0
+    },
+    {
+      "event": "moss_native_timing",
+      "audio_ms": 1085,
+      "native_chunk_count": 1,
+      "native_split_ms": 0.010917,
+      "frontend_build_ms": 1.646958,
+      "frontend_eval_ms": 126.74125,
+      "decoder_prefill_ms": 126.746833,
+      "autoregressive_decode_ms": 43.269209,
+      "result_rebuild_ms": 0.020708,
+      "cache_clear_ms": 0.105792,
+      "native_total_ms": 171.813167,
+      "generated_token_count": 19,
+      "verify_round_count": 0,
+      "proposed_draft_token_count": 0,
+      "accepted_draft_token_count": 0
+    }
+  ],
+  "dflash": [
+    {
+      "event": "moss_native_timing",
+      "audio_ms": 1085,
+      "native_chunk_count": 1,
+      "native_split_ms": 0.014125,
+      "frontend_build_ms": 15.733208,
+      "frontend_eval_ms": 140.196541,
+      "decoder_prefill_ms": 140.987291,
+      "autoregressive_decode_ms": 136.054084,
+      "result_rebuild_ms": 0.017958,
+      "cache_clear_ms": 0.726541,
+      "native_total_ms": 293.575041,
+      "generated_token_count": 19,
+      "verify_round_count": 3,
+      "proposed_draft_token_count": 21,
+      "accepted_draft_token_count": 17
+    }
+  ],
+  "transcript_speaker_sha256": "f3f7aa0a2387ac19c2ac2fafe62986525fd5aa03ed34411824b3ff0a38dd32e3",
+  "plain_repeat_outputs_match": true,
+  "dflash_output_matches_plain": true,
+  "long_121_second": {
+    "event": "moss_native_timing",
+    "audio_ms": 121000,
+    "native_chunk_count": 1,
+    "native_split_ms": 1.033542,
+    "frontend_build_ms": 615.220709,
+    "frontend_eval_ms": 280.561916,
+    "decoder_prefill_ms": 280.567208,
+    "autoregressive_decode_ms": 11056.115042,
+    "result_rebuild_ms": 1.110875,
+    "cache_clear_ms": 145.194583,
+    "native_total_ms": 12099.296209,
+    "generated_token_count": 3452,
+    "verify_round_count": 0,
+    "proposed_draft_token_count": 0,
+    "accepted_draft_token_count": 0
+  },
+  "long_finish_reason": "length",
+  "empty_rejected_without_timing_event": true,
+  "go_tests": [
+    "internal/asr",
+    "internal/fileasr",
+    "internal/meeting"
+  ],
+  "diff_check": "pass"
+}
