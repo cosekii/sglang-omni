@@ -1,0 +1,59 @@
+{
+  "round": 1122,
+  "pr": 4512,
+  "head": "4a510827445266b9b9b98189abd62c451a4a34e4",
+  "result": "pass",
+  "must": 0,
+  "should": 1,
+  "environment": {
+    "os": "27.2.1",
+    "architecture": "arm64",
+    "mlx": "0.32.5 at pinned commit fc344c986c4169d99f76b5d95ae6b4a58a359a63",
+    "isolated_worktree_build_home": true,
+    "real_voxt_data_or_model_cache_accessed": false,
+    "external_test_data": "Public Whisper large-v3-turbo tokenizer metadata only: tokenizer.json, vocab.json, merges.txt, tokenizer_config.json (4523607 bytes total); no model weights"
+  },
+  "checks": {
+    "exact_head_and_clean_worktree": "pass",
+    "git_diff_check": "pass",
+    "native_build": "pass; tokenizer_preference_test, qwen3_asr_server, whisper_server and moss_transcribe_diarize_server",
+    "checked_in_tokenizer_preference_test": "pass; three runs with fresh isolated TMPDIRs; fixture cleanup passed after every run",
+    "valid_tokenizer_json_preferred_over_conflicting_legacy_files": "pass",
+    "json_legacy_and_FromJson_behaviour_equivalence": "pass; Encode, Decode, AddedTokenId, merges, NFC and added tokens",
+    "fallback_and_error_paths": "pass; legacy-only, unsupported Whisper-shaped JSON, truncated JSON, partial vocab/added-token/id-table/pattern state, and corrupt JSON without legacy files",
+    "real_whisper_tokenizer_metadata": {
+      "current_head": "pass; legacy fallback round-tripped ordinary text and an added token; ordinary_ids=4 and endoftext_id=50257",
+      "no_fallback_single_change_mutant": "expected failure; exit 134 with cannot use at() with null"
+    },
+    "reverse_mutations": {
+      "source": "scratch copies only; the verification worktree was never edited",
+      "preference_disabled_checked_in_test": "expected failure; exit 134 with the preference assertion",
+      "no_fallback_checked_in_test": "expected failure; exit 134 at the Whisper-shaped fallback case",
+      "restored_current_head_control": "pass"
+    },
+    "extra_reset_state_probe": {
+      "current_head": "pass for merge-rank and added-token-index reset cases",
+      "no_merge_clear": "checked-in test still passed; extra probe failed as expected with reordered legacy BPE merges",
+      "no_added_index_clear": "checked-in test still passed; extra probe failed as expected because failed JSON id 42 decoded as the legacy added token"
+    },
+    "mac_ci_native_runtime": "pass; workflow built and invoked tokenizer_preference_test",
+    "code_review": "Must 0; Should 1"
+  },
+  "findings": [
+    {
+      "severity": "Should",
+      "location": "sglang_omni_mlx/native/tests/tokenizer_preference_test.cpp:166-220",
+      "finding": "The poison-state regressions do not cover merge_ranks_ or added_token_index_by_id_. Deleting either clear left the checked-in test green, while focused scratch probes exposed each missing reset. Add those two partial-state cases."
+    }
+  ],
+  "ci": {
+    "workflow": "Mac CI",
+    "run": "https://github.com/sgl-project/sglang-omni/actions/runs/45103095919",
+    "native_runtime_job": "https://github.com/sgl-project/sglang-omni/actions/runs/45103095919/job/137458865026"
+  },
+  "not_covered": [
+    "Production model weights, real-audio transcription and recognition accuracy",
+    "Startup and first-result latency, physical-cold-disk behavior, and an independent reproduction of the PR's 90-100 ms timing claim",
+    "Voxt App UI, release comparison and UI screenshots; this PR changes no App UI"
+  ]
+}

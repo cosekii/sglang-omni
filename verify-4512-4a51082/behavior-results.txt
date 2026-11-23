@@ -1,0 +1,10 @@
+current-reset=pass
+preference-disabled-checked-in=expected_failure_exit_134
+no-fallback-checked-in=expected_failure_exit_134
+no-merge-clear-checked-in=pass
+no-merge-clear-reset=expected_failure_exit_134
+no-added-index-clear-checked-in=pass
+no-added-index-clear-reset=expected_failure_exit_134
+restored-current-checked-in=pass
+real_whisper_no_fallback=expected_failure_exit_134
+real_whisper_current=pass
