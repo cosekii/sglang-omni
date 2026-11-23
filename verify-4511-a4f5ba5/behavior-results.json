@@ -1,0 +1,23 @@
+{
+  "head": "a4f5ba566ab680b16969eaad321a0e48106f46ab",
+  "checked_in_current": {
+    "exit": 0,
+    "result": "pass"
+  },
+  "independent_current": {
+    "runs": 3,
+    "exit": 0,
+    "result": "pass"
+  },
+  "insert_or_assign_mutation": {
+    "independent_exit": 134,
+    "checked_in_exit": 134,
+    "independent_error": [
+      "libc++abi: terminating due to uncaught exception of type std::invalid_argument: [quantized_matmul] The weight matrix should be uint32 but received float32"
+    ],
+    "checked_in_error": [
+      "libc++abi: terminating due to uncaught exception of type std::runtime_error: a prequantized output projection must not be replaced by the tied embedding"
+    ],
+    "result": "expected failure reproduced"
+  }
+}

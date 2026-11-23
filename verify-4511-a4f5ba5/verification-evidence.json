@@ -1,0 +1,49 @@
+{
+  "round": 1118,
+  "pr": 4511,
+  "head": "a4f5ba566ab680b16969eaad321a0e48106f46ab",
+  "result": "pass",
+  "must": 0,
+  "should": 1,
+  "environment": {
+    "os": "27.2.1",
+    "architecture": "arm64",
+    "isolated_worktree_build_home": true,
+    "real_voxt_data_or_model_cache_accessed": false
+  },
+  "checks": {
+    "exact_head_and_clean_worktree": "pass",
+    "git_diff_check": "pass",
+    "moss_transcribe_diarize_server_build": "pass",
+    "checked_in_moss_model_test": "pass",
+    "independent_behavior_runs": 3,
+    "prequantized_uint32_weight_values_scales_biases_preserved": "pass",
+    "real_checkpoint_linear_quantized_matmul": "pass",
+    "missing_projection_tied_to_embedding_and_runtime_quantized": "pass",
+    "unrelated_weight_lm_head_and_conv1d_layout": "pass",
+    "insert_or_assign_reverse_mutation": {
+      "checked_in_test_exit": 134,
+      "checked_in_test_error": "libc++abi: terminating due to uncaught exception of type std::runtime_error: a prequantized output projection must not be replaced by the tied embedding",
+      "independent_test_exit": 134,
+      "independent_test_error": "libc++abi: terminating due to uncaught exception of type std::invalid_argument: [quantized_matmul] The weight matrix should be uint32 but received float32",
+      "result": "expected failure"
+    }
+  },
+  "code_review": {
+    "must": [],
+    "should": [
+      {
+        "source": "sglang_omni_mlx/native/tests/moss_model_test.cpp:23-40",
+        "finding": "The regression checks projection dtype/values but does not execute Checkpoint::Linear/quantized_matmul with scales and biases; the missing-projection case checks dtype without asserting equality to the embedding.",
+        "impact": "Production behavior passes the independent harness, but the checked-in test does not directly guard the reported runtime failure or the tied values.",
+        "suggested_test": "Add a 64-wide mx::quantize fixture with weight/scales/biases and quantization config, run Checkpoint::Linear and compare with ordinary matmul; assert array_equal for the absent-projection fallback. The quantized-matmul check fails on the old insert_or_assign source with the original dtype error."
+      }
+    ]
+  },
+  "not_covered": [
+    "No production checkpoint, real audio, recognition accuracy, or model inference was run; synthetic tensors exercised the exact loader and quantized linear code only.",
+    "No startup or first-Final performance ABABAB, physical-cold-disk measurement, production prequantized-cache generation, or cache invalidation was tested.",
+    "No Voxt App UI, interactive browser, permissions, microphone, or global-shortcut path was exercised because the PR has no App UI change."
+  ],
+  "ui_screenshots": "N/A: native loader-only change"
+}
