@@ -1,0 +1,13 @@
+diff --git a/Voxt/llm_debug_controller.go b/Voxt/llm_debug_controller.go
+index 316d8f5aac..145c1a4090 100644
+--- a/Voxt/llm_debug_controller.go
++++ b/Voxt/llm_debug_controller.go
+@@ -202,7 +202,7 @@ func (a *app) prepareLLMDebug() {
+ 	}
+ 	p := presets[slices.Index(titles, u.preset)]
+ 	saved := a.savedPrompt(p)
+-	if u.filled != u.preset || u.saved != saved {
++	if u.filled != u.preset {
+ 		u.fillPreset(u.preset, saved)
+ 		u.res = nil
+ 	}

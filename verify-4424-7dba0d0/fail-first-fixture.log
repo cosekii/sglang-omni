@@ -1,0 +1,5 @@
+--- FAIL: TestRemoteDemoFixturePreservesEditedPresetDrafts (0.29s)
+    remote_demo_test.go:194: the unchanged fixture preset kept a stale prompt: &{model:Fixture service · fixture-model preset:Rewrite filled:Rewrite saved:Fixture saved prompt · Rewrite prompt:Fixture saved prompt · Rewrite input:Fixture input instruction:Make it shorter drafts:map[Rewrite:Rewrite edited draft Transcribe:Transcribe edited draft]}
+FAIL
+FAIL	github.com/sgl-project/sglang-omni/Voxt	0.611s
+FAIL

@@ -1,0 +1,13 @@
+diff --git a/Voxt/llm_debug_view_state.go b/Voxt/llm_debug_view_state.go
+index 6c01154123..8da65f00d9 100644
+--- a/Voxt/llm_debug_view_state.go
++++ b/Voxt/llm_debug_view_state.go
+@@ -136,7 +136,7 @@ func llmDebugStateForLocal(state llmDebugViewState, local *llmDebugUI) llmDebugV
+ 		if preset.Title != local.preset {
+ 			continue
+ 		}
+-		if local.filled != local.preset || local.saved != preset.SavedPrompt {
++		if local.filled != local.preset {
+ 			local.fillPreset(local.preset, preset.SavedPrompt)
+ 			state.Result = nil
+ 		}

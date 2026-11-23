@@ -1,0 +1,7 @@
+chat_requests=2
+request_1_system_prompt=ROUND1126 NEW1
+request_1_user_input=synthetic recognised text round 1126
+request_2_system_prompt=ROUND1126 NEW5
+request_2_user_input=synthetic recognised text round 1126
+Library/Application Support/VoxtNew/voxtnew.db-wal: ROUND1126 NEW5, ROUND1126 NEW4, ROUND1126 NEW3
+unsaved_draft_markers_in_settings_or_db=0

@@ -1,0 +1,15 @@
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/opencode/voxt-verify-4424/Voxt/resources/darwin-arm64/helper/voxtnew-helper: replacing existing signature
+built /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/opencode/voxt-verify-4424/Voxt/resources/darwin-arm64/helper/voxtnew-helper (2.1.2, signed ad hoc)
+
+  MyGo!!!!! v0.5.5  build
+
+  ○ Compiling darwin/arm64
+  ✓ Compiled darwin/arm64  3.0s
+  ○ Signing Voxt.app
+  ✓ Signed Voxt.app  48ms
+
+  ✓ Built Voxt 2.1.2 in 3.5s
+
+    build/darwin-arm64/
+      Voxt.app    29.0 MB
+
