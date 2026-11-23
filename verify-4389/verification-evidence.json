@@ -1,0 +1,323 @@
+{
+  "head": "44e250c9eec37b0aff511ebfffbaaec0d201ca6c",
+  "result": "pass",
+  "environment": {
+    "os": "27.2.1",
+    "architecture": "arm64",
+    "isolated_app_homes": true,
+    "source_tree_clean": true
+  },
+  "build_and_static_checks": {
+    "native_runtime": "pass",
+    "helper": "pass",
+    "signed_app": "pass",
+    "codesign_deep_strict": "pass",
+    "git_diff_check": "pass",
+    "audio_chunk_test": "pass",
+    "go_test_packages": [
+      "./internal/asr",
+      "./internal/fileasr",
+      "./internal/meeting",
+      "./internal/omni"
+    ],
+    "go_tests": "pass"
+  },
+  "native_test": {
+    "consecutive_passes": 20,
+    "allocation_mutation": {
+      "expected_exit": 1,
+      "observed_exit": 1,
+      "failure_check": "append without a decode allocates no timing",
+      "exact_source_restored": true,
+      "restored_test": "pass"
+    }
+  },
+  "deterministic_realtime": {
+    "head": "44e250c9eec37b0aff511ebfffbaaec0d201ca6c",
+    "cases": {
+      "preview": {
+        "returncode": 0,
+        "timing": [
+          {
+            "event": "moss_preview_timing",
+            "window_id": 0,
+            "kind": "preview",
+            "audio_sample_count": 24000,
+            "append_at_ms": 161406714,
+            "decision_at_ms": 161406715,
+            "submit_at_ms": 161406715,
+            "transcribe_started_at_ms": 161406715,
+            "transcribe_at_ms": 161406742,
+            "publish_at_ms": 161406742,
+            "min_preview_samples": 20000,
+            "verify_round_count": 1,
+            "proposed_draft_token_count": 7,
+            "accepted_draft_token_count": 4
+          }
+        ],
+        "sender_event_types": [
+          "transcription_session.updated",
+          "transcription.segment",
+          "transcription.segment",
+          "transcription.completed"
+        ],
+        "other_stderr": [],
+        "result": "pass"
+      },
+      "multiple": {
+        "returncode": 0,
+        "timing": [
+          {
+            "event": "moss_preview_timing",
+            "window_id": 0,
+            "kind": "preview",
+            "audio_sample_count": 24000,
+            "append_at_ms": 161406786,
+            "decision_at_ms": 161406786,
+            "submit_at_ms": 161406786,
+            "transcribe_started_at_ms": 161406786,
+            "transcribe_at_ms": 161406801,
+            "publish_at_ms": 161406801,
+            "min_preview_samples": 20000,
+            "verify_round_count": 1,
+            "proposed_draft_token_count": 7,
+            "accepted_draft_token_count": 4
+          },
+          {
+            "event": "moss_preview_timing",
+            "window_id": 0,
+            "kind": "preview",
+            "audio_sample_count": 24030,
+            "append_at_ms": 161407855,
+            "decision_at_ms": 161407855,
+            "submit_at_ms": 161407855,
+            "transcribe_started_at_ms": 161407855,
+            "transcribe_at_ms": 161407868,
+            "publish_at_ms": 161407869,
+            "min_preview_samples": 20000,
+            "verify_round_count": 2,
+            "proposed_draft_token_count": 14,
+            "accepted_draft_token_count": 8
+          }
+        ],
+        "sender_event_types": [
+          "transcription_session.updated",
+          "transcription.segment",
+          "transcription.segment",
+          "transcription.segment",
+          "transcription.completed"
+        ],
+        "other_stderr": [],
+        "result": "pass"
+      },
+      "final": {
+        "returncode": 0,
+        "timing": [
+          {
+            "event": "moss_preview_timing",
+            "window_id": 0,
+            "kind": "final",
+            "audio_sample_count": 64000,
+            "append_at_ms": 161407899,
+            "decision_at_ms": 161407901,
+            "submit_at_ms": 161407901,
+            "transcribe_started_at_ms": 161407901,
+            "transcribe_at_ms": 161407915,
+            "publish_at_ms": 161407916,
+            "min_preview_samples": 20000,
+            "verify_round_count": 0,
+            "proposed_draft_token_count": 0,
+            "accepted_draft_token_count": 0
+          }
+        ],
+        "sender_event_types": [
+          "transcription_session.updated",
+          "transcription.segment",
+          "transcription.completed"
+        ],
+        "other_stderr": [],
+        "result": "pass"
+      },
+      "no_decode": {
+        "returncode": 0,
+        "timing": [],
+        "sender_event_types": [
+          "transcription_session.updated",
+          "transcription.segment",
+          "transcription.completed"
+        ],
+        "other_stderr": [],
+        "result": "pass"
+      },
+      "invalid": {
+        "returncode": 0,
+        "timing": [],
+        "sender_event_types": [
+          "transcription_session.updated",
+          "error",
+          "transcription.completed"
+        ],
+        "other_stderr": [],
+        "result": "pass"
+      },
+      "error": {
+        "returncode": 0,
+        "timing": [],
+        "sender_event_types": [
+          "transcription_session.updated",
+          "error",
+          "transcription.segment",
+          "transcription.completed"
+        ],
+        "other_stderr": [
+          "realtime decode failed: St13runtime_error"
+        ],
+        "result": "pass"
+      },
+      "cancel": {
+        "returncode": 0,
+        "timing": [],
+        "sender_event_types": [],
+        "other_stderr": [],
+        "result": "pass"
+      },
+      "queue": {
+        "returncode": 0,
+        "timing": [
+          {
+            "event": "moss_preview_timing",
+            "window_id": 0,
+            "kind": "preview",
+            "audio_sample_count": 24000,
+            "append_at_ms": 161408026,
+            "decision_at_ms": 161408026,
+            "submit_at_ms": 161408026,
+            "transcribe_started_at_ms": 161408026,
+            "transcribe_at_ms": 161408209,
+            "publish_at_ms": 161408209,
+            "min_preview_samples": 20000,
+            "verify_round_count": 1,
+            "proposed_draft_token_count": 7,
+            "accepted_draft_token_count": 4
+          },
+          {
+            "event": "moss_preview_timing",
+            "window_id": 0,
+            "kind": "preview",
+            "audio_sample_count": 32000,
+            "append_at_ms": 161408026,
+            "decision_at_ms": 161408027,
+            "submit_at_ms": 161408027,
+            "transcribe_started_at_ms": 161408210,
+            "transcribe_at_ms": 161408239,
+            "publish_at_ms": 161408239,
+            "min_preview_samples": 20000,
+            "verify_round_count": 2,
+            "proposed_draft_token_count": 14,
+            "accepted_draft_token_count": 8
+          }
+        ],
+        "sender_event_types": [
+          "transcription_session.updated",
+          "transcription.segment",
+          "transcription.segment",
+          "transcription.completed",
+          "transcription_session.updated",
+          "transcription.segment",
+          "transcription.segment",
+          "transcription.completed"
+        ],
+        "other_stderr": [],
+        "result": "pass"
+      }
+    }
+  },
+  "real_model_realtime": {
+    "head": "44e250c9eec37b0aff511ebfffbaaec0d201ca6c",
+    "model_download": false,
+    "benchmark": false,
+    "plain": {
+      "timing": {
+        "event": "moss_preview_timing",
+        "window_id": 0,
+        "kind": "preview",
+        "audio_sample_count": 39278,
+        "append_at_ms": 161594048,
+        "decision_at_ms": 161594049,
+        "submit_at_ms": 161594049,
+        "transcribe_started_at_ms": 161594049,
+        "transcribe_at_ms": 161594273,
+        "publish_at_ms": 161594273,
+        "min_preview_samples": 20000,
+        "verify_round_count": 0,
+        "proposed_draft_token_count": 0,
+        "accepted_draft_token_count": 0
+      },
+      "output_sha256": "a86af2d796bd3f74654519efcf7cfdd306cc103ef2de6edd0dada9ccbe92c084",
+      "sender_event_types": [
+        "transcription_session.updated",
+        "transcription.segment",
+        "transcription.segment",
+        "transcription.completed"
+      ],
+      "result": "pass"
+    },
+    "dflash": {
+      "timing": {
+        "event": "moss_preview_timing",
+        "window_id": 0,
+        "kind": "preview",
+        "audio_sample_count": 39278,
+        "append_at_ms": 161594961,
+        "decision_at_ms": 161594962,
+        "submit_at_ms": 161594962,
+        "transcribe_started_at_ms": 161594962,
+        "transcribe_at_ms": 161595220,
+        "publish_at_ms": 161595220,
+        "min_preview_samples": 20000,
+        "verify_round_count": 2,
+        "proposed_draft_token_count": 14,
+        "accepted_draft_token_count": 4
+      },
+      "output_sha256": "a86af2d796bd3f74654519efcf7cfdd306cc103ef2de6edd0dada9ccbe92c084",
+      "sender_event_types": [
+        "transcription_session.updated",
+        "transcription.segment",
+        "transcription.segment",
+        "transcription.completed"
+      ],
+      "result": "pass"
+    },
+    "outputs_match": true
+  },
+  "ui": {
+    "release_pr_meetings": {
+      "result": "pass",
+      "navigation_verified": true,
+      "accessibility_trees_match_except_pid": true,
+      "screenshot_sha256_match": true,
+      "screenshots": [
+        "00-release-meetings.png",
+        "01-pr-meetings.png"
+      ]
+    },
+    "pr_restart": {
+      "result": "pass",
+      "same_isolated_home": true,
+      "home_page_working": true,
+      "native_warning_or_error_in_app_log": false,
+      "screenshot": "02-pr-restart.png"
+    },
+    "screenshot_sha256": {
+      "00-release-meetings.png": "5b587fb01a3cbf85dae78e6ffc4a4155e92b100e028c708c2daad8e60b5086d2",
+      "01-pr-meetings.png": "5b587fb01a3cbf85dae78e6ffc4a4155e92b100e028c708c2daad8e60b5086d2",
+      "02-pr-restart.png": "2132337ef68ed8690c02da0f5077bcbea6f550e94dc4a5073e14e1107fbdb4dc"
+    }
+  },
+  "performance_acceptance": false,
+  "notes": [
+    "No model was downloaded.",
+    "No benchmark or instrumented-versus-uninstrumented ABABAB comparison was run.",
+    "Synthetic audio and marker text were used; timing evidence contains no prompt, transcript, speaker text, or audio content."
+  ]
+}
