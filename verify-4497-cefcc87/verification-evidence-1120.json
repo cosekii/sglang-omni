@@ -1,0 +1,242 @@
+{
+  "round": 1120,
+  "pr": 4497,
+  "head": "cefcc87b65be78accbbd9d7ccfed60567b786dd4",
+  "previous_head": "741cd9553864ecce62f9a134271e6dcecbf59668",
+  "result": "pass",
+  "must": 0,
+  "should": 0,
+  "environment": {
+    "os": "27.2.1",
+    "architecture": "arm64",
+    "isolated_worktree_build_home": true,
+    "real_voxt_data_or_model_cache_accessed": false
+  },
+  "previous_must_retest": {
+    "result": "pass: cancelled successful preview results are dropped and only Final publishes",
+    "reproductions": [
+      {
+        "run": 1,
+        "scenario": "stale_short",
+        "published_kinds": [
+          true
+        ],
+        "final_text": "FINAL_TRANSCRIPT",
+        "result": "pass"
+      },
+      {
+        "run": 1,
+        "scenario": "stale_window",
+        "published_kinds": [
+          true
+        ],
+        "final_text": "FINAL_TRANSCRIPT",
+        "result": "pass"
+      },
+      {
+        "run": 2,
+        "scenario": "stale_short",
+        "published_kinds": [
+          true
+        ],
+        "final_text": "FINAL_TRANSCRIPT",
+        "result": "pass"
+      },
+      {
+        "run": 2,
+        "scenario": "stale_window",
+        "published_kinds": [
+          true
+        ],
+        "final_text": "FINAL_TRANSCRIPT",
+        "result": "pass"
+      },
+      {
+        "run": 3,
+        "scenario": "stale_short",
+        "published_kinds": [
+          true
+        ],
+        "final_text": "FINAL_TRANSCRIPT",
+        "result": "pass"
+      },
+      {
+        "run": 3,
+        "scenario": "stale_window",
+        "published_kinds": [
+          true
+        ],
+        "final_text": "FINAL_TRANSCRIPT",
+        "result": "pass"
+      }
+    ]
+  },
+  "previous_delay_retest": {
+    "result": "pass",
+    "short_stop": {
+      "input": {
+        "append_samples": 12000,
+        "done_at_ms": 100
+      },
+      "controlled_decode_ms": 400,
+      "cancel_poll_ms": 1,
+      "no_later_slack_ms": 100,
+      "reproductions": [
+        {
+          "run": 1,
+          "current_elapsed_ms": 504,
+          "old_gate_elapsed_ms": 503,
+          "new_minus_old_ms": 1,
+          "current_decodes": [
+            true
+          ],
+          "old_gate_decodes": [
+            true
+          ],
+          "final_text_identical": true,
+          "result": "pass"
+        },
+        {
+          "run": 2,
+          "current_elapsed_ms": 511,
+          "old_gate_elapsed_ms": 510,
+          "new_minus_old_ms": 1,
+          "current_decodes": [
+            true
+          ],
+          "old_gate_decodes": [
+            true
+          ],
+          "final_text_identical": true,
+          "result": "pass"
+        },
+        {
+          "run": 3,
+          "current_elapsed_ms": 511,
+          "old_gate_elapsed_ms": 510,
+          "new_minus_old_ms": 1,
+          "current_decodes": [
+            true
+          ],
+          "old_gate_decodes": [
+            true
+          ],
+          "final_text_identical": true,
+          "result": "pass"
+        }
+      ]
+    },
+    "four_second_window": {
+      "controlled_decode_ms": 400,
+      "cancel_poll_ms": 1,
+      "no_later_slack_ms": 100,
+      "reproductions": [
+        {
+          "run": 1,
+          "current_elapsed_ms": 3662,
+          "old_gate_elapsed_ms": 3651,
+          "new_minus_old_ms": 11,
+          "current_preview_count": 3,
+          "old_gate_preview_count": 3,
+          "final_text_identical": true,
+          "result": "pass"
+        },
+        {
+          "run": 2,
+          "current_elapsed_ms": 3662,
+          "old_gate_elapsed_ms": 3660,
+          "new_minus_old_ms": 2,
+          "current_preview_count": 3,
+          "old_gate_preview_count": 3,
+          "final_text_identical": true,
+          "result": "pass"
+        },
+        {
+          "run": 3,
+          "current_elapsed_ms": 3654,
+          "old_gate_elapsed_ms": 3656,
+          "new_minus_old_ms": -2,
+          "current_preview_count": 3,
+          "old_gate_preview_count": 3,
+          "final_text_identical": true,
+          "result": "pass"
+        }
+      ]
+    }
+  },
+  "previous_should_retest": {
+    "result": "pass: checked-in tests use explicit virtual-clock advancement, event barriers and a queued no-op drain; all eight tests passed six runs"
+  },
+  "checks": {
+    "exact_head_clean_worktree_and_diff_check": "pass",
+    "native_server_build": "pass",
+    "checked_in_suite_runs": 6,
+    "checked_in_suite_result": "pass each run",
+    "gate_11999_12000_12001": "pass",
+    "cadence_full_window_flush_invalid_audio_error_recovery_close_cancel": "pass",
+    "full_window_without_stop_schedules_final": "pass",
+    "successful_result_suppression_reverse_mutation": {
+      "gate": {
+        "exit": 0,
+        "expected_nonzero": false,
+        "error": ""
+      },
+      "short_preempt": {
+        "exit": 0,
+        "expected_nonzero": false,
+        "error": ""
+      },
+      "window_schedule": {
+        "exit": 0,
+        "expected_nonzero": false,
+        "error": ""
+      },
+      "window_preempt": {
+        "exit": 0,
+        "expected_nonzero": false,
+        "error": ""
+      },
+      "short_drop": {
+        "exit": 1,
+        "expected_nonzero": true,
+        "error": "moss_realtime_test failed: a cancelled preview's successful result must be dropped, not published"
+      },
+      "window_drop": {
+        "exit": 1,
+        "expected_nonzero": true,
+        "error": "moss_realtime_test failed: a cancelled preview's successful result must be dropped, not published"
+      },
+      "short_ab": {
+        "exit": 0,
+        "expected_nonzero": false,
+        "error": ""
+      },
+      "window_ab": {
+        "exit": 0,
+        "expected_nonzero": false,
+        "error": ""
+      },
+      "stale_short": {
+        "exit": 1,
+        "expected_nonzero": true,
+        "error": "BEHAVIOR_CHECK_FAILED a cancelled successful preview was published"
+      },
+      "stale_window": {
+        "exit": 1,
+        "expected_nonzero": true,
+        "error": "BEHAVIOR_CHECK_FAILED a cancelled successful preview was published"
+      }
+    }
+  },
+  "code_review": {
+    "must": [],
+    "should": [],
+    "notes": "The callback keeps the preview's own cancel flag alive, drops only cancelled preview successes, and still calls OnDecodeDone to schedule a filled window Final. Finals use the separate session flag. The queued no-op drain completes after earlier session callbacks because the worker is serial and invokes each callback before starting the next job."
+  },
+  "not_covered": [
+    "No production checkpoint, real audio, model accuracy, or real-model latency/cancellation timing was run; deterministic doubles drove the exact MossRealtimeSession and worker.",
+    "The PR-provided real-model first-preview ABABAB benchmark was not independently rerun.",
+    "No Voxt App UI was launched because this PR changes native MOSS scheduling and its CHANGELOG only; microphone, permissions, meetings, cursor insertion, language-model clean-up, and global shortcuts were not exercised."
+  ],
+  "ui_screenshots": "N/A: native scheduling-only change"
+}

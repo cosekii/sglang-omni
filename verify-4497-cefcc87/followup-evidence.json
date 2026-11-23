@@ -1,0 +1,418 @@
+{
+  "head": "cefcc87b65be78accbbd9d7ccfed60567b786dd4",
+  "current": {
+    "11999": {
+      "expected_preview": false,
+      "result": "pass"
+    },
+    "12000": {
+      "expected_preview": true,
+      "result": "pass"
+    },
+    "12001": {
+      "expected_preview": true,
+      "result": "pass"
+    }
+  },
+  "old_gate": {
+    "12000": {
+      "expected_preview": false,
+      "result": "pass"
+    },
+    "19999": {
+      "expected_preview": false,
+      "result": "pass"
+    },
+    "20000": {
+      "expected_preview": true,
+      "result": "pass"
+    }
+  },
+  "surrounding": {
+    "cadence": {
+      "events": [
+        [
+          {
+            "event_id": "evt_eb631775c321e2b472346307a8ddd8c5",
+            "event_index": 1,
+            "type": "transcription_session.updated"
+          },
+          {
+            "event_id": "evt_b33fb39c4bbe836b1b35847872f6c4e2",
+            "event_index": 2,
+            "is_final": false,
+            "segment_id": 0,
+            "text": "FINAL_TRANSCRIPT",
+            "type": "transcription.segment"
+          },
+          {
+            "event_id": "evt_cbb56c2d53c4d8c642db8953a652a4a9",
+            "event_index": 3,
+            "is_final": false,
+            "segment_id": 0,
+            "text": "FINAL_TRANSCRIPT",
+            "type": "transcription.segment"
+          }
+        ]
+      ],
+      "result": "pass"
+    },
+    "final": {
+      "events": [
+        [
+          {
+            "event_id": "evt_01ac8f44c5a49329a7afabba8c75e326",
+            "event_index": 1,
+            "type": "transcription_session.updated"
+          },
+          {
+            "event_id": "evt_70d1f7b9b8f74b3666ff23dbe4724b9c",
+            "event_index": 2,
+            "is_final": true,
+            "segment_id": 0,
+            "segments": [
+              {
+                "end": 1.0,
+                "speaker": "PRIVATE_SPEAKER_MARKER",
+                "start": 0.0,
+                "text": "PRIVATE_SEGMENT_MARKER"
+              }
+            ],
+            "text": "FINAL_TRANSCRIPT",
+            "type": "transcription.segment"
+          },
+          {
+            "event_id": "evt_6307654e45f80d5715c12db4baf37c8a",
+            "event_index": 3,
+            "segments": [
+              {
+                "end": 1.0,
+                "speaker": "PRIVATE_SPEAKER_MARKER",
+                "start": 0.0,
+                "text": "PRIVATE_SEGMENT_MARKER"
+              }
+            ],
+            "text": "FINAL_TRANSCRIPT",
+            "type": "transcription.completed"
+          }
+        ]
+      ],
+      "result": "pass"
+    },
+    "window_preempt": {
+      "events": [
+        [
+          {
+            "event_id": "evt_d113453efe10f1f78bfefb99a3c4ed4b",
+            "event_index": 1,
+            "type": "transcription_session.updated"
+          },
+          {
+            "event_id": "evt_6caa2db5568332f0f581713888cb511f",
+            "event_index": 2,
+            "is_final": true,
+            "segment_id": 0,
+            "segments": [
+              {
+                "end": 1.0,
+                "speaker": "PRIVATE_SPEAKER_MARKER",
+                "start": 0.0,
+                "text": "PRIVATE_SEGMENT_MARKER"
+              }
+            ],
+            "text": "FINAL_TRANSCRIPT",
+            "type": "transcription.segment"
+          },
+          {
+            "event_id": "evt_c19aa4da61a8a87e1062c002d88078ad",
+            "event_index": 3,
+            "segments": [
+              {
+                "end": 1.0,
+                "speaker": "PRIVATE_SPEAKER_MARKER",
+                "start": 0.0,
+                "text": "PRIVATE_SEGMENT_MARKER"
+              }
+            ],
+            "text": "FINAL_TRANSCRIPT",
+            "type": "transcription.completed"
+          }
+        ]
+      ],
+      "result": "pass"
+    },
+    "flush": {
+      "events": [
+        [
+          {
+            "event_id": "evt_d5533ed9506b06318291295c5666e70c",
+            "event_index": 1,
+            "type": "transcription_session.updated"
+          },
+          {
+            "event_id": "evt_f4d23dfce8b26a580476b8af5e30912c",
+            "event_index": 2,
+            "is_final": true,
+            "segment_id": 0,
+            "segments": [
+              {
+                "end": 1.0,
+                "speaker": "PRIVATE_SPEAKER_MARKER",
+                "start": 0.0,
+                "text": "PRIVATE_SEGMENT_MARKER"
+              }
+            ],
+            "text": "FINAL_TRANSCRIPT",
+            "type": "transcription.segment"
+          },
+          {
+            "event_id": "evt_dda718ab2ecd1e9198fb073a1f413c70",
+            "event_index": 3,
+            "segments": [
+              {
+                "end": 1.0,
+                "speaker": "PRIVATE_SPEAKER_MARKER",
+                "start": 0.0,
+                "text": "PRIVATE_SEGMENT_MARKER"
+              }
+            ],
+            "text": "FINAL_TRANSCRIPT",
+            "type": "transcription.completed"
+          }
+        ]
+      ],
+      "result": "pass"
+    },
+    "invalid": {
+      "events": [
+        [
+          {
+            "event_id": "evt_0e81cdd446a12f0f0ab676bdee3c9e6a",
+            "event_index": 1,
+            "type": "transcription_session.updated"
+          },
+          {
+            "error": {
+              "code": "invalid_audio",
+              "message": "Audio must be base64 PCM16.",
+              "type": "invalid_request_error"
+            },
+            "event_id": "evt_3758ca6e0a779f293d6eefb5fbdd521e",
+            "event_index": 2,
+            "type": "error"
+          },
+          {
+            "event_id": "evt_5088b021bd2b59188efddca25f30a83c",
+            "event_index": 3,
+            "segments": [],
+            "text": "",
+            "type": "transcription.completed"
+          }
+        ]
+      ],
+      "result": "pass"
+    },
+    "error": {
+      "events": [
+        [
+          {
+            "event_id": "evt_82d6874b85d1c86c2f72ab3a76a4e6b3",
+            "event_index": 1,
+            "type": "transcription_session.updated"
+          },
+          {
+            "error": {
+              "code": "transcription_failed",
+              "message": "Transcription failed.",
+              "type": "server_error"
+            },
+            "event_id": "evt_024480225476f1559c77672ea867f7ab",
+            "event_index": 2,
+            "type": "error"
+          },
+          {
+            "event_id": "evt_589a4cfd40c44ff4283aaf8b04256906",
+            "event_index": 3,
+            "is_final": true,
+            "segment_id": 0,
+            "segments": [
+              {
+                "end": 1.0,
+                "speaker": "PRIVATE_SPEAKER_MARKER",
+                "start": 0.0,
+                "text": "PRIVATE_SEGMENT_MARKER"
+              }
+            ],
+            "text": "FINAL_TRANSCRIPT",
+            "type": "transcription.segment"
+          },
+          {
+            "event_id": "evt_8a613bfbfe52a24ca4add859fd52269f",
+            "event_index": 4,
+            "segments": [
+              {
+                "end": 1.0,
+                "speaker": "PRIVATE_SPEAKER_MARKER",
+                "start": 0.0,
+                "text": "PRIVATE_SEGMENT_MARKER"
+              }
+            ],
+            "text": "FINAL_TRANSCRIPT",
+            "type": "transcription.completed"
+          }
+        ]
+      ],
+      "result": "pass"
+    },
+    "cancel": {
+      "events": [],
+      "result": "pass"
+    }
+  },
+  "stale_preview": [
+    {
+      "run": 1,
+      "scenario": "stale_short",
+      "published_kinds": [
+        true
+      ],
+      "final_text": "FINAL_TRANSCRIPT",
+      "result": "pass"
+    },
+    {
+      "run": 1,
+      "scenario": "stale_window",
+      "published_kinds": [
+        true
+      ],
+      "final_text": "FINAL_TRANSCRIPT",
+      "result": "pass"
+    },
+    {
+      "run": 2,
+      "scenario": "stale_short",
+      "published_kinds": [
+        true
+      ],
+      "final_text": "FINAL_TRANSCRIPT",
+      "result": "pass"
+    },
+    {
+      "run": 2,
+      "scenario": "stale_window",
+      "published_kinds": [
+        true
+      ],
+      "final_text": "FINAL_TRANSCRIPT",
+      "result": "pass"
+    },
+    {
+      "run": 3,
+      "scenario": "stale_short",
+      "published_kinds": [
+        true
+      ],
+      "final_text": "FINAL_TRANSCRIPT",
+      "result": "pass"
+    },
+    {
+      "run": 3,
+      "scenario": "stale_window",
+      "published_kinds": [
+        true
+      ],
+      "final_text": "FINAL_TRANSCRIPT",
+      "result": "pass"
+    }
+  ],
+  "short_stop": {
+    "input": {
+      "append_samples": 12000,
+      "done_at_ms": 100
+    },
+    "controlled_decode_ms": 400,
+    "cancel_poll_ms": 1,
+    "no_later_slack_ms": 100,
+    "reproductions": [
+      {
+        "run": 1,
+        "current_elapsed_ms": 504,
+        "old_gate_elapsed_ms": 503,
+        "new_minus_old_ms": 1,
+        "current_decodes": [
+          true
+        ],
+        "old_gate_decodes": [
+          true
+        ],
+        "final_text_identical": true,
+        "result": "pass"
+      },
+      {
+        "run": 2,
+        "current_elapsed_ms": 511,
+        "old_gate_elapsed_ms": 510,
+        "new_minus_old_ms": 1,
+        "current_decodes": [
+          true
+        ],
+        "old_gate_decodes": [
+          true
+        ],
+        "final_text_identical": true,
+        "result": "pass"
+      },
+      {
+        "run": 3,
+        "current_elapsed_ms": 511,
+        "old_gate_elapsed_ms": 510,
+        "new_minus_old_ms": 1,
+        "current_decodes": [
+          true
+        ],
+        "old_gate_decodes": [
+          true
+        ],
+        "final_text_identical": true,
+        "result": "pass"
+      }
+    ]
+  },
+  "timeline": {
+    "controlled_decode_ms": 400,
+    "cancel_poll_ms": 1,
+    "no_later_slack_ms": 100,
+    "reproductions": [
+      {
+        "run": 1,
+        "current_elapsed_ms": 3662,
+        "old_gate_elapsed_ms": 3651,
+        "new_minus_old_ms": 11,
+        "current_preview_count": 3,
+        "old_gate_preview_count": 3,
+        "final_text_identical": true,
+        "result": "pass"
+      },
+      {
+        "run": 2,
+        "current_elapsed_ms": 3662,
+        "old_gate_elapsed_ms": 3660,
+        "new_minus_old_ms": 2,
+        "current_preview_count": 3,
+        "old_gate_preview_count": 3,
+        "final_text_identical": true,
+        "result": "pass"
+      },
+      {
+        "run": 3,
+        "current_elapsed_ms": 3654,
+        "old_gate_elapsed_ms": 3656,
+        "new_minus_old_ms": -2,
+        "current_preview_count": 3,
+        "old_gate_preview_count": 3,
+        "final_text_identical": true,
+        "result": "pass"
+      }
+    ]
+  }
+}

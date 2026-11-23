@@ -1,0 +1,45 @@
+TestFirstPreviewGate ok
+TestShortStopPreemptsPreview ok (stop-to-final 400 ms)
+TestFullWindowSchedulesFinal ok
+TestFullWindowPreemptsPreview ok (stop-to-final 400 ms)
+TestShortStopDropsCancelledPreviewResult ok
+TestFullWindowDropsCancelledPreviewResult ok
+TestShortStopNotLaterThanOldGate ok (new 400 ms, old 400 ms)
+TestFullWindowNotLaterThanOldGate ok (new 400 ms, old 400 ms)
+moss_realtime_test passed
+TestFirstPreviewGate ok
+TestShortStopPreemptsPreview ok (stop-to-final 400 ms)
+TestFullWindowSchedulesFinal ok
+TestFullWindowPreemptsPreview ok (stop-to-final 400 ms)
+TestShortStopDropsCancelledPreviewResult ok
+TestFullWindowDropsCancelledPreviewResult ok
+TestShortStopNotLaterThanOldGate ok (new 400 ms, old 400 ms)
+TestFullWindowNotLaterThanOldGate ok (new 400 ms, old 400 ms)
+moss_realtime_test passed
+TestFirstPreviewGate ok
+TestShortStopPreemptsPreview ok (stop-to-final 400 ms)
+TestFullWindowSchedulesFinal ok
+TestFullWindowPreemptsPreview ok (stop-to-final 400 ms)
+TestShortStopDropsCancelledPreviewResult ok
+TestFullWindowDropsCancelledPreviewResult ok
+TestShortStopNotLaterThanOldGate ok (new 400 ms, old 400 ms)
+TestFullWindowNotLaterThanOldGate ok (new 400 ms, old 400 ms)
+moss_realtime_test passed
+TestFirstPreviewGate ok
+TestShortStopPreemptsPreview ok (stop-to-final 400 ms)
+TestFullWindowSchedulesFinal ok
+TestFullWindowPreemptsPreview ok (stop-to-final 400 ms)
+TestShortStopDropsCancelledPreviewResult ok
+TestFullWindowDropsCancelledPreviewResult ok
+TestShortStopNotLaterThanOldGate ok (new 400 ms, old 400 ms)
+TestFullWindowNotLaterThanOldGate ok (new 400 ms, old 400 ms)
+moss_realtime_test passed
+TestFirstPreviewGate ok
+TestShortStopPreemptsPreview ok (stop-to-final 400 ms)
+TestFullWindowSchedulesFinal ok
+TestFullWindowPreemptsPreview ok (stop-to-final 400 ms)
+TestShortStopDropsCancelledPreviewResult ok
+TestFullWindowDropsCancelledPreviewResult ok
+TestShortStopNotLaterThanOldGate ok (new 400 ms, old 400 ms)
+TestFullWindowNotLaterThanOldGate ok (new 400 ms, old 400 ms)
+moss_realtime_test passed

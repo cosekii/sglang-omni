@@ -1,0 +1,13 @@
+--- /Users/shuohuang/voxt-dev-setup/3043/uiux/shots/verify-4497/behavior-1120/moss_realtime.current.cpp	2026-11-23 06:02:52
++++ /Users/shuohuang/voxt-dev-setup/3043/uiux/shots/verify-4497/behavior-1120/moss_realtime.no_success_drop.cpp	2026-11-23 06:03:50
+@@ -154,10 +154,6 @@
+           return;
+         } else if (error) {
+           self->ReportDecodeFailure(error);
+-        } else if (decode.kind == DecodeKind::kPreview && flag->load()) {
+-          // Note: the transcriber can return after its last cancellation
+-          // check; a cancelled preview's result is already replaced, so it
+-          // is dropped, not published.
+         } else {
+           self->Publish(decode, *result);
+         }
