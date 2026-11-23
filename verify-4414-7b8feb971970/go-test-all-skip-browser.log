@@ -1,0 +1,71 @@
+ok  	github.com/sgl-project/sglang-omni/Voxt	419.586s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/activity	0.127s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/actnow	1.265s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/announce	0.149s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/appbundle	0.121s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/appctx	0.127s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/appicons	0.119s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/archtest	0.439s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/asr	0.311s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/asr/aliyun	0.452s
+?   	github.com/sgl-project/sglang-omni/Voxt/internal/asr/asrtest	[no test files]
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/asr/doubao	0.861s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/asr/gemini	1.019s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/asr/mimo	0.158s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/asr/openai	0.266s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/codexauth	0.593s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/compose	0.156s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/core	0.122s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/datadir	0.205s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/deliver	0.115s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/dict	0.147s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/dictapi	0.130s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/dictation	0.184s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/dsp	0.752s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/eval	0.157s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/fileasr	0.278s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/helper	5.357s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/helper/helpertest	0.134s
+?   	github.com/sgl-project/sglang-omni/Voxt/internal/helper/helpertest/cmd/fakehelper	[no test files]
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/helper/proto	0.134s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/historyapi	0.445s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/hotkey	0.124s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/i18n	0.241s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/icons	0.135s
+?   	github.com/sgl-project/sglang-omni/Voxt/internal/icons/gen	[no test files]
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/imgconv	0.257s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/lang	0.141s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/learn	0.496s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/llm	1.782s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/local	0.312s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/logs	0.128s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/macx	0.322s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/meeting	32.637s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/models	4.616s
+?   	github.com/sgl-project/sglang-omni/Voxt/internal/models/modelstest	[no test files]
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/notify	0.145s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/omni	48.193s
+?   	github.com/sgl-project/sglang-omni/Voxt/internal/omni/omnitest	[no test files]
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/outmute	1.331s
+?   	github.com/sgl-project/sglang-omni/Voxt/internal/overlay/ink	[no test files]
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/overlay/layout	0.152s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/permission	0.126s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/providers	0.167s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/recordings	0.290s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/resident	0.123s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/secrets	0.121s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/session	24.247s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/settings	0.139s
+?   	github.com/sgl-project/sglang-omni/Voxt/internal/store	[no test files]
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/store/sqlitestore	0.419s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/tools/declhash	0.118s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/tools/evalsynth	0.179s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/tools/snapcmp	0.126s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/tools/w0snapcmp	0.139s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/transcriptpreview	0.121s
+?   	github.com/sgl-project/sglang-omni/Voxt/internal/trayicon	[no test files]
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/trayicon/gen	0.145s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/uitext	0.137s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/updates	0.113s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/vad	0.188s
+ok  	github.com/sgl-project/sglang-omni/Voxt/scripts/update-server	0.138s

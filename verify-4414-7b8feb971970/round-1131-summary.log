@@ -1,0 +1,30 @@
+round=1131
+result=pass
+must=0
+should=0
+head=7b8feb9719703e70e17206a38b913443242012ea
+environment=macOS 27.2.1 arm64; isolated HOME; synthetic audio; fake helper
+helper_build=pass
+app_build=pass
+codesign=pass
+gofmt=pass
+mygo_vet=pass
+i18n=pass
+reports_changelog_behavior=pass
+diff_check=pass
+focused_failed_finalize_race=pass x2
+meeting_package_race=pass
+lifecycle_pcm_isolation_race=pass
+subscriber_race_fail_first=reproduced; exact-head restore=pass
+full_non_race_go=pass; packages=63; skip=TestPageSanitizesTranscriptInBrowser
+real_app_system_audio_failure=pass x2; original error preserved; no active meeting; Meetings usable
+normal_recovery=pass; final transcript only ROUND1131 synthetic meeting tail
+restart_persistence=pass
+meeting_settings_escape_done=pass
+simplified_chinese=pass; english_restore=pass
+layout_minimum=800x520 pass
+layout_large=1200x798 pass
+github_effective_checks=go,lint,mac-ci-gate,CPU CI Status pass
+github_path_skipped=native runtime (build + protocol),Voxt helper tests
+release_app_restored=pass; isolated HOME removed
+not_covered=real audio devices; production-model quality; permissions; global shortcuts; release comparison; foreground menus; GUI Pause/Resume
