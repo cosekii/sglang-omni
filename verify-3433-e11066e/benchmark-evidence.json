@@ -59,5 +59,7 @@
   "parent_file_preserved": true,
   "py_compile": "pass",
   "diff_check": "pass",
-  "regression_coverage": "Existing checked-in main() test uses an existing parent and also passes on base; nested-parent regression test is absent."
+  "regression_coverage": "Existing checked-in main() test uses an existing parent and also passes on base; nested-parent regression test is absent.",
+  "voxt_pr_build": "Not completed: Swift package graph resolution exceeded 300 s, 300 s and 180 s; no source compiler diagnostic was reached.",
+  "voxt_pr_app": "Not covered; release Home screenshot is only a surrounding-UI reference."
 }
