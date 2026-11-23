@@ -1,0 +1,21 @@
+TestFirstPreviewGate ok
+TestShortStopPreemptsPreview ok
+TestFullWindowSchedulesFinal ok
+TestFullWindowPreemptsPreview ok
+TestShortStopNotLaterThanOldGate ok (new 504 ms, old 500 ms)
+TestFullWindowNotLaterThanOldGate ok (new 3651 ms, old 3650 ms)
+moss_realtime_test passed
+TestFirstPreviewGate ok
+TestShortStopPreemptsPreview ok
+TestFullWindowSchedulesFinal ok
+TestFullWindowPreemptsPreview ok
+TestShortStopNotLaterThanOldGate ok (new 501 ms, old 500 ms)
+TestFullWindowNotLaterThanOldGate ok (new 3651 ms, old 3650 ms)
+moss_realtime_test passed
+TestFirstPreviewGate ok
+TestShortStopPreemptsPreview ok
+TestFullWindowSchedulesFinal ok
+TestFullWindowPreemptsPreview ok
+TestShortStopNotLaterThanOldGate ok (new 501 ms, old 500 ms)
+TestFullWindowNotLaterThanOldGate ok (new 3651 ms, old 3650 ms)
+moss_realtime_test passed

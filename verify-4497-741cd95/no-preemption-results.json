@@ -1,0 +1,38 @@
+{
+  "gate": {
+    "exit": 0,
+    "expected_nonzero": false,
+    "stdout": "TestFirstPreviewGate ok\n",
+    "stderr": ""
+  },
+  "short_preempt": {
+    "exit": 1,
+    "expected_nonzero": true,
+    "stdout": "",
+    "stderr": "moss_realtime_test failed: a preview cancelled by the stop must not be published\n"
+  },
+  "window_schedule": {
+    "exit": 1,
+    "expected_nonzero": true,
+    "stdout": "",
+    "stderr": "moss_realtime_test failed: the full window must schedule its final after cancelling the preview\n"
+  },
+  "window_preempt": {
+    "exit": 1,
+    "expected_nonzero": true,
+    "stdout": "",
+    "stderr": "moss_realtime_test failed: a preview cancelled by the full window must not be published\n"
+  },
+  "short_ab": {
+    "exit": 1,
+    "expected_nonzero": true,
+    "stdout": "",
+    "stderr": "moss_realtime_test failed: the short stop must cancel the gate preview and decode the final\n"
+  },
+  "window_ab": {
+    "exit": 1,
+    "expected_nonzero": true,
+    "stdout": "",
+    "stderr": "moss_realtime_test failed: the filled window must cancel the fourth preview\n"
+  }
+}
