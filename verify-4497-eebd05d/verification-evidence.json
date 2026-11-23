@@ -72,7 +72,7 @@
   "must": [
     {
       "id": "preview-blocks-stop-to-final",
-      "source": "sglang_omni_mlx/native/src/moss/moss_realtime.cpp:134-151,190-215,264-296",
+      "source": "sglang_omni_mlx/native/src/moss/moss_realtime.cpp:127-142,160-185,248-280",
       "summary": "An in-flight preview blocks Final. The lower gate introduces a stop-to-Final regression for the same short recording, and it can also add a near-final preview that postpones the 4-second Final.",
       "short_stop_identical_input": {
         "append_samples": 12000,
