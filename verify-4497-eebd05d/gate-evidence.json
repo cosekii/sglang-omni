@@ -45,12 +45,12 @@
       "events": [
         [
           {
-            "event_id": "evt_c6c07cbc17ea25d40b8473c582e15c5b",
+            "event_id": "evt_dabbad66e01dc0b55ecc387f47061c9c",
             "event_index": 1,
             "type": "transcription_session.updated"
           },
           {
-            "event_id": "evt_1dd7dd4c44b4fe1337fa2fac06d5614c",
+            "event_id": "evt_de26214d2384a24b38fef4cf6c976f29",
             "event_index": 2,
             "is_final": false,
             "segment_id": 0,
@@ -58,7 +58,7 @@
             "type": "transcription.segment"
           },
           {
-            "event_id": "evt_c06d03e25069a7dff5f22b286ad35a8f",
+            "event_id": "evt_68c651b8036dafeb34fdd5a0973b9677",
             "event_index": 3,
             "is_final": false,
             "segment_id": 0,
@@ -73,12 +73,12 @@
       "events": [
         [
           {
-            "event_id": "evt_0a90001d1538008dd7d93a5303732b9c",
+            "event_id": "evt_efff46fa81ef2ad6d4ef18f34a37c3f7",
             "event_index": 1,
             "type": "transcription_session.updated"
           },
           {
-            "event_id": "evt_a6e7a5d79c162423bba1bf82cbfdb200",
+            "event_id": "evt_9a4970fcb9b0038d404a956ffa85605b",
             "event_index": 2,
             "is_final": true,
             "segment_id": 0,
@@ -94,7 +94,7 @@
             "type": "transcription.segment"
           },
           {
-            "event_id": "evt_44b55579571307d5354809f2c25723a6",
+            "event_id": "evt_b722c9ca1aaccb16f03648627a1a6128",
             "event_index": 3,
             "segments": [
               {
@@ -115,12 +115,12 @@
       "events": [
         [
           {
-            "event_id": "evt_10435a931f4847b68949d0dc827812d3",
+            "event_id": "evt_a0150831bca567fe4311eba337404072",
             "event_index": 1,
             "type": "transcription_session.updated"
           },
           {
-            "event_id": "evt_c87630ff4ba12392e9a87049d81b0b59",
+            "event_id": "evt_a0c9af7b86ede8b1d8a98d7a437ac2c0",
             "event_index": 2,
             "is_final": true,
             "segment_id": 0,
@@ -136,7 +136,7 @@
             "type": "transcription.segment"
           },
           {
-            "event_id": "evt_becb3b4b007155aacd4afdb0d0479032",
+            "event_id": "evt_3befcf85b8d13766eee667dcfa12f13b",
             "event_index": 3,
             "segments": [
               {
@@ -157,7 +157,7 @@
       "events": [
         [
           {
-            "event_id": "evt_2948ac11dd3b1ddeec67c72da51e0e0a",
+            "event_id": "evt_e208d8fc9d6a97911434e28554682ac1",
             "event_index": 1,
             "type": "transcription_session.updated"
           },
@@ -167,12 +167,12 @@
               "message": "Audio must be base64 PCM16.",
               "type": "invalid_request_error"
             },
-            "event_id": "evt_0909a8b4dacd487b17c4c9ce089123bd",
+            "event_id": "evt_d95ec9b1707f2ea3a15639608854a149",
             "event_index": 2,
             "type": "error"
           },
           {
-            "event_id": "evt_86a40bab0d59174503c7d1be4d4755db",
+            "event_id": "evt_de271bdb8706796871aef78e962c9fb6",
             "event_index": 3,
             "segments": [],
             "text": "",
@@ -186,7 +186,7 @@
       "events": [
         [
           {
-            "event_id": "evt_32a94baaa5610613a9570961b57a71ab",
+            "event_id": "evt_e1e92d758bff3b842c1639de9ca519c9",
             "event_index": 1,
             "type": "transcription_session.updated"
           },
@@ -196,12 +196,12 @@
               "message": "Transcription failed.",
               "type": "server_error"
             },
-            "event_id": "evt_d8eb107e000c7eb80e1188a15cfbb3fc",
+            "event_id": "evt_a8be223ed93b1eee21c200dda04574f3",
             "event_index": 2,
             "type": "error"
           },
           {
-            "event_id": "evt_0f58bf55f765b24b66a32d67fa4343f9",
+            "event_id": "evt_eaf8aad650aae912febe67899b128f94",
             "event_index": 3,
             "is_final": true,
             "segment_id": 0,
@@ -217,7 +217,7 @@
             "type": "transcription.segment"
           },
           {
-            "event_id": "evt_503daf764e5cd99c7c719b22187fbfb3",
+            "event_id": "evt_e0c0fa27b4efe1fe1b44d0040e09ff1a",
             "event_index": 4,
             "segments": [
               {
@@ -239,18 +239,22 @@
       "result": "pass"
     }
   },
-  "timeline": {
+  "short_stop": {
+    "input": {
+      "append_samples": 12000,
+      "done_at_ms": 100
+    },
     "controlled_decode_ms": 400,
     "current": {
-      "elapsed_ms": 3856,
+      "elapsed_ms": 811,
       "events": [
         {
-          "event_id": "evt_092e23c09daddaff1cc532657fc6a1d0",
+          "event_id": "evt_231e1904a044c49560303fd6bb2aac06",
           "event_index": 1,
           "type": "transcription_session.updated"
         },
         {
-          "event_id": "evt_dc774b251230b7d1843b3cd2488033b4",
+          "event_id": "evt_0ee965c07ef77ac42e2759c47e13537a",
           "event_index": 2,
           "is_final": false,
           "segment_id": 0,
@@ -258,7 +262,144 @@
           "type": "transcription.segment"
         },
         {
-          "event_id": "evt_a2c876ecfb07b6471d9987ee169765e9",
+          "event_id": "evt_39fb7ce730c76a8440f4377a6167605e",
+          "event_index": 3,
+          "is_final": true,
+          "segment_id": 0,
+          "segments": [
+            {
+              "end": 1.0,
+              "speaker": "PRIVATE_SPEAKER_MARKER",
+              "start": 0.0,
+              "text": "PRIVATE_SEGMENT_MARKER"
+            }
+          ],
+          "text": "PRIVATE_TRANSCRIPT_MARKER",
+          "type": "transcription.segment"
+        },
+        {
+          "event_id": "evt_0954743a82338da28a951a41e9e96c72",
+          "event_index": 4,
+          "segments": [
+            {
+              "end": 1.0,
+              "speaker": "PRIVATE_SPEAKER_MARKER",
+              "start": 0.0,
+              "text": "PRIVATE_SEGMENT_MARKER"
+            }
+          ],
+          "text": "PRIVATE_TRANSCRIPT_MARKER",
+          "type": "transcription.completed"
+        }
+      ],
+      "segments": [
+        {
+          "event_id": "evt_0ee965c07ef77ac42e2759c47e13537a",
+          "event_index": 2,
+          "is_final": false,
+          "segment_id": 0,
+          "text": "PRIVATE_TRANSCRIPT_MARKER",
+          "type": "transcription.segment"
+        },
+        {
+          "event_id": "evt_39fb7ce730c76a8440f4377a6167605e",
+          "event_index": 3,
+          "is_final": true,
+          "segment_id": 0,
+          "segments": [
+            {
+              "end": 1.0,
+              "speaker": "PRIVATE_SPEAKER_MARKER",
+              "start": 0.0,
+              "text": "PRIVATE_SEGMENT_MARKER"
+            }
+          ],
+          "text": "PRIVATE_TRANSCRIPT_MARKER",
+          "type": "transcription.segment"
+        }
+      ]
+    },
+    "old_gate": {
+      "elapsed_ms": 514,
+      "events": [
+        {
+          "event_id": "evt_43f119d8a4a5f1956f38c378a962fadc",
+          "event_index": 1,
+          "type": "transcription_session.updated"
+        },
+        {
+          "event_id": "evt_5946a8f2efaeec03ef0bc0d56e4d943c",
+          "event_index": 2,
+          "is_final": true,
+          "segment_id": 0,
+          "segments": [
+            {
+              "end": 1.0,
+              "speaker": "PRIVATE_SPEAKER_MARKER",
+              "start": 0.0,
+              "text": "PRIVATE_SEGMENT_MARKER"
+            }
+          ],
+          "text": "PRIVATE_TRANSCRIPT_MARKER",
+          "type": "transcription.segment"
+        },
+        {
+          "event_id": "evt_d94f677556748d69dde55c85db88370a",
+          "event_index": 3,
+          "segments": [
+            {
+              "end": 1.0,
+              "speaker": "PRIVATE_SPEAKER_MARKER",
+              "start": 0.0,
+              "text": "PRIVATE_SEGMENT_MARKER"
+            }
+          ],
+          "text": "PRIVATE_TRANSCRIPT_MARKER",
+          "type": "transcription.completed"
+        }
+      ],
+      "segments": [
+        {
+          "event_id": "evt_5946a8f2efaeec03ef0bc0d56e4d943c",
+          "event_index": 2,
+          "is_final": true,
+          "segment_id": 0,
+          "segments": [
+            {
+              "end": 1.0,
+              "speaker": "PRIVATE_SPEAKER_MARKER",
+              "start": 0.0,
+              "text": "PRIVATE_SEGMENT_MARKER"
+            }
+          ],
+          "text": "PRIVATE_TRANSCRIPT_MARKER",
+          "type": "transcription.segment"
+        }
+      ]
+    },
+    "final_delay_ms": 297,
+    "result": "pass"
+  },
+  "timeline": {
+    "controlled_decode_ms": 400,
+    "current": {
+      "elapsed_ms": 3857,
+      "events": [
+        {
+          "event_id": "evt_0d08b9746e22abf132ceacab40510b0b",
+          "event_index": 1,
+          "type": "transcription_session.updated"
+        },
+        {
+          "event_id": "evt_343ead26a334e117b0d08e9b9e787baa",
+          "event_index": 2,
+          "is_final": false,
+          "segment_id": 0,
+          "text": "PRIVATE_TRANSCRIPT_MARKER",
+          "type": "transcription.segment"
+        },
+        {
+          "event_id": "evt_d51f14bdc806cbf491a3173c384b281b",
           "event_index": 3,
           "is_final": false,
           "segment_id": 0,
@@ -266,7 +407,7 @@
           "type": "transcription.segment"
         },
         {
-          "event_id": "evt_82423c2a4a04f4dded74b8963331a8ea",
+          "event_id": "evt_85a0c94d80fa45edb62b87ed26442df1",
           "event_index": 4,
           "is_final": false,
           "segment_id": 0,
@@ -274,7 +415,7 @@
           "type": "transcription.segment"
         },
         {
-          "event_id": "evt_946e4d3ab6b4e5891ca2a722a9a64693",
+          "event_id": "evt_196e2aef8ca73e4b8d5f9558acca2bac",
           "event_index": 5,
           "is_final": false,
           "segment_id": 0,
@@ -282,7 +423,7 @@
           "type": "transcription.segment"
         },
         {
-          "event_id": "evt_531c28d4d8522679aee7e064ecdc109f",
+          "event_id": "evt_04b60fb778448f2055a89048113b39ee",
           "event_index": 6,
           "is_final": true,
           "segment_id": 0,
@@ -298,7 +439,7 @@
           "type": "transcription.segment"
         },
         {
-          "event_id": "evt_32481881c08e0319af3bcda478a87269",
+          "event_id": "evt_b6ed752bf0be4b4e5dcc337fa4e004b0",
           "event_index": 7,
           "segments": [
             {
@@ -314,7 +455,7 @@
       ],
       "segments": [
         {
-          "event_id": "evt_dc774b251230b7d1843b3cd2488033b4",
+          "event_id": "evt_343ead26a334e117b0d08e9b9e787baa",
           "event_index": 2,
           "is_final": false,
           "segment_id": 0,
@@ -322,7 +463,7 @@
           "type": "transcription.segment"
         },
         {
-          "event_id": "evt_a2c876ecfb07b6471d9987ee169765e9",
+          "event_id": "evt_d51f14bdc806cbf491a3173c384b281b",
           "event_index": 3,
           "is_final": false,
           "segment_id": 0,
@@ -330,7 +471,7 @@
           "type": "transcription.segment"
         },
         {
-          "event_id": "evt_82423c2a4a04f4dded74b8963331a8ea",
+          "event_id": "evt_85a0c94d80fa45edb62b87ed26442df1",
           "event_index": 4,
           "is_final": false,
           "segment_id": 0,
@@ -338,7 +479,7 @@
           "type": "transcription.segment"
         },
         {
-          "event_id": "evt_946e4d3ab6b4e5891ca2a722a9a64693",
+          "event_id": "evt_196e2aef8ca73e4b8d5f9558acca2bac",
           "event_index": 5,
           "is_final": false,
           "segment_id": 0,
@@ -346,7 +487,7 @@
           "type": "transcription.segment"
         },
         {
-          "event_id": "evt_531c28d4d8522679aee7e064ecdc109f",
+          "event_id": "evt_04b60fb778448f2055a89048113b39ee",
           "event_index": 6,
           "is_final": true,
           "segment_id": 0,
@@ -364,15 +505,15 @@
       ]
     },
     "old_gate": {
-      "elapsed_ms": 3660,
+      "elapsed_ms": 3667,
       "events": [
         {
-          "event_id": "evt_b44f372124d1eb925be674b971971838",
+          "event_id": "evt_4a24100b41c15cd085c6c0b11d5f1296",
           "event_index": 1,
           "type": "transcription_session.updated"
         },
         {
-          "event_id": "evt_e4e996f9c8e54c4582ac4ccbdc601f12",
+          "event_id": "evt_4c180a2ee8363ed77509d59d94b38fd6",
           "event_index": 2,
           "is_final": false,
           "segment_id": 0,
@@ -380,7 +521,7 @@
           "type": "transcription.segment"
         },
         {
-          "event_id": "evt_7962cd5f5b72b0548355341415b43a17",
+          "event_id": "evt_89d90096dd893eb25069d557eb76df45",
           "event_index": 3,
           "is_final": false,
           "segment_id": 0,
@@ -388,7 +529,7 @@
           "type": "transcription.segment"
         },
         {
-          "event_id": "evt_567c42b22f376d5f84856857d10e3ed2",
+          "event_id": "evt_57384c7bee91af14f346738885050729",
           "event_index": 4,
           "is_final": false,
           "segment_id": 0,
@@ -396,7 +537,7 @@
           "type": "transcription.segment"
         },
         {
-          "event_id": "evt_014998893acd82da755aa58e30376798",
+          "event_id": "evt_f6b64570e29a283318f7aa1e9daf4daa",
           "event_index": 5,
           "is_final": true,
           "segment_id": 0,
@@ -412,7 +553,7 @@
           "type": "transcription.segment"
         },
         {
-          "event_id": "evt_c6028ec813b5b8d2c3543acf584d3bf1",
+          "event_id": "evt_2400e30e38c134634d3804660011e193",
           "event_index": 6,
           "segments": [
             {
@@ -428,7 +569,7 @@
       ],
       "segments": [
         {
-          "event_id": "evt_e4e996f9c8e54c4582ac4ccbdc601f12",
+          "event_id": "evt_4c180a2ee8363ed77509d59d94b38fd6",
           "event_index": 2,
           "is_final": false,
           "segment_id": 0,
@@ -436,7 +577,7 @@
           "type": "transcription.segment"
         },
         {
-          "event_id": "evt_7962cd5f5b72b0548355341415b43a17",
+          "event_id": "evt_89d90096dd893eb25069d557eb76df45",
           "event_index": 3,
           "is_final": false,
           "segment_id": 0,
@@ -444,7 +585,7 @@
           "type": "transcription.segment"
         },
         {
-          "event_id": "evt_567c42b22f376d5f84856857d10e3ed2",
+          "event_id": "evt_57384c7bee91af14f346738885050729",
           "event_index": 4,
           "is_final": false,
           "segment_id": 0,
@@ -452,7 +593,7 @@
           "type": "transcription.segment"
         },
         {
-          "event_id": "evt_014998893acd82da755aa58e30376798",
+          "event_id": "evt_f6b64570e29a283318f7aa1e9daf4daa",
           "event_index": 5,
           "is_final": true,
           "segment_id": 0,
@@ -469,7 +610,7 @@
         }
       ]
     },
-    "final_delay_ms": 196,
+    "final_delay_ms": 190,
     "result": "pass"
   }
 }

@@ -67,85 +67,131 @@
       "error": "pass",
       "cancel": "pass"
     },
-    "repeat_runs_before_timeline": 5
+    "repeat_runs_before_latency_reproductions": 5
   },
   "must": [
     {
-      "id": "extra-near-final-preview-delays-final",
-      "source": "sglang_omni_mlx/native/src/moss/moss_realtime.cpp:134-151,190-215",
-      "summary": "The lower gate adds a fourth preview near the 4-second window; while it is in flight, Append cannot take the full Final window and completion does not schedule it afterward. Stop-to-Final is delayed relative to the old gate.",
-      "reproductions": [
-        {
-          "run": 1,
-          "controlled_decode_ms": 400,
-          "current_elapsed_ms": 3840,
-          "old_gate_elapsed_ms": 3660,
-          "final_delay_ms": 180,
-          "current_preview_count": 4,
-          "old_gate_preview_count": 3,
-          "final_text_identical": true
-        },
-        {
-          "run": 2,
-          "controlled_decode_ms": 400,
-          "current_elapsed_ms": 3842,
-          "old_gate_elapsed_ms": 3658,
-          "final_delay_ms": 184,
-          "current_preview_count": 4,
-          "old_gate_preview_count": 3,
-          "final_text_identical": true
-        },
-        {
-          "run": 3,
-          "controlled_decode_ms": 400,
-          "current_elapsed_ms": 3856,
-          "old_gate_elapsed_ms": 3660,
-          "final_delay_ms": 196,
-          "current_preview_count": 4,
-          "old_gate_preview_count": 3,
-          "final_text_identical": true
-        }
-      ],
-      "current_input": {
-        "append_times_ms": [
-          0,
-          1010,
-          2020,
-          3030,
-          3250
-        ],
-        "sample_counts": [
-          12000,
-          16000,
-          16000,
-          16000,
-          4000
-        ],
-        "then": "transcription.done"
+      "id": "preview-blocks-stop-to-final",
+      "source": "sglang_omni_mlx/native/src/moss/moss_realtime.cpp:134-151,190-215,264-296",
+      "summary": "An in-flight preview blocks Final. The lower gate introduces a stop-to-Final regression for the same short recording, and it can also add a near-final preview that postpones the 4-second Final.",
+      "short_stop_identical_input": {
+        "append_samples": 12000,
+        "done_at_ms": 100,
+        "controlled_decode_ms": 400,
+        "reproductions": [
+          {
+            "run": 1,
+            "current_elapsed_ms": 811,
+            "old_gate_elapsed_ms": 517,
+            "final_delay_ms": 294,
+            "current_decodes": [
+              "preview",
+              "final"
+            ],
+            "old_gate_decodes": [
+              "final"
+            ]
+          },
+          {
+            "run": 2,
+            "current_elapsed_ms": 812,
+            "old_gate_elapsed_ms": 519,
+            "final_delay_ms": 293,
+            "current_decodes": [
+              "preview",
+              "final"
+            ],
+            "old_gate_decodes": [
+              "final"
+            ]
+          },
+          {
+            "run": 3,
+            "current_elapsed_ms": 811,
+            "old_gate_elapsed_ms": 514,
+            "final_delay_ms": 297,
+            "current_decodes": [
+              "preview",
+              "final"
+            ],
+            "old_gate_decodes": [
+              "final"
+            ]
+          }
+        ]
       },
-      "old_gate_input": {
-        "append_times_ms": [
-          0,
-          500,
-          1510,
-          2520,
-          3250
-        ],
-        "sample_counts": [
-          12000,
-          8000,
-          16000,
-          16000,
-          12000
-        ],
-        "then": "transcription.done"
+      "four_second_window": {
+        "controlled_decode_ms": 400,
+        "current_input": {
+          "append_times_ms": [
+            0,
+            1010,
+            2020,
+            3030,
+            3250
+          ],
+          "sample_counts": [
+            12000,
+            16000,
+            16000,
+            16000,
+            4000
+          ],
+          "then": "transcription.done"
+        },
+        "old_gate_input": {
+          "append_times_ms": [
+            0,
+            500,
+            1510,
+            2520,
+            3250
+          ],
+          "sample_counts": [
+            12000,
+            8000,
+            16000,
+            16000,
+            12000
+          ],
+          "then": "transcription.done"
+        },
+        "reproductions": [
+          {
+            "run": 1,
+            "current_elapsed_ms": 3853,
+            "old_gate_elapsed_ms": 3662,
+            "final_delay_ms": 191,
+            "current_preview_count": 4,
+            "old_gate_preview_count": 3,
+            "final_text_identical": true
+          },
+          {
+            "run": 2,
+            "current_elapsed_ms": 3854,
+            "old_gate_elapsed_ms": 3661,
+            "final_delay_ms": 193,
+            "current_preview_count": 4,
+            "old_gate_preview_count": 3,
+            "final_text_identical": true
+          },
+          {
+            "run": 3,
+            "current_elapsed_ms": 3857,
+            "old_gate_elapsed_ms": 3667,
+            "final_delay_ms": 190,
+            "current_preview_count": 4,
+            "old_gate_preview_count": 3,
+            "final_text_identical": true
+          }
+        ]
       },
-      "required_fix": "Keep the earlier first preview without letting a near-final preview postpone the full-window Final. Add this controlled A/B as a regression and assert both the preview counts and no-later stop-to-Final behavior."
+      "required_fix": "Prioritize the requested Final over redundant preview work (including short stop and a preview in flight near a full window). Add the identical-input short-stop A/B and the 4-second timing A/B as regressions, asserting no-later stop-to-Final behavior while keeping the 11999/12000 boundary."
     }
   ],
   "should": [],
   "not_covered": [
-    "No real checkpoint, real audio, model accuracy, or real-Mac model-latency benchmark was run; the latency reproduction uses a deterministic 400 ms transcriber double through the exact MossRealtimeSession.",
+    "No real checkpoint, real audio, model accuracy, or real-Mac model-latency benchmark was run; the latency reproductions use a deterministic 400 ms transcriber double through the exact MossRealtimeSession.",
     "No Voxt App UI was launched because this PR changes only native MOSS scheduling and its CHANGELOG; microphone, authorization prompts, meetings, cursor insertion, and language-model clean-up were not exercised.",
     "The PR-provided same-source ABABAB evidence was not independently rerun in this round."
   ]
