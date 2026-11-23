@@ -1,0 +1,53 @@
+{
+  "nested": {
+    "output_argument": "/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T//voxt-verify-3433-home/harness/nested/missing/child/result.json",
+    "exception": null,
+    "output_exists": true,
+    "output_is_file": true,
+    "schema_version": 2,
+    "results": [],
+    "provenance": {
+      "test_provenance": true
+    },
+    "num_samples": 1
+  },
+  "existing": {
+    "output_argument": "/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T//voxt-verify-3433-home/harness/existing/missing/child/result.json",
+    "exception": null,
+    "output_exists": true,
+    "output_is_file": true,
+    "schema_version": 2,
+    "results": [],
+    "provenance": {
+      "test_provenance": true
+    },
+    "num_samples": 1
+  },
+  "relative": {
+    "output_argument": "result.json",
+    "exception": null,
+    "output_exists": true,
+    "output_is_file": true,
+    "schema_version": 2,
+    "results": [],
+    "provenance": {
+      "test_provenance": true
+    },
+    "num_samples": 1
+  },
+  "parent_file": {
+    "output_argument": "/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T//voxt-verify-3433-home/harness/parent-file/parent/result.json",
+    "exception": "FileExistsError",
+    "output_exists": false,
+    "output_is_file": false,
+    "parent_preserved": true
+  },
+  "head": "0dcde6b466923baff2e164c3b1c2dc4811d4a4dd",
+  "checks": {
+    "focused_pytest": "1 passed",
+    "dataset_regressions_pytest": "38 passed",
+    "mkdir_guard_removed": "new test failed with FileNotFoundError as expected",
+    "restored_head": "1 passed",
+    "static": "py_compile and git diff --check passed"
+  }
+}
