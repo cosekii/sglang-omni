@@ -1,0 +1,152 @@
+{
+  "head": "eebd05da9b5ee5014eea5bd0f9109813de1516e7",
+  "round": 1117,
+  "result": "fail",
+  "environment": {
+    "os": "27.2.1",
+    "architecture": "arm64",
+    "isolated_home": true,
+    "real_model_or_voxt_data_accessed": false
+  },
+  "build_and_static_checks": {
+    "moss_transcribe_diarize_server": "pass",
+    "git_diff_check": "pass",
+    "exact_source_clean": true,
+    "revert_static_assert": {
+      "expected": "compile failure",
+      "observed_exit": 1,
+      "result": "pass"
+    }
+  },
+  "boundary_and_surrounding": {
+    "current": {
+      "11999": {
+        "expected_preview": false,
+        "observed_preview": false,
+        "transcribe_entered": 0,
+        "result": "pass"
+      },
+      "12000": {
+        "expected_preview": true,
+        "observed_preview": true,
+        "transcribe_entered": 1,
+        "result": "pass"
+      },
+      "12001": {
+        "expected_preview": true,
+        "observed_preview": true,
+        "transcribe_entered": 1,
+        "result": "pass"
+      }
+    },
+    "old_gate": {
+      "12000": {
+        "expected_preview": false,
+        "observed_preview": false,
+        "transcribe_entered": 0,
+        "result": "pass"
+      },
+      "19999": {
+        "expected_preview": false,
+        "observed_preview": false,
+        "transcribe_entered": 0,
+        "result": "pass"
+      },
+      "20000": {
+        "expected_preview": true,
+        "observed_preview": true,
+        "transcribe_entered": 1,
+        "result": "pass"
+      }
+    },
+    "scenarios": {
+      "cadence": "pass",
+      "final": "pass",
+      "flush": "pass",
+      "invalid": "pass",
+      "error": "pass",
+      "cancel": "pass"
+    },
+    "repeat_runs_before_timeline": 5
+  },
+  "must": [
+    {
+      "id": "extra-near-final-preview-delays-final",
+      "source": "sglang_omni_mlx/native/src/moss/moss_realtime.cpp:134-151,190-215",
+      "summary": "The lower gate adds a fourth preview near the 4-second window; while it is in flight, Append cannot take the full Final window and completion does not schedule it afterward. Stop-to-Final is delayed relative to the old gate.",
+      "reproductions": [
+        {
+          "run": 1,
+          "controlled_decode_ms": 400,
+          "current_elapsed_ms": 3840,
+          "old_gate_elapsed_ms": 3660,
+          "final_delay_ms": 180,
+          "current_preview_count": 4,
+          "old_gate_preview_count": 3,
+          "final_text_identical": true
+        },
+        {
+          "run": 2,
+          "controlled_decode_ms": 400,
+          "current_elapsed_ms": 3842,
+          "old_gate_elapsed_ms": 3658,
+          "final_delay_ms": 184,
+          "current_preview_count": 4,
+          "old_gate_preview_count": 3,
+          "final_text_identical": true
+        },
+        {
+          "run": 3,
+          "controlled_decode_ms": 400,
+          "current_elapsed_ms": 3856,
+          "old_gate_elapsed_ms": 3660,
+          "final_delay_ms": 196,
+          "current_preview_count": 4,
+          "old_gate_preview_count": 3,
+          "final_text_identical": true
+        }
+      ],
+      "current_input": {
+        "append_times_ms": [
+          0,
+          1010,
+          2020,
+          3030,
+          3250
+        ],
+        "sample_counts": [
+          12000,
+          16000,
+          16000,
+          16000,
+          4000
+        ],
+        "then": "transcription.done"
+      },
+      "old_gate_input": {
+        "append_times_ms": [
+          0,
+          500,
+          1510,
+          2520,
+          3250
+        ],
+        "sample_counts": [
+          12000,
+          8000,
+          16000,
+          16000,
+          12000
+        ],
+        "then": "transcription.done"
+      },
+      "required_fix": "Keep the earlier first preview without letting a near-final preview postpone the full-window Final. Add this controlled A/B as a regression and assert both the preview counts and no-later stop-to-Final behavior."
+    }
+  ],
+  "should": [],
+  "not_covered": [
+    "No real checkpoint, real audio, model accuracy, or real-Mac model-latency benchmark was run; the latency reproduction uses a deterministic 400 ms transcriber double through the exact MossRealtimeSession.",
+    "No Voxt App UI was launched because this PR changes only native MOSS scheduling and its CHANGELOG; microphone, authorization prompts, meetings, cursor insertion, and language-model clean-up were not exercised.",
+    "The PR-provided same-source ABABAB evidence was not independently rerun in this round."
+  ]
+}

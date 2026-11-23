@@ -1,0 +1,7 @@
+shots/verify-4497/behavior/moss_realtime.revert_compile_fail.cpp:32:15: error: static assertion failed due to requirement 'kMinPreviewSamples == kSampleRate * 3 / 4': the first-preview gate is a measured value; changing it needs a new same-source A/B with identical transcripts
+   32 | static_assert(kMinPreviewSamples == kSampleRate * 3 / 4,
+      |               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+shots/verify-4497/behavior/moss_realtime.revert_compile_fail.cpp:32:34: note: expression evaluates to '20000 == 12000'
+   32 | static_assert(kMinPreviewSamples == kSampleRate * 3 / 4,
+      |               ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
+1 error generated.
