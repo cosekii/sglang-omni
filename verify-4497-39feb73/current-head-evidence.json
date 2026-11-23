@@ -1,0 +1,106 @@
+{
+  "pr": 4497,
+  "head": "39feb738f0b80644af2c248a1ce8bd0374147d60",
+  "verified_at": "2026-11-23 15:03:46 -0800",
+  "native_tree_and_mac_ci_identical_to_cefcc87": true,
+  "current_head_ci_native_run": "https://github.com/sgl-project/sglang-omni/actions/runs/45275122030/job/138046440972",
+  "current_head_ci_moss_tests": 8,
+  "current_head_ci_protocol_tests": 289,
+  "review": {
+    "must": 0,
+    "should": 0
+  },
+  "not_covered": [
+    "Production checkpoint, real audio, model accuracy, and real-model latency/cancellation timing",
+    "Independent real-model first-preview ABABAB benchmark",
+    "Voxt App UI, microphone, permissions, meetings, cursor insertion, language-model clean-up, and global shortcuts (no App UI change in this PR)"
+  ],
+  "checks": [
+    {
+      "name": "cpu-ci-gate",
+      "result": "skipping",
+      "url": "https://github.com/sgl-project/sglang-omni/actions/runs/45275121805/job/138044945860"
+    },
+    {
+      "name": "intel-cpu-ci (unit_test/cpu)",
+      "result": "skipping",
+      "url": "https://github.com/sgl-project/sglang-omni/actions/runs/45275121805/job/138044947230"
+    },
+    {
+      "name": "xpu-ci (device_layer)",
+      "result": "skipping",
+      "url": "https://github.com/sgl-project/sglang-omni/actions/runs/45275121678/job/138044913850"
+    },
+    {
+      "name": "CPU CI Status",
+      "result": "pass",
+      "url": "https://github.com/sgl-project/sglang-omni/actions/runs/45275121805/job/138044943303"
+    },
+    {
+      "name": "Voxt helper tests",
+      "result": "pass",
+      "url": "https://github.com/sgl-project/sglang-omni/actions/runs/45275122030/job/138046440923"
+    },
+    {
+      "name": "label",
+      "result": "pass",
+      "url": "https://github.com/sgl-project/sglang-omni/actions/runs/45277567219/job/138053206809"
+    },
+    {
+      "name": "native runtime (build + protocol)",
+      "result": "pass",
+      "url": "https://github.com/sgl-project/sglang-omni/actions/runs/45275122030/job/138046440972"
+    },
+    {
+      "name": "xpu-ci-gate",
+      "result": "skipping",
+      "url": "https://github.com/sgl-project/sglang-omni/actions/runs/45275121678/job/138044913252"
+    },
+    {
+      "name": "cancel",
+      "result": "pass",
+      "url": "https://github.com/sgl-project/sglang-omni/actions/runs/45275116506/job/138044802030"
+    },
+    {
+      "name": "cpu-ci-changes",
+      "result": "pass",
+      "url": "https://github.com/sgl-project/sglang-omni/actions/runs/45275121805/job/138044817396"
+    },
+    {
+      "name": "go",
+      "result": "pass",
+      "url": "https://github.com/sgl-project/sglang-omni/actions/runs/45275121684/job/138044817068"
+    },
+    {
+      "name": "lint",
+      "result": "pass",
+      "url": "https://github.com/sgl-project/sglang-omni/actions/runs/45275121789/job/138044817159"
+    },
+    {
+      "name": "mac-ci-gate",
+      "result": "pass",
+      "url": "https://github.com/sgl-project/sglang-omni/actions/runs/45275122030/job/138044818984"
+    },
+    {
+      "name": "suggest",
+      "result": "pass",
+      "url": "https://github.com/sgl-project/sglang-omni/actions/runs/45275116610/job/138044802104"
+    },
+    {
+      "name": "xpu-ci-changes",
+      "result": "pass",
+      "url": "https://github.com/sgl-project/sglang-omni/actions/runs/45275121678/job/138044816952"
+    }
+  ],
+  "local_native_build": "pass",
+  "local_moss_realtime_runs": 3,
+  "local_moss_cases_per_run": 8,
+  "local_audio_chunk_runs": 3,
+  "local_go_checks": [
+    "gofmt clean",
+    "git diff --check",
+    "TestChangelog*",
+    "TestKeyParity",
+    "go tool mygo vet ."
+  ]
+}

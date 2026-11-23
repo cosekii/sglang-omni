@@ -1,0 +1,8 @@
+--- gofmt ---
+gofmt clean
+--- diff check ---
+diff check passed
+--- focused Go tests ---
+ok  	github.com/sgl-project/sglang-omni/Voxt	0.303s
+ok  	github.com/sgl-project/sglang-omni/Voxt/internal/i18n	0.191s
+--- mygo vet ---

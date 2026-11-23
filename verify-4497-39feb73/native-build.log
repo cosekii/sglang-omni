@@ -1,0 +1,1236 @@
+-- The C compiler identification is AppleClang 21.0.0.21000401
+-- The CXX compiler identification is AppleClang 21.0.0.21000401
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Building MLX for arm64 processor on Darwin
+-- Metal found /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Metal.framework
+-- Building on macOS 27.2.1
+-- Building with macOS 27.2 SDK
+-- Building for macOS 15.0
+-- Metal version: 320
+-- Accelerate found /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Accelerate.framework
+-- Downloading json
+-- Using the multi-header code from /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/mlx-build/_deps/json-src/include/
+-- Downloading json for JACCL
+-- Downloading gguflib
+CMake Warning at mlx/backend/metal/kernels/CMakeLists.txt:190 (message):
+  NAX kernels require Metal 4, macOS SDK >= 26.2, and
+  MACOSX_DEPLOYMENT_TARGET >= 26.2 (SDK 27.2,
+  CMAKE_OSX_DEPLOYMENT_TARGET=15.0).  Building without NAX kernels.
+
+
+-- {fmt} version: 12.1.0
+-- Build type: Release
+-- Performing Test HAS_NULLPTR_WARNING
+-- Performing Test HAS_NULLPTR_WARNING - Success
+-- Configuring done (4.6s)
+-- Generating done (0.1s)
+-- Build files have been written to: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/mlx-build
+[1/192] Building dot.air
+[2/192] Building fence.air
+[3/192] Building gather_mm_offsets.air
+[4/192] Building arange.air
+[5/192] Building random.air
+[6/192] Building cross_entropy.air
+[7/192] Building logsumexp.air
+[8/192] Building layer_norm.air
+[9/192] Building conv.air
+[10/192] Building rope.air
+[11/192] Building rms_norm.air
+[12/192] Building arg_reduce.air
+[13/192] Building scaled_dot_product_attention_vjp.air
+[14/192] Building searchsorted.air
+[15/192] Building softmax.air
+[16/192] Building binary_two.air
+[17/192] Building gated_delta_update.air
+[18/192] Building gated_delta_update_vjp.air
+[19/192] Building scaled_dot_product_attention.air
+[20/192] Building ternary.air
+[21/192] Building steel_conv_general.air
+[22/192] Building steel_conv_3d.air
+[23/192] Generating compiled_preamble.cpp
+[24/192] Building C object mlx/io/CMakeFiles/gguflib.dir/__/__/_deps/gguflib-src/fp16.c.o
+[25/192] Generating jit/utils.cpp
+[26/192] Building C object mlx/io/CMakeFiles/gguflib.dir/__/__/_deps/gguflib-src/gguflib.c.o
+[27/192] Generating jit/unary_ops.cpp
+[28/192] Generating jit/binary_ops.cpp
+[29/192] Generating jit/ternary_ops.cpp
+[30/192] Generating jit/reduce_utils.cpp
+[31/192] Generating jit/scatter.cpp
+[32/192] Generating jit/masked_scatter.cpp
+[33/192] Generating jit/gather.cpp
+[34/192] Generating jit/gather_front.cpp
+[35/192] Generating jit/gather_axis.cpp
+[36/192] Generating jit/scatter_axis.cpp
+[37/192] Generating jit/hadamard.cpp
+[38/192] Building copy.air
+[39/192] Building unary.air
+[40/192] Building sort.air
+[41/192] Building CXX object jaccl/CMakeFiles/jaccl.dir/jaccl/tcp.cpp.o
+[42/192] Building CXX object mlx/CMakeFiles/mlx_version.dir/version.cpp.o
+[43/192] Linking C static library mlx/io/libgguflib.a
+[44/192] Building CXX object jaccl/CMakeFiles/jaccl.dir/jaccl/rdma.cpp.o
+[45/192] Building steel_conv.air
+[46/192] Building scan.air
+[47/192] Building binary.air
+[48/192] Building steel_attention.air
+[49/192] Building gemv.air
+[50/192] Building CXX object jaccl/CMakeFiles/jaccl.dir/jaccl/jaccl.cpp.o
+[51/192] Building steel_gemm_gather.air
+[52/192] Building steel_gemm_segmented.air
+[53/192] Building gemv_masked.air
+[54/192] Building CXX object jaccl/CMakeFiles/jaccl.dir/jaccl/mesh.cpp.o
+[55/192] Building fft.air
+[56/192] Building fp_quantized.air
+[57/192] Building steel_gemm_fused.air
+[58/192] Building steel_gemm_splitk.air
+[59/192] Building CXX object jaccl/CMakeFiles/jaccl.dir/jaccl/ring.cpp.o
+[60/192] Linking CXX shared library jaccl/libjaccl.dylib
+[61/192] Building reduce.air
+[62/192] Building steel_gemm_masked.air
+[63/192] Building quantized.air
+[64/192] Building mlx.metallib
+[65/192] Building CXX object CMakeFiles/mlx.dir/mlx/device.cpp.o
+[66/192] Building CXX object CMakeFiles/mlx.dir/mlx/allocator.cpp.o
+[67/192] Building CXX object CMakeFiles/mlx.dir/mlx/dtype.cpp.o
+[68/192] Building CXX object CMakeFiles/mlx.dir/mlx/config.cpp.o
+[69/192] Building CXX object CMakeFiles/mlx.dir/mlx/dtype_utils.cpp.o
+[70/192] Building CXX object CMakeFiles/mlx.dir/mlx/stream.cpp.o
+[71/192] Building CXX object CMakeFiles/mlx.dir/mlx/utils.cpp.o
+[72/192] Building CXX object CMakeFiles/mlx.dir/mlx/scheduler.cpp.o
+[73/192] Building CXX object CMakeFiles/mlx.dir/mlx/memory.cpp.o
+[74/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/common/broadcasting.cpp.o
+[75/192] Building CXX object CMakeFiles/mlx.dir/mlx/graph_utils.cpp.o
+[76/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/device_info.cpp.o
+[77/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/common/compiled.cpp.o
+[78/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/common/slicing.cpp.o
+[79/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/common/common.cpp.o
+[80/192] Building CXX object CMakeFiles/mlx.dir/mlx/array.cpp.o
+[81/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/common/load.cpp.o
+[82/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/common/utils.cpp.o
+[83/192] Building CXX object CMakeFiles/mlx.dir/mlx/fft.cpp.o
+[84/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/common/reduce.cpp.o
+[85/192] Building CXX object CMakeFiles/mlx.dir/mlx/random.cpp.o
+[86/192] Building CXX object CMakeFiles/mlx.dir/mlx/linalg.cpp.o
+[87/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/common/custom_kernel.cpp.o
+[88/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/distributed.cpp.o
+[89/192] Building CXX object CMakeFiles/mlx.dir/mlx/einsum.cpp.o
+[90/192] Building CXX object CMakeFiles/mlx.dir/mlx/compile.cpp.o
+[91/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/hadamard.cpp.o
+[92/192] Building CXX object CMakeFiles/mlx.dir/mlx/fast.cpp.o
+[93/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/gemms/cblas.cpp.o
+[94/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/arg_reduce.cpp.o
+[95/192] Building CXX object CMakeFiles/mlx.dir/mlx/transforms.cpp.o
+[96/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/eigh.cpp.o
+[97/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/threefry.cpp.o
+[98/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/eig.cpp.o
+[99/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/encoder.cpp.o
+[100/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/primitives.cpp.o
+[101/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/logsumexp.cpp.o
+[102/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/softmax.cpp.o
+[103/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/masked_mm.cpp.o
+[104/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/matmul.cpp.o
+[105/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/luf.cpp.o
+[106/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/compiled_preamble.cpp.o
+[107/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/select.cpp.o
+[108/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/qrf.cpp.o
+[109/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/eval.cpp.o
+[110/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/fft.cpp.o
+[111/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/svd.cpp.o
+[112/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/inverse.cpp.o
+[113/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/conv.cpp.o
+[114/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/cholesky.cpp.o
+[115/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/gemms/bnns.cpp.o
+[116/192] Building CXX object CMakeFiles/mlx.dir/mlx/distributed/utils.cpp.o
+[117/192] Building CXX object CMakeFiles/mlx.dir/mlx/primitives.cpp.o
+[118/192] Building CXX object CMakeFiles/mlx.dir/mlx/distributed/primitives.cpp.o
+[119/192] Building CXX object CMakeFiles/mlx.dir/mlx/distributed/distributed.cpp.o
+[120/192] Building CXX object CMakeFiles/mlx.dir/mlx/distributed/nccl/no_nccl.cpp.o
+[121/192] Building CXX object CMakeFiles/mlx.dir/mlx/distributed/mpi/mpi.cpp.o
+[122/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/jit/utils.cpp.o
+[123/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/jit/unary_ops.cpp.o
+[124/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/jit/binary_ops.cpp.o
+[125/192] Building CXX object CMakeFiles/mlx.dir/mlx/distributed/ops.cpp.o
+[126/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/jit/ternary_ops.cpp.o
+[127/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/jit/reduce_utils.cpp.o
+[128/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/jit/scatter.cpp.o
+[129/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/jit/masked_scatter.cpp.o
+[130/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/jit/gather.cpp.o
+[131/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/jit/gather_front.cpp.o
+[132/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/jit/gather_axis.cpp.o
+[133/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/jit/scatter_axis.cpp.o
+[134/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/jit/hadamard.cpp.o
+[135/192] Building CXX object CMakeFiles/mlx.dir/mlx/distributed/jaccl/no_jaccl.cpp.o
+[136/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/jit_compiler.cpp.o
+[137/192] Building CXX object CMakeFiles/mlx.dir/mlx/io/gguf_quants.cpp.o
+[138/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/compiled.cpp.o
+[139/192] Building CXX object CMakeFiles/mlx.dir/mlx/io/load.cpp.o
+[140/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/nojit_kernels.cpp.o
+[141/192] Building CXX object CMakeFiles/mlx.dir/mlx/export.cpp.o
+[142/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/allocator.cpp.o
+[143/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/device_info.cpp.o
+[144/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/binary.cpp.o
+[145/192] Building CXX object CMakeFiles/mlx.dir/mlx/ops.cpp.o
+[146/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/quantized.cpp.o
+[147/192] Building CXX object CMakeFiles/mlx.dir/mlx/io/gguf.cpp.o
+[148/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/event.cpp.o
+[149/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/distributed.cpp.o
+[150/192] Building CXX object CMakeFiles/mlx.dir/mlx/io/safetensors.cpp.o
+[151/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/copy.cpp.o
+[152/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/eval.cpp.o
+[153/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/fence.cpp.o
+[154/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/conv.cpp.o
+[155/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/compiled.cpp.o
+[156/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/logsumexp.cpp.o
+[157/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/cross_entropy.cpp.o
+[158/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/custom_kernel.cpp.o
+[159/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/reduce.cpp.o
+[160/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/metal.cpp.o
+[161/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/unary.cpp.o
+[162/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/hadamard.cpp.o
+[163/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/primitives.cpp.o
+[164/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/rope.cpp.o
+[165/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/device.cpp.o
+[166/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/sort.cpp.o
+[167/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/scan.cpp.o
+[168/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/normalization.cpp.o
+[169/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/scan.cpp.o
+[170/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/indexing.cpp.o
+[171/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/softmax.cpp.o
+[172/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/scaled_dot_product_attention.cpp.o
+[173/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/gated_delta_update.cpp.o
+[174/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cuda/no_cuda.cpp.o
+[175/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/gpu/slicing.cpp.o
+[176/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/gpu/copy.cpp.o
+[177/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/resident.cpp.o
+[178/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/utils.cpp.o
+[179/192] Building CXX object CMakeFiles/mlx.dir/mlx/distributed/ring/ring.cpp.o
+[180/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/sort.cpp.o
+[181/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/ternary.cpp.o
+[182/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/unary.cpp.o
+[183/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/slicing.cpp.o
+[184/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/matmul.cpp.o
+[185/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/reduce.cpp.o
+[186/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/gpu/primitives.cpp.o
+[187/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/quantized.cpp.o
+[188/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/metal/fft.cpp.o
+[189/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/copy.cpp.o
+[190/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/indexing.cpp.o
+[191/192] Building CXX object CMakeFiles/mlx.dir/mlx/backend/cpu/binary.cpp.o
+[192/192] Linking CXX shared library libmlx.dylib
+-- Install configuration: "Release"
+-- The C compiler identification is AppleClang 21.0.0.21000401
+-- The CXX compiler identification is AppleClang 21.0.0.21000401
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found MLX: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/mlx/fc344c986c4169d99f76b5d95ae6b4a58a359a63-548c7e167631-macos15.0/lib/libmlx.dylib (Required is exact version "0.32.5")
+-- Using the multi-header code from /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/nlohmann_json-src/include/
+CMake Warning (deprecated) at /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/pcre2-src/CMakeLists.txt:108 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+This warning is for project developers.  Use -Wno-author or -Wno-deprecated
+to suppress it.
+
+-- Found BZip2: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libbz2.tbd (found version "1.0.8")
+-- Looking for BZ2_bzCompressInit
+-- Looking for BZ2_bzCompressInit - found
+-- Found ZLIB: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libz.tbd (found version "1.2.12")
+-- Found Readline: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include
+-- Found Editline: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/editline
+-- Looking for dirent.h
+-- Looking for dirent.h - found
+-- Looking for sys/stat.h
+-- Looking for sys/stat.h - found
+-- Looking for sys/types.h
+-- Looking for sys/types.h - found
+-- Looking for unistd.h
+-- Looking for unistd.h - found
+-- Looking for windows.h
+-- Looking for windows.h - not found
+-- Looking for bcopy
+-- Looking for bcopy - found
+-- Looking for memfd_create
+-- Looking for memfd_create - not found
+-- Looking for memmove
+-- Looking for memmove - found
+-- Looking for secure_getenv
+-- Looking for secure_getenv - not found
+-- Looking for strerror
+-- Looking for strerror - found
+-- Performing Test HAVE_REALPATH
+-- Performing Test HAVE_REALPATH - Success
+-- Performing Test HAVE_BUILTIN_MUL_OVERFLOW
+-- Performing Test HAVE_BUILTIN_MUL_OVERFLOW - Success
+-- Performing Test HAVE_ATTRIBUTE_UNINITIALIZED
+-- Performing Test HAVE_ATTRIBUTE_UNINITIALIZED - Success
+-- Performing Test HAVE_VISIBILITY
+-- Performing Test HAVE_VISIBILITY - Success
+-- Performing Test INTEL_CET_ENABLED
+-- Performing Test INTEL_CET_ENABLED - Failed
+-- 
+-- 
+-- PCRE2-10.44 configuration summary:
+-- 
+--   Install prefix .................. : /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime
+--   C compiler ...................... : /usr/bin/cc
+--   C compiler flags ................ : -O3 -DNDEBUG
+-- 
+--   Build 8 bit PCRE2 library ....... : ON
+--   Build 16 bit PCRE2 library ...... : OFF
+--   Build 32 bit PCRE2 library ...... : OFF
+--   Enable JIT compiling support .... : OFF
+--   Use SELinux allocator in JIT .... : IGNORE
+--   Enable Unicode support .......... : ON
+--   Newline char/sequence ........... : LF
+--   \R matches only ANYCRLF ......... : OFF
+--   \C is disabled .................. : OFF
+--   EBCDIC coding ................... : OFF
+--   EBCDIC coding with NL=0x25 ...... : OFF
+--   Rebuild char tables ............. : OFF
+--   Internal link size .............. : 2
+--   Maximum variable lookbehind ..... : 255
+--   Parentheses nest limit .......... : 250
+--   Heap limit ...................... : 20000000
+--   Match limit ..................... : 10000000
+--   Match depth limit ............... : MATCH_LIMIT
+--   Build shared libs ............... : OFF
+--   Build static libs ............... : ON
+--      with PIC enabled ............. : OFF
+--   Build pcre2grep ................. : OFF
+--   Enable JIT in pcre2grep ......... : ON
+--   Enable callouts in pcre2grep .... : ON
+--   Enable callout fork in pcre2grep. : ON
+--   Buffer size for pcre2grep ....... : 20480
+--   Build tests (implies pcre2test .. : OFF
+--                and pcre2grep)
+--   Link pcre2grep with libz ........ : ON
+--   Link pcre2grep with libbz2 ...... : ON
+--   Link pcre2test with libeditline . : OFF
+--   Link pcre2test with libreadline . : ON
+--   Support Valgrind .................: OFF
+--   Use %zu and %td ..................: AUTO
+-- 
+CMake Warning (deprecated) at /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+This warning is for project developers.  Use -Wno-author or -Wno-deprecated
+to suppress it.
+
+CMake Warning (deprecated) at /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/CMakeLists.txt:3 (cmake_policy):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+This warning is for project developers.  Use -Wno-author or -Wno-deprecated
+to suppress it.
+
+-- Target architecture - arm64
+-- Enabling tests in the build - OFF
+-- Thread Stack Size - 102400
+-- Enabling server executable - OFF
+-- Serve no static files - OFF
+-- Disable CGI support - OFF
+-- Disable caching support - OFF
+-- C++ wrappers - OFF
+-- IP Version 6 - ON
+-- Websockets support - ON
+-- Server statistics support - OFF
+-- Memory Debugging - OFF
+-- ASAN in debug mode - OFF
+-- Force x32 / x64 architecture - OFF
+-- Lua CGI support - OFF
+-- zlib support - OFF
+-- Executable installation - OFF
+-- Build if there are warnings - ON
+-- Duktape CGI support - OFF
+-- SSL support - OFF
+-- Compile for OpenSSL 1.0 API - OFF
+-- Compile for OpenSSL 1.1 API - ON
+-- Compile for OpenSSL 3.0 API - OFF
+-- Configuring C Compiler
+-- Performing Test HAVE_C_FLAG_STD_C11
+-- Performing Test HAVE_C_FLAG_STD_C11 - Success
+-- Performing Test HAVE_C_FLAG_COVERAGE
+-- Performing Test HAVE_C_FLAG_COVERAGE - Failed
+-- Performing Test HAVE_C_FLAG_WALL
+-- Performing Test HAVE_C_FLAG_WALL - Success
+-- Performing Test HAVE_C_FLAG_WEXTRA
+-- Performing Test HAVE_C_FLAG_WEXTRA - Success
+-- Performing Test HAVE_C_FLAG_WSHADOW
+-- Performing Test HAVE_C_FLAG_WSHADOW - Success
+-- Performing Test HAVE_C_FLAG_WCONVERSION
+-- Performing Test HAVE_C_FLAG_WCONVERSION - Success
+-- Performing Test HAVE_C_FLAG_WMISSING_PROTOTYPES
+-- Performing Test HAVE_C_FLAG_WMISSING_PROTOTYPES - Success
+-- Performing Test HAVE_C_FLAG_WEVERYTHING
+-- Performing Test HAVE_C_FLAG_WEVERYTHING - Success
+-- Performing Test HAVE_C_FLAG_WPARENTHESES
+-- Performing Test HAVE_C_FLAG_WPARENTHESES - Success
+-- Performing Test HAVE_C_FLAG_W4
+-- Performing Test HAVE_C_FLAG_W4 - Failed
+-- Performing Test HAVE_C_FLAG_WNO_PADDED
+-- Performing Test HAVE_C_FLAG_WNO_PADDED - Success
+-- Performing Test HAVE_C_FLAG_WNO_UNUSED_MACROS
+-- Performing Test HAVE_C_FLAG_WNO_UNUSED_MACROS - Success
+-- Performing Test -Wno-reserved-id-macros
+-- Performing Test -Wno-reserved-id-macros - Failed
+-- Performing Test HAVE_C_FLAG_WNO_FORMAT_NONLITERAL
+-- Performing Test HAVE_C_FLAG_WNO_FORMAT_NONLITERAL - Success
+-- Performing Test HAVE_C_FLAG_WNO_CAST_QUAL
+-- Performing Test HAVE_C_FLAG_WNO_CAST_QUAL - Success
+-- Performing Test HAVE_C_FLAG_WD4820
+-- Performing Test HAVE_C_FLAG_WD4820 - Failed
+-- Performing Test HAVE_C_FLAG_PEDANTIC_ERRORS
+-- Performing Test HAVE_C_FLAG_PEDANTIC_ERRORS - Success
+-- Performing Test HAVE_C_FLAG_FVISIBILITY_HIDDEN
+-- Performing Test HAVE_C_FLAG_FVISIBILITY_HIDDEN - Success
+-- Performing Test HAVE_C_FLAG_FSTACK_PROTECTOR_STRONG
+-- Performing Test HAVE_C_FLAG_FSTACK_PROTECTOR_STRONG - Success
+-- Performing Test HAVE_C_FLAG_FSTACK_PROTECTOR_ALL
+-- Performing Test HAVE_C_FLAG_FSTACK_PROTECTOR_ALL - Success
+-- Could NOT find WinSock (missing: WINSOCK_LIBRARIES WINSOCK_INCLUDE_DIRS) 
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Could NOT find LibRt (missing: LIBRT_LIBRARIES) 
+CMake Warning (deprecated) at /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/yaml_cpp-src/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+This warning is for project developers.  Use -Wno-author or -Wno-deprecated
+to suppress it.
+
+-- Looking for pow in m
+-- Looking for pow in m - found
+-- Trying SIMD32 C flags:  
+-- Performing Test DETECT_SIMD32_C_FLAGS
+-- Performing Test DETECT_SIMD32_C_FLAGS - Success
+-- Found SIMD32:
+-- Could NOT find SIMD64 (missing: SIMD64_C_FLAGS SIMD64_C_FLAGS) 
+-- Looking for lrint
+-- Looking for lrint - found
+-- Looking for include file fenv.h
+-- Looking for include file fenv.h - found
+-- Looking for include file stdbool.h
+-- Looking for include file stdbool.h - found
+-- Looking for include file stdint.h
+-- Looking for include file stdint.h - found
+-- Looking for include file sys/auxv.h
+-- Looking for include file sys/auxv.h - not found
+CMake Warning (author) at CMakeLists.txt:296 (install):
+  Target soxr has PUBLIC_HEADER files but no PUBLIC_HEADER DESTINATION.
+This warning is for project developers.  Use -Wno-author to suppress it.
+
+-- Configuring done (11.1s)
+-- Generating done (0.1s)
+-- Build files have been written to: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake
+[0/2] Re-checking globbed directories...
+[1/261] Building C object _deps/pcre2-build/CMakeFiles/pcre2-8-static.dir/pcre2_chartables.c.o
+[2/261] Building C object _deps/pcre2-build/CMakeFiles/pcre2-8-static.dir/src/pcre2_chkdint.c.o
+[3/261] Building C object _deps/pcre2-build/CMakeFiles/pcre2-8-static.dir/src/pcre2_config.c.o
+[4/261] Building C object _deps/pcre2-build/CMakeFiles/pcre2-8-static.dir/src/pcre2_find_bracket.c.o
+[5/261] Building C object _deps/pcre2-build/CMakeFiles/pcre2-8-static.dir/src/pcre2_jit_compile.c.o
+[6/261] Building C object _deps/pcre2-build/CMakeFiles/pcre2-8-static.dir/src/pcre2_newline.c.o
+[7/261] Building C object _deps/pcre2-build/CMakeFiles/pcre2-8-static.dir/src/pcre2_ord2utf.c.o
+[8/261] Building C object _deps/pcre2-build/CMakeFiles/pcre2-8-static.dir/src/pcre2_error.c.o
+[9/261] Building C object _deps/pcre2-build/CMakeFiles/pcre2-8-static.dir/src/pcre2_extuni.c.o
+[10/261] Building C object _deps/pcre2-build/CMakeFiles/pcre2-8-static.dir/src/pcre2_match_data.c.o
+[11/261] Building C object _deps/pcre2-build/CMakeFiles/pcre2-8-static.dir/src/pcre2_pattern_info.c.o
+[12/261] Building C object _deps/pcre2-build/CMakeFiles/pcre2-8-static.dir/src/pcre2_context.c.o
+[13/261] Building C object _deps/pcre2-build/CMakeFiles/pcre2-8-static.dir/src/pcre2_serialize.c.o
+[14/261] Building C object _deps/pcre2-build/CMakeFiles/pcre2-8-static.dir/src/pcre2_maketables.c.o
+[15/261] Building C object _deps/pcre2-build/CMakeFiles/pcre2-8-static.dir/src/pcre2_script_run.c.o
+[16/261] Building C object _deps/pcre2-build/CMakeFiles/pcre2-8-static.dir/src/pcre2_string_utils.c.o
+[17/261] Building C object _deps/pcre2-build/CMakeFiles/pcre2-8-static.dir/src/pcre2_tables.c.o
+[18/261] Building C object _deps/pcre2-build/CMakeFiles/pcre2-8-static.dir/src/pcre2_auto_possess.c.o
+[19/261] Building C object _deps/pcre2-build/CMakeFiles/pcre2-8-static.dir/src/pcre2_valid_utf.c.o
+[20/261] Building C object _deps/pcre2-build/CMakeFiles/pcre2-8-static.dir/src/pcre2_ucd.c.o
+[21/261] Building C object _deps/pcre2-build/CMakeFiles/pcre2-8-static.dir/src/pcre2_xclass.c.o
+[22/261] Building C object _deps/pcre2-build/CMakeFiles/pcre2-8-static.dir/src/pcre2_substring.c.o
+[23/261] Building C object _deps/pcre2-build/CMakeFiles/pcre2-8-static.dir/src/pcre2_study.c.o
+[24/261] Building C object _deps/pcre2-build/CMakeFiles/pcre2-8-static.dir/src/pcre2_substitute.c.o
+[25/261] Building C object _deps/pcre2-build/CMakeFiles/pcre2-8-static.dir/src/pcre2_convert.c.o
+[26/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/null.cpp.o
+[27/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/binary.cpp.o
+[28/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/directives.cpp.o
+[29/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/node.cpp.o
+[30/261] Building C object _deps/pcre2-build/CMakeFiles/pcre2-8-static.dir/src/pcre2_dfa_match.c.o
+[31/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/exceptions.cpp.o
+[32/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/depthguard.cpp.o
+[33/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/memory.cpp.o
+[34/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/emit.cpp.o
+[35/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/nodeevents.cpp.o
+[36/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/emitter.cpp.o
+[37/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/exp.cpp.o
+[38/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/emitfromevents.cpp.o
+[39/261] Building C object _deps/pcre2-build/CMakeFiles/pcre2-8-static.dir/src/pcre2_compile.c.o
+[40/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/convert.cpp.o
+[41/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/emitterstate.cpp.o
+[42/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/emitterutils.cpp.o
+[43/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/node_data.cpp.o
+[44/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/nodebuilder.cpp.o
+[45/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/ostream_wrapper.cpp.o
+[46/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/regex_yaml.cpp.o
+[47/261] Building CXX object CMakeFiles/common.dir/src/common/audio_chunks.cpp.o
+[48/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/parser.cpp.o
+[49/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/scantag.cpp.o
+[50/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/parse.cpp.o
+[51/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/tag.cpp.o
+[52/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/stream.cpp.o
+[53/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/scanscalar.cpp.o
+[54/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/simplekey.cpp.o
+[55/261] Building CXX object CMakeFiles/common.dir/src/common/form.cpp.o
+[56/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/scanner.cpp.o
+[57/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/singledocparser.cpp.o
+[58/261] Building CXX object _deps/yaml_cpp-build/CMakeFiles/yaml-cpp.dir/src/scantoken.cpp.o
+[59/261] Linking CXX static library _deps/yaml_cpp-build/libyaml-cpp.a
+[60/261] Building C object _deps/soxr-build/src/CMakeFiles/soxr.dir/soxr.c.o
+[61/261] Building CXX object CMakeFiles/common.dir/src/common/reference_audio.cpp.o
+[62/261] Building C object _deps/soxr-build/src/CMakeFiles/soxr.dir/dbesi0.c.o
+[63/261] Building CXX object CMakeFiles/common.dir/src/common/kv_cache.cpp.o
+[64/261] Building CXX object CMakeFiles/common.dir/src/common/text.cpp.o
+[65/261] Building C object _deps/soxr-build/src/CMakeFiles/soxr.dir/filter.c.o
+[66/261] Building C object _deps/pcre2-build/CMakeFiles/pcre2-8-static.dir/src/pcre2_match.c.o
+[67/261] Linking C static library _deps/pcre2-build/libpcre2-8.a
+[68/261] Building C object _deps/soxr-build/src/CMakeFiles/soxr.dir/cr.c.o
+[69/261] Building C object _deps/soxr-build/src/CMakeFiles/soxr.dir/data-io.c.o
+[70/261] Building C object _deps/soxr-build/src/CMakeFiles/soxr.dir/cr32.c.o
+[71/261] Building C object _deps/soxr-build/src/CMakeFiles/soxr.dir/fft4g64.c.o
+[72/261] Building CXX object CMakeFiles/common.dir/src/common/audio.cpp.o
+[73/261] Building CXX object CMakeFiles/common.dir/src/common/npz.cpp.o
+[74/261] Building C object _deps/soxr-build/src/CMakeFiles/soxr.dir/cr64.c.o
+[75/261] Building C object _deps/soxr-build/src/CMakeFiles/soxr.dir/vr32.c.o
+[76/261] Building C object _deps/soxr-build/src/CMakeFiles/soxr.dir/cr32s.c.o
+[77/261] Building C object _deps/soxr-build/src/CMakeFiles/soxr.dir/util32s.c.o
+[78/261] Building C object _deps/soxr-build/src/CMakeFiles/soxr.dir/fft4g32.c.o
+[79/261] Building C object _deps/soxr-build/src/CMakeFiles/soxr.dir/pffft32s.c.o
+[80/261] Building CXX object CMakeFiles/common.dir/src/common/nemo_features.cpp.o
+[81/261] Linking C shared library _deps/soxr-build/src/libsoxr.0.1.2.dylib
+[82/261] Building CXX object CMakeFiles/common.dir/src/common/fastconformer.cpp.o
+[83/261] Creating library symlink _deps/soxr-build/src/libsoxr.0.dylib _deps/soxr-build/src/libsoxr.dylib
+[84/261] Building CXX object CMakeFiles/qwen3_asr.dir/src/qwen3_asr/qwen3_audio.cpp.o
+[85/261] Building CXX object CMakeFiles/common.dir/src/common/transcription.cpp.o
+[86/261] Building CXX object CMakeFiles/audio_resample.dir/src/common/audio_resample.cpp.o
+[87/261] Building CXX object CMakeFiles/common.dir/src/common/worker.cpp.o
+[88/261] Building C object _deps/civetweb-build/src/CMakeFiles/civetweb-c-library.dir/civetweb.c.o
+warning: include location '/usr/local/include' is unsafe for cross-compilation [-Wpoison-system-directories]
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:130:1: warning: '_Static_assert' is incompatible with C standards before C11 [-Wpre-c11-compat]
+  130 | mg_static_assert(sizeof(int) == 4 || sizeof(int) == 8,
+      | ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:121:26: note: expanded from macro 'mg_static_assert'
+  121 | #define mg_static_assert _Static_assert
+      |                          ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:132:1: warning: '_Static_assert' is incompatible with C standards before C11 [-Wpre-c11-compat]
+  132 | mg_static_assert(sizeof(void *) == 4 || sizeof(void *) == 8,
+      | ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:121:26: note: expanded from macro 'mg_static_assert'
+  121 | #define mg_static_assert _Static_assert
+      |                          ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:134:1: warning: '_Static_assert' is incompatible with C standards before C11 [-Wpre-c11-compat]
+  134 | mg_static_assert(sizeof(void *) >= sizeof(int), "data type size check");
+      | ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:121:26: note: expanded from macro 'mg_static_assert'
+  121 | #define mg_static_assert _Static_assert
+      |                          ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:380:1: warning: identifier '_civet_clock_gettime' is reserved because it starts with '_' at global scope [-Wreserved-identifier]
+  380 | _civet_clock_gettime(int clk_id, struct timespec *t)
+      | ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:520:1: warning: '_Static_assert' is incompatible with C standards before C11 [-Wpre-c11-compat]
+  520 | mg_static_assert(MAX_WORKER_THREADS >= 1,
+      | ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:121:26: note: expanded from macro 'mg_static_assert'
+  121 | #define mg_static_assert _Static_assert
+      |                          ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:523:1: warning: '_Static_assert' is incompatible with C standards before C11 [-Wpre-c11-compat]
+  523 | mg_static_assert(sizeof(size_t) == 4 || sizeof(size_t) == 8,
+      | ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:121:26: note: expanded from macro 'mg_static_assert'
+  121 | #define mg_static_assert _Static_assert
+      |                          ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:1132:36: warning: implicit use of sequentially-consistent atomic may incur stronger memory barriers than necessary [-Watomic-implicit-seq-cst]
+ 1132 |         ret = __sync_add_and_fetch(addr, 1);
+      |               ~~~~~~~~~~~~~~~~~~~~        ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:1155:36: warning: implicit use of sequentially-consistent atomic may incur stronger memory barriers than necessary [-Watomic-implicit-seq-cst]
+ 1155 |         ret = __sync_sub_and_fetch(addr, 1);
+      |               ~~~~~~~~~~~~~~~~~~~~        ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:1474:1: warning: function 'mg_malloc' might be an allocator wrapper [-Wallocator-wrappers]
+ 1474 | mg_malloc(size_t a)
+      | ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:1476:2: note: value obtained from allocator call is returned here
+ 1476 |         return malloc(a);
+      |         ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:1480:1: warning: function 'mg_calloc' might be an allocator wrapper [-Wallocator-wrappers]
+ 1480 | mg_calloc(size_t a, size_t b)
+      | ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:1482:2: note: value obtained from allocator call is returned here
+ 1482 |         return calloc(a, b);
+      |         ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:1486:1: warning: function 'mg_realloc' might be an allocator wrapper [-Wallocator-wrappers]
+ 1486 | mg_realloc(void *a, size_t b)
+      | ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:1488:2: note: value obtained from allocator call is returned here
+ 1488 |         return realloc(a, b);
+      |         ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:2220:1: warning: '_Static_assert' is incompatible with C standards before C11 [-Wpre-c11-compat]
+ 2220 | mg_static_assert((sizeof(config_options) / sizeof(config_options[0]))
+      | ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:121:26: note: expanded from macro 'mg_static_assert'
+  121 | #define mg_static_assert _Static_assert
+      |                          ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:2958:2: warning: 'switch' missing 'default' label [-Wswitch-default]
+ 2958 |         switch (mode) {
+      |         ^
+In file included from /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:3974:
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sort.inl:20:14: warning: use of function '__builtin_alloca' is discouraged; there is no way to check for failure but failure may still occur, resulting in a possibly exploitable security vulnerability [-Walloca]
+   20 |         void *tmp = alloca(elemsize);
+      |                     ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/alloca.h:42:22: note: expanded from macro 'alloca'
+   42 | #define alloca(size)    __alloca(size)
+      |                         ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/alloca.h:43:24: note: expanded from macro '__alloca'
+   43 | #define __alloca(size)  __builtin_alloca(size)
+      |                         ^
+In file included from /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:4052:
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/response.inl:308:3: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  308 |         };
+      |          ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:4343:20: warning: format specifies type 'unsigned int' but the argument has type 'int' [-Wformat]
+ 4342 |                                         "Unknown HTTP response code: %u",
+      |                                                                      ~~
+      |                                                                      %d
+ 4343 |                                         response_code);
+      |                                         ^~~~~~~~~~~~~
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:2584:60: note: expanded from macro 'mg_cry_internal'
+ 2584 |         mg_cry_internal_wrap(conn, NULL, __func__, __LINE__, fmt, __VA_ARGS__)
+      |                                                              ~~~  ^~~~~~~~~~~
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:4451:19: warning: format specifies type 'unsigned int' but the argument has type 'int' [-Wformat]
+ 4449 |                                                             "%serror%03u.",
+      |                                                                     ~~~~
+      |                                                                     %03d
+ 4450 |                                                             error_handler,
+ 4451 |                                                             status);
+      |                                                             ^~~~~~
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:4462:19: warning: format specifies type 'unsigned int' but the argument has type 'int' [-Wformat]
+ 4460 |                                                             "%serror%01uxx.",
+      |                                                                     ~~~~
+      |                                                                     %01d
+ 4461 |                                                             error_handler,
+ 4462 |                                                             status / 100);
+      |                                                             ^~~~~~~~~~~~
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:10190:15: warning: format specifies type 'long long' but the argument has type 'uint64_t' (aka 'unsigned long long') [-Wformat]
+ 10188 |                             "\"%lx.%" INT64_FMT "\"",
+       |                                    ~~~~~~~~~~~~
+ 10189 |                             (unsigned long)filestat->last_modified,
+ 10190 |                             filestat->size);
+       |                             ^~~~~~~~~~~~~~
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:10259:22: warning: format specifies type 'long long' but the argument has type 'uint64_t' (aka 'unsigned long long') [-Wformat]
+ 10258 |                                    "Error: File size is too large to send\n%" INT64_FMT,
+       |                                                                            ~~~~~~~~~~~~
+ 10259 |                                    filep->stat.size);
+       |                                    ^~~~~~~~~~~~~~~~
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:10357:15: warning: format specifies type 'long long' but the argument has type 'uint64_t' (aka 'unsigned long long') [-Wformat]
+ 10354 |                             "%" INT64_FMT "-%" INT64_FMT "/%" INT64_FMT,
+       |                                                            ~~~~~~~~~~~~
+ 10355 |                             r1,
+ 10356 |                             r1 + cl - 1,
+ 10357 |                             filep->stat.size);
+       |                             ^~~~~~~~~~~~~~~~
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:10768:4: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+ 10768 |                 };
+       |                  ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:11965:3: warning: 'switch' missing 'default' label [-Wswitch-default]
+ 11965 |                 switch (errno) {
+       |                 ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:12032:16: warning: implicit conversion when assigning to 'char *' from type 'void *' is not permitted in C++ [-Wimplicit-void-ptr-cast]
+ 12032 |                                 local_dest = mg_malloc_ctx(len + 1, conn->phys_ctx);
+       |                                            ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:12129:4: warning: 'switch' missing 'default' label [-Wswitch-default]
+ 12129 |                         switch (errno) {
+       |                         ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:12676:14: warning: implicit conversion when assigning to 'char *' from type 'void *' is not permitted in C++ [-Wimplicit-void-ptr-cast]
+ 12676 |         link_concat = mg_malloc_ctx(link_concat_len, conn->phys_ctx);
+       |                     ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:12709:12: warning: format specifies type 'long long' but the argument has type 'uint64_t' (aka 'unsigned long long') [-Wformat]
+ 12704 |                   "<d:getcontentlength>%" INT64_FMT "</d:getcontentlength>"
+       |                                        ~~~~~~~~~~~~
+ 12705 |                   "<d:getlastmodified>%s</d:getlastmodified>"
+ 12706 |                   "<d:lockdiscovery>",
+ 12707 |                   link_buf,
+ 12708 |                   filep->is_directory ? "<d:collection/>" : "",
+ 12709 |                   filep->size,
+       |                   ^~~~~~~~~~~
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:12924:12: warning: format specifies type 'unsigned int' but the argument has type 'int' [-Wformat]
+ 12915 |                   "         <d:timeout>Second-%u</d:timeout>\n"
+       |                                               ~~
+       |                                               %d
+ 12916 |                   "         <d:locktoken><d:href>%s</d:href></d:locktoken>\n"
+ 12917 |                   "         <d:lockroot>\n"
+ 12918 |                   "           <d:href>%s</d:href>\n"
+ 12919 |                   "         </d:lockroot>\n"
+ 12920 |                   "       </d:activelock>\n"
+ 12921 |                   "     </d:lockdiscovery>\n"
+ 12922 |                   "   </d:prop>\n",
+ 12923 |                   dav_lock[lock_index].user,
+ 12924 |                   (LOCK_DURATION_S),
+       |                   ^~~~~~~~~~~~~~~~~
+In file included from /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:13048:
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:166:22: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  166 |         R0(a, b, c, d, e, 0);
+      |                             ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:167:22: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  167 |         R0(e, a, b, c, d, 1);
+      |                             ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:168:22: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  168 |         R0(d, e, a, b, c, 2);
+      |                             ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:169:22: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  169 |         R0(c, d, e, a, b, 3);
+      |                             ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:170:22: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  170 |         R0(b, c, d, e, a, 4);
+      |                             ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:171:22: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  171 |         R0(a, b, c, d, e, 5);
+      |                             ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:172:22: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  172 |         R0(e, a, b, c, d, 6);
+      |                             ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:173:22: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  173 |         R0(d, e, a, b, c, 7);
+      |                             ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:174:22: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  174 |         R0(c, d, e, a, b, 8);
+      |                             ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:175:22: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  175 |         R0(b, c, d, e, a, 9);
+      |                             ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:176:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  176 |         R0(a, b, c, d, e, 10);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:177:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  177 |         R0(e, a, b, c, d, 11);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:178:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  178 |         R0(d, e, a, b, c, 12);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:179:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  179 |         R0(c, d, e, a, b, 13);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:180:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  180 |         R0(b, c, d, e, a, 14);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:181:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  181 |         R0(a, b, c, d, e, 15);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:182:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  182 |         R1(e, a, b, c, d, 16);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:183:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  183 |         R1(d, e, a, b, c, 17);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:184:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  184 |         R1(c, d, e, a, b, 18);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:185:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  185 |         R1(b, c, d, e, a, 19);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:186:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  186 |         R2(a, b, c, d, e, 20);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:187:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  187 |         R2(e, a, b, c, d, 21);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:188:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  188 |         R2(d, e, a, b, c, 22);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:189:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  189 |         R2(c, d, e, a, b, 23);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:190:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  190 |         R2(b, c, d, e, a, 24);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:191:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  191 |         R2(a, b, c, d, e, 25);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:192:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  192 |         R2(e, a, b, c, d, 26);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:193:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  193 |         R2(d, e, a, b, c, 27);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:194:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  194 |         R2(c, d, e, a, b, 28);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:195:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  195 |         R2(b, c, d, e, a, 29);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:196:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  196 |         R2(a, b, c, d, e, 30);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:197:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  197 |         R2(e, a, b, c, d, 31);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:198:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  198 |         R2(d, e, a, b, c, 32);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:199:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  199 |         R2(c, d, e, a, b, 33);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:200:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  200 |         R2(b, c, d, e, a, 34);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:201:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  201 |         R2(a, b, c, d, e, 35);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:202:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  202 |         R2(e, a, b, c, d, 36);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:203:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  203 |         R2(d, e, a, b, c, 37);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:204:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  204 |         R2(c, d, e, a, b, 38);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:205:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  205 |         R2(b, c, d, e, a, 39);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:206:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  206 |         R3(a, b, c, d, e, 40);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:207:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  207 |         R3(e, a, b, c, d, 41);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:208:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  208 |         R3(d, e, a, b, c, 42);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:209:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  209 |         R3(c, d, e, a, b, 43);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:210:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  210 |         R3(b, c, d, e, a, 44);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:211:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  211 |         R3(a, b, c, d, e, 45);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:212:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  212 |         R3(e, a, b, c, d, 46);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:213:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  213 |         R3(d, e, a, b, c, 47);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:214:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  214 |         R3(c, d, e, a, b, 48);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:215:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  215 |         R3(b, c, d, e, a, 49);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:216:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  216 |         R3(a, b, c, d, e, 50);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:217:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  217 |         R3(e, a, b, c, d, 51);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:218:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  218 |         R3(d, e, a, b, c, 52);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:219:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  219 |         R3(c, d, e, a, b, 53);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:220:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  220 |         R3(b, c, d, e, a, 54);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:221:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  221 |         R3(a, b, c, d, e, 55);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:222:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  222 |         R3(e, a, b, c, d, 56);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:223:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  223 |         R3(d, e, a, b, c, 57);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:224:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  224 |         R3(c, d, e, a, b, 58);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:225:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  225 |         R3(b, c, d, e, a, 59);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:226:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  226 |         R4(a, b, c, d, e, 60);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:227:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  227 |         R4(e, a, b, c, d, 61);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:228:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  228 |         R4(d, e, a, b, c, 62);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:229:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  229 |         R4(c, d, e, a, b, 63);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:230:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  230 |         R4(b, c, d, e, a, 64);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:231:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  231 |         R4(a, b, c, d, e, 65);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:232:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  232 |         R4(e, a, b, c, d, 66);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:233:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  233 |         R4(d, e, a, b, c, 67);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:234:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  234 |         R4(c, d, e, a, b, 68);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:235:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  235 |         R4(b, c, d, e, a, 69);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:236:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  236 |         R4(a, b, c, d, e, 70);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:237:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  237 |         R4(e, a, b, c, d, 71);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:238:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  238 |         R4(d, e, a, b, c, 72);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:239:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  239 |         R4(c, d, e, a, b, 73);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:240:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  240 |         R4(b, c, d, e, a, 74);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:241:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  241 |         R4(a, b, c, d, e, 75);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:242:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  242 |         R4(e, a, b, c, d, 76);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:243:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  243 |         R4(d, e, a, b, c, 77);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:244:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  244 |         R4(c, d, e, a, b, 78);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/sha1.inl:245:23: warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+  245 |         R4(b, c, d, e, a, 79);
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:18052:19: warning: cast from 'char *' to 'struct mg_context *' increases required alignment from 1 to 8 [-Wcast-align]
+ 18052 |         conn->phys_ctx = (struct mg_context *)(((char *)conn) + conn_size);
+       |                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:18681:5: warning: 'USE_ZLIB' is not defined, evaluates to 0 [-Wundef]
+ 18681 | #if USE_ZLIB
+       |     ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:21161:25: warning: format specifies type 'int' but the argument has type 'unsigned int' [-Wformat]
+ 21160 |                                                     "Cannot start worker thread %i: error %ld",
+       |                                                                                 ~~
+       |                                                                                 %u
+ 21161 |                                                     i + 1,
+       |                                                     ^~~~~
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:2587:59: note: expanded from macro 'mg_cry_ctx_internal'
+ 2587 |         mg_cry_internal_wrap(NULL, ctx, __func__, __LINE__, fmt, __VA_ARGS__)
+      |                                                             ~~~  ^~~~~~~~~~~
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:21687:20: warning: expansion of date or time macro is not reproducible [-Wdate-time]
+ 21687 |                 const char *bd = __DATE__;
+       |                                  ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:21750:15: warning: format specifies type 'unsigned int' but the argument has type 'int' [-Wformat]
+ 21748 |                             ",%s\"compiler\" : \"clang: %u.%u.%u (%s)\"",
+       |                                                         ~~
+       |                                                         %d
+ 21749 |                             eol,
+ 21750 |                             __clang_major__,
+       |                             ^~~~~~~~~~~~~~~
+<built-in>:3:25: note: expanded from macro '__clang_major__'
+    3 | #define __clang_major__ 21
+      |                         ^~
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:21751:15: warning: format specifies type 'unsigned int' but the argument has type 'int' [-Wformat]
+ 21748 |                             ",%s\"compiler\" : \"clang: %u.%u.%u (%s)\"",
+       |                                                            ~~
+       |                                                            %d
+ 21749 |                             eol,
+ 21750 |                             __clang_major__,
+ 21751 |                             __clang_minor__,
+       |                             ^~~~~~~~~~~~~~~
+<built-in>:4:25: note: expanded from macro '__clang_minor__'
+    4 | #define __clang_minor__ 0
+      |                         ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:21752:15: warning: format specifies type 'unsigned int' but the argument has type 'int' [-Wformat]
+ 21748 |                             ",%s\"compiler\" : \"clang: %u.%u.%u (%s)\"",
+       |                                                               ~~
+       |                                                               %d
+ 21749 |                             eol,
+ 21750 |                             __clang_major__,
+ 21751 |                             __clang_minor__,
+ 21752 |                             __clang_patchlevel__,
+       |                             ^~~~~~~~~~~~~~~~~~~~
+<built-in>:5:30: note: expanded from macro '__clang_patchlevel__'
+    5 | #define __clang_patchlevel__ 0
+      |                              ^
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-work/cmake/_deps/civetweb-src/src/civetweb.c:21823:32: warning: identifier 'wchar_t' conflicts with a C++ keyword [-Wc++-keyword]
+ 21823 |                             (unsigned)sizeof(wchar_t),
+       |                                              ^
+117 warnings generated.
+[89/261] Building CXX object CMakeFiles/common.dir/src/common/campplus.cpp.o
+[90/261] Linking C static library _deps/civetweb-build/src/libcivetweb.a
+[91/261] Building CXX object CMakeFiles/omni_service.dir/src/common/http.cpp.o
+[92/261] Building CXX object CMakeFiles/common.dir/src/common/realtime_connection.cpp.o
+[93/261] Building CXX object CMakeFiles/common.dir/src/common/dflash_draft.cpp.o
+[94/261] Building CXX object CMakeFiles/common.dir/src/common/qwen3_decoder.cpp.o
+[95/261] Building CXX object CMakeFiles/swift_port.dir/src/common/swift_port.cpp.o
+[96/261] Building CXX object CMakeFiles/silero_vad.dir/src/silero_vad/speech_segments.cpp.o
+[97/261] Linking CXX static library libswift_port.a
+[98/261] Building CXX object CMakeFiles/fish_dac.dir/src/fish_dac/fish_dac_stream.cpp.o
+[99/261] Building CXX object CMakeFiles/omni_service.dir/src/common/service.cpp.o
+[100/261] Building CXX object CMakeFiles/sortformer.dir/src/sortformer/sortformer.cpp.o
+[101/261] Building CXX object CMakeFiles/silero_vad.dir/src/silero_vad/silero_vad.cpp.o
+[102/261] Building CXX object CMakeFiles/common.dir/src/common/tokenizer.cpp.o
+[103/261] Building CXX object CMakeFiles/common.dir/src/common/layers.cpp.o
+[104/261] Building CXX object CMakeFiles/sortformer.dir/src/sortformer/sortformer_state.cpp.o
+[105/261] Linking CXX static library libcommon.a
+[106/261] Building CXX object CMakeFiles/qwen3_asr.dir/src/qwen3_asr/qwen3_asr_model.cpp.o
+[107/261] Building CXX object CMakeFiles/qwen3_asr.dir/src/qwen3_asr/qwen3_asr_transcriber.cpp.o
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/sglang_omni_mlx/native/src/qwen3_asr/qwen3_asr_transcriber.cpp:445:48: warning: missing field 'window_texts' initializer [-Wmissing-field-initializers]
+  445 |           draft_statistics.accepted_token_count};
+      |                                                ^
+1 warning generated.
+[108/261] Linking CXX static library libomni_service.a
+[109/261] Linking CXX static library libsilero_vad.a
+[110/261] Linking CXX static library libaudio_resample.a
+[111/261] Building CXX object CMakeFiles/asr_service.dir/src/common/asr_service.cpp.o
+[112/261] Building CXX object CMakeFiles/fish_dac.dir/src/fish_dac/fish_dac.cpp.o
+[113/261] Linking CXX static library libasr_service.a
+[114/261] Building CXX object CMakeFiles/qwen3_asr.dir/src/qwen3_asr/realtime.cpp.o
+[115/261] Building CXX object CMakeFiles/moss_asr.dir/src/moss/moss_model.cpp.o
+[116/261] Building CXX object CMakeFiles/sortformer.dir/src/sortformer/sortformer_checkpoint.cpp.o
+[117/261] Building CXX object CMakeFiles/whisper_asr.dir/src/whisper/whisper_model.cpp.o
+[118/261] Building CXX object CMakeFiles/speech_service.dir/src/common/speech_service.cpp.o
+[119/261] Linking CXX static library libspeech_service.a
+[120/261] Building CXX object CMakeFiles/whisper_asr.dir/src/whisper/whisper_transcriber.cpp.o
+[121/261] Building CXX object CMakeFiles/cohere_asr.dir/src/cohere/cohere_model.cpp.o
+[122/261] Building CXX object CMakeFiles/cohere_asr.dir/src/cohere/cohere_transcriber.cpp.o
+[123/261] Building CXX object CMakeFiles/nemotron_asr.dir/src/nemotron/nemotron_transcriber.cpp.o
+/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/sglang_omni_mlx/native/src/nemotron/nemotron_transcriber.cpp:389:77: warning: missing field 'language' initializer [-Wmissing-field-initializers]
+  389 |           {sentence_start, token.start_seconds + frame_seconds, "", sentence});
+      |                                                                             ^
+1 warning generated.
+[124/261] Building CXX object CMakeFiles/sensevoice_asr.dir/src/sensevoice/sensevoice_transcriber.cpp.o
+[125/261] Building CXX object CMakeFiles/moss_asr.dir/src/moss/moss_realtime.cpp.o
+[126/261] Building CXX object CMakeFiles/nemotron_asr.dir/src/nemotron/nemotron_model.cpp.o
+[127/261] Building CXX object CMakeFiles/nemotron_asr.dir/src/nemotron/nemotron_realtime.cpp.o
+[128/261] Building CXX object CMakeFiles/auk_model.dir/src/auk/auk_conditioner_audio.cpp.o
+[129/261] Building CXX object CMakeFiles/parakeet_asr.dir/src/parakeet/parakeet_transcriber.cpp.o
+[130/261] Building CXX object CMakeFiles/sensevoice_asr.dir/src/sensevoice/sensevoice_model.cpp.o
+[131/261] Building CXX object CMakeFiles/auk_model.dir/src/auk/auk_dit_checkpoint.cpp.o
+[132/261] Building CXX object CMakeFiles/auk_model.dir/src/auk/auk_dit.cpp.o
+[133/261] Building CXX object CMakeFiles/moss_asr.dir/src/moss/moss_transcriber.cpp.o
+[134/261] Building CXX object CMakeFiles/auk_model.dir/src/auk/auk_conditioner.cpp.o
+[135/261] Building CXX object CMakeFiles/auk_model.dir/src/auk/auk_model.cpp.o
+[136/261] Building CXX object CMakeFiles/ming_tts.dir/src/ming_tts/ming_tts_generator.cpp.o
+[137/261] Building CXX object CMakeFiles/ming_tts.dir/src/ming_tts/ming_tts_model.cpp.o
+[138/261] Building CXX object CMakeFiles/auk_model.dir/src/auk/auk_vae.cpp.o
+[139/261] Building CXX object CMakeFiles/ming_tts.dir/src/ming_tts/ming_tts_acoustic.cpp.o
+[140/261] Linking CXX static library libfish_dac.a
+[141/261] Building CXX object CMakeFiles/ming_tts_request.dir/src/ming_tts/ming_tts_request.cpp.o
+[142/261] Building CXX object CMakeFiles/parakeet_asr.dir/src/parakeet/parakeet_model.cpp.o
+[143/261] Building CXX object CMakeFiles/voxtral_tts.dir/src/voxtral_tts/voxtral_tts_tokenizer.cpp.o
+[144/261] Building CXX object CMakeFiles/music3.dir/src/music3/music3_audio.cpp.o
+[145/261] Building CXX object CMakeFiles/ming_tts.dir/src/ming_tts/ming_tts_reference.cpp.o
+[146/261] Building CXX object CMakeFiles/cosyvoice3.dir/src/cosyvoice3/cosyvoice3_audio.cpp.o
+[147/261] Building CXX object CMakeFiles/ming_tts.dir/src/ming_tts/ming_tts_audio.cpp.o
+[148/261] Building CXX object CMakeFiles/music3.dir/src/music3/music3_request.cpp.o
+[149/261] Building CXX object CMakeFiles/music3.dir/src/music3/music3_ar.cpp.o
+[150/261] Building CXX object CMakeFiles/fishaudio_drama3.dir/src/fishaudio_drama3/fishaudio_drama3_text.cpp.o
+[151/261] Building CXX object CMakeFiles/music3.dir/src/music3/music3_acoustic.cpp.o
+[152/261] Building CXX object CMakeFiles/cosyvoice3.dir/src/cosyvoice3/cosyvoice3_speech_tokenizer.cpp.o
+[153/261] Building CXX object CMakeFiles/voxtral_tts.dir/src/voxtral_tts/voxtral_tts_model.cpp.o
+[154/261] Building CXX object CMakeFiles/voxtral_tts.dir/src/voxtral_tts/voxtral_tts_codec.cpp.o
+[155/261] Linking CXX static library libqwen3_asr.a
+[156/261] Linking CXX static library libsortformer.a
+[157/261] Building CXX object CMakeFiles/music3.dir/src/music3/music3_model.cpp.o
+[158/261] Building CXX object CMakeFiles/fishaudio_drama3.dir/src/fishaudio_drama3/fishaudio_drama3_prompt.cpp.o
+[159/261] Building CXX object CMakeFiles/cosyvoice3.dir/src/cosyvoice3/cosyvoice3_vocoder.cpp.o
+[160/261] Building CXX object CMakeFiles/qwen3_tts.dir/src/qwen3_tts/qwen3_tts_codec.cpp.o
+[161/261] Linking CXX static library libwhisper_asr.a
+[162/261] Building CXX object CMakeFiles/fishaudio_drama3.dir/src/fishaudio_drama3/fishaudio_drama3_tower.cpp.o
+[163/261] Building CXX object CMakeFiles/fishaudio_drama3.dir/src/fishaudio_drama3/fishaudio_drama3_backbone.cpp.o
+[164/261] Linking CXX static library libcohere_asr.a
+[165/261] Building CXX object CMakeFiles/fish_s2_pro.dir/src/fish_s2_pro/fish_s2_pro_stream.cpp.o
+[166/261] Building CXX object CMakeFiles/ming3_audio.dir/src/ming3_audio/ming3_audio_mtp.cpp.o
+[167/261] Linking CXX static library libmoss_asr.a
+[168/261] Building CXX object CMakeFiles/ming3_audio.dir/src/ming3_audio/ming3_audio_attention.cpp.o
+[169/261] Building CXX object CMakeFiles/fishaudio_drama3.dir/src/fishaudio_drama3/fishaudio_drama3_model.cpp.o
+[170/261] Linking CXX static library libnemotron_asr.a
+[171/261] Building CXX object CMakeFiles/qwen3_asr_server.dir/src/qwen3_asr/qwen3_asr_server.cpp.o
+[172/261] Building CXX object CMakeFiles/qwen3_tts.dir/src/qwen3_tts/qwen3_tts_model.cpp.o
+[173/261] Linking CXX static library libparakeet_asr.a
+[174/261] Building CXX object CMakeFiles/cosyvoice3.dir/src/cosyvoice3/cosyvoice3_model.cpp.o
+[175/261] Building CXX object CMakeFiles/fishaudio_drama3.dir/src/fishaudio_drama3/fishaudio_drama3_generation.cpp.o
+[176/261] Linking CXX static library libsensevoice_asr.a
+[177/261] Building CXX object CMakeFiles/qwen3_asr_server.dir/src/silero_vad/vad_service.cpp.o
+[178/261] Building CXX object CMakeFiles/qwen3_asr_server.dir/src/sortformer/sortformer_service.cpp.o
+[179/261] Linking CXX static library libauk_model.a
+[180/261] Building CXX object CMakeFiles/whisper_server.dir/src/whisper/whisper_server.cpp.o
+[181/261] Building CXX object CMakeFiles/cohere_transcribe_server.dir/src/cohere/cohere_transcribe_server.cpp.o
+[182/261] Building CXX object CMakeFiles/whisper_transcribe.dir/tools/whisper_transcribe.cpp.o
+[183/261] Linking CXX static library libming_tts.a
+[184/261] Building CXX object CMakeFiles/sortformer_probe.dir/tools/sortformer_probe.cpp.o
+[185/261] Linking CXX static library libming_tts_request.a
+[186/261] Linking CXX static library libvoxtral_tts.a
+[187/261] Building CXX object CMakeFiles/silero_vad_probe.dir/tools/silero_vad_probe.cpp.o
+[188/261] Building CXX object CMakeFiles/ming3_audio.dir/src/ming3_audio/ming3_audio_model.cpp.o
+[189/261] Building CXX object CMakeFiles/moss_transcribe_diarize_server.dir/src/moss/moss_transcribe_diarize_server.cpp.o
+[190/261] Linking CXX static library libmusic3.a
+[191/261] Building CXX object CMakeFiles/cohere_transcribe.dir/tools/cohere_transcribe.cpp.o
+[192/261] Building CXX object CMakeFiles/ming3_audio_service.dir/src/ming3_audio/ming3_audio_service.cpp.o
+[193/261] Building CXX object CMakeFiles/nemotron_asr_server.dir/src/nemotron/nemotron_asr_server.cpp.o
+[194/261] Building CXX object CMakeFiles/fishaudio_drama3.dir/src/fishaudio_drama3/fishaudio_drama3_experts.cpp.o
+[195/261] Linking CXX static library libqwen3_tts.a
+[196/261] Linking CXX static library libcosyvoice3.a
+[197/261] Building CXX object CMakeFiles/moss_transcribe.dir/tools/moss_transcribe.cpp.o
+[198/261] Building CXX object CMakeFiles/qwen3_asr_transcribe.dir/tools/qwen3_asr_transcribe.cpp.o
+[199/261] Building CXX object CMakeFiles/parakeet_server.dir/src/parakeet/parakeet_server.cpp.o
+[200/261] Linking CXX static library libfishaudio_drama3.a
+[201/261] Building CXX object CMakeFiles/fish_s2_pro.dir/src/fish_s2_pro/fish_s2_pro_model.cpp.o
+[202/261] Linking CXX static library libming3_audio.a
+[203/261] Linking CXX static library libming3_audio_service.a
+[204/261] Building CXX object CMakeFiles/sensevoice_server.dir/src/sensevoice/sensevoice_server.cpp.o
+[205/261] Building CXX object CMakeFiles/nemotron_transcribe.dir/tools/nemotron_transcribe.cpp.o
+[206/261] Linking CXX static library libfish_s2_pro.a
+[207/261] Building CXX object CMakeFiles/auk_server.dir/src/auk/auk_server.cpp.o
+[208/261] Building CXX object CMakeFiles/parakeet_transcribe.dir/tools/parakeet_transcribe.cpp.o
+[209/261] Building CXX object CMakeFiles/music3_server.dir/src/music3/music3_server.cpp.o
+[210/261] Linking CXX executable qwen3_asr_server
+[211/261] Building CXX object CMakeFiles/sensevoice_transcribe.dir/tools/sensevoice_transcribe.cpp.o
+[212/261] Linking CXX executable silero_vad_probe
+[213/261] Linking CXX executable sortformer_probe
+[214/261] Linking CXX executable qwen3_asr_transcribe
+[215/261] Building CXX object CMakeFiles/ming_tts_server.dir/src/ming_tts/ming_tts_server.cpp.o
+[216/261] Linking CXX executable whisper_server
+[217/261] Linking CXX executable cohere_transcribe_server
+[218/261] Linking CXX executable whisper_transcribe
+[219/261] Linking CXX executable cohere_transcribe
+[220/261] Linking CXX executable moss_transcribe_diarize_server
+[221/261] Building CXX object CMakeFiles/voxtral_tts_server.dir/src/voxtral_tts/voxtral_tts_server.cpp.o
+[222/261] Linking CXX executable moss_transcribe
+[223/261] Linking CXX executable nemotron_asr_server
+[224/261] Building CXX object CMakeFiles/auk_server.dir/src/auk/auk_request.cpp.o
+[225/261] Linking CXX executable nemotron_transcribe
+[226/261] Linking CXX executable parakeet_server
+[227/261] Linking CXX executable parakeet_transcribe
+[228/261] Linking CXX executable sensevoice_transcribe
+[229/261] Linking CXX executable sensevoice_server
+[230/261] Linking CXX executable ming_tts_server
+[231/261] Linking CXX executable auk_server
+[232/261] Linking CXX executable voxtral_tts_server
+[233/261] Building CXX object CMakeFiles/voxtral_tts_synthesize.dir/tools/voxtral_tts_synthesize.cpp.o
+[234/261] Linking CXX executable voxtral_tts_synthesize
+[235/261] Building CXX object CMakeFiles/ming3_audio_server.dir/src/ming3_audio/ming3_audio_server.cpp.o
+[236/261] Building CXX object CMakeFiles/qwen3_tts_synthesize.dir/tools/qwen3_tts_synthesize.cpp.o
+[237/261] Linking CXX executable ming3_audio_server
+[238/261] Linking CXX executable qwen3_tts_synthesize
+[239/261] Building CXX object CMakeFiles/music3_server.dir/src/music3/music3_service.cpp.o
+[240/261] Building CXX object CMakeFiles/ming3_audio_chat.dir/tools/ming3_audio_chat.cpp.o
+[241/261] Linking CXX executable music3_server
+[242/261] Building CXX object CMakeFiles/auk_synthesize.dir/tools/auk_synthesize.cpp.o
+[243/261] Building CXX object CMakeFiles/qwen3_tts_server.dir/src/qwen3_tts/qwen3_tts_server.cpp.o
+[244/261] Linking CXX executable ming3_audio_chat
+[245/261] Linking CXX executable auk_synthesize
+[246/261] Linking CXX executable qwen3_tts_server
+[247/261] Building CXX object CMakeFiles/cosyvoice3_server.dir/src/cosyvoice3/cosyvoice3_server.cpp.o
+[248/261] Building CXX object CMakeFiles/fish_s2_pro_synthesize.dir/tools/fish_s2_pro_synthesize.cpp.o
+[249/261] Linking CXX executable cosyvoice3_server
+[250/261] Linking CXX executable fish_s2_pro_synthesize
+[251/261] Building CXX object CMakeFiles/fishaudio_drama3_server.dir/src/fishaudio_drama3/fishaudio_drama3_server.cpp.o
+[252/261] Building CXX object CMakeFiles/cosyvoice3_synthesize.dir/tools/cosyvoice3_synthesize.cpp.o
+[253/261] Linking CXX executable fishaudio_drama3_server
+[254/261] Linking CXX executable cosyvoice3_synthesize
+[255/261] Building CXX object CMakeFiles/music3_synthesize.dir/tools/music3_synthesize.cpp.o
+[256/261] Building CXX object CMakeFiles/fish_s2_pro_server.dir/src/fish_s2_pro/fish_s2_pro_server.cpp.o
+[257/261] Building CXX object CMakeFiles/fishaudio_drama3_synthesize.dir/tools/fishaudio_drama3_synthesize.cpp.o
+[258/261] Linking CXX executable music3_synthesize
+[259/261] Linking CXX executable fish_s2_pro_server
+[260/261] Linking CXX executable fishaudio_drama3_synthesize
+-- Install configuration: "Release"
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/qwen3_asr_server
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/qwen3_asr_transcribe
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/silero_vad_probe
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/sortformer_probe
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/libjaccl.dylib
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/libmlx.dylib
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/mlx.metallib
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/whisper_server
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/whisper_transcribe
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/cohere_transcribe_server
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/cohere_transcribe
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/moss_transcribe_diarize_server
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/moss_transcribe
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/nemotron_asr_server
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/nemotron_transcribe
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/parakeet_server
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/parakeet_transcribe
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/sensevoice_server
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/sensevoice_transcribe
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/auk_server
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/auk_synthesize
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/libsoxr.0.1.2.dylib
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/libsoxr.0.dylib
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/libsoxr.dylib
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/share/licenses/soxr/LICENCE
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/share/licenses/auk/qwen-research.txt
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/share/licenses/auk/NOTICE
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/share/licenses/auk/auk.txt
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/share/licenses/auk/Apache-2.0.txt
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/ming_tts_server
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/voxtral_tts_server
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/voxtral_tts_synthesize
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/music3_server
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/music3_synthesize
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/qwen3_tts_server
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/qwen3_tts_synthesize
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/cosyvoice3_server
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/cosyvoice3_synthesize
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/fishaudio_drama3_server
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/fishaudio_drama3_synthesize
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/ming3_audio_chat
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/ming3_audio_server
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/licenses/music3-MIT.txt
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/licenses/fishaudio_drama3-MIT.txt
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/fish_s2_pro_server
+-- Installing: /private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/fish_s2_pro_synthesize
+VOXT_OMNI_RUNTIME=/private/var/folders/f0/y3512xfn3vn334b7kcc6_hzw0000gn/T/voxt-verify-4497/native-runtime/bin/qwen3_asr_server
+real 127.78
+user 649.75
+sys 42.40
+[0/2] Re-checking globbed directories...
+[1/5] Building CXX object CMakeFiles/audio_chunk_test.dir/tests/audio_chunk_test.cpp.o
+[2/5] Linking CXX executable audio_chunk_test
+[3/5] Building CXX object CMakeFiles/moss_realtime_test.dir/tests/moss_realtime_test.cpp.o
+[4/5] Linking CXX executable moss_realtime_test
