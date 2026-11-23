@@ -1,0 +1,255 @@
+{
+  "head": "1dd8770ce437dea203862c030850a76b03cf891a",
+  "result": "fail",
+  "must": 1,
+  "should": 0,
+  "environment": {
+    "os": "27.2.1",
+    "architecture": "arm64",
+    "source_tree_clean": true,
+    "isolated_app_homes": true,
+    "model_download": false
+  },
+  "build_and_static_checks": {
+    "native_runtime": "pass",
+    "helper": "pass",
+    "signed_app": "pass",
+    "codesign_deep_strict": "pass",
+    "audio_chunk_test": "pass",
+    "git_diff_check": "pass",
+    "go_test_packages": [
+      "./internal/asr",
+      "./internal/fileasr",
+      "./internal/meeting",
+      "./internal/omni"
+    ],
+    "go_tests": "pass"
+  },
+  "native_tests": {
+    "moss_offline_final_timing_test_consecutive_passes": 20,
+    "moss_preview_timing_test_consecutive_passes": 20
+  },
+  "real_offline_default": {
+    "head": "1dd8770ce437dea203862c030850a76b03cf891a",
+    "model_download": false,
+    "benchmark": false,
+    "cases": {
+      "plain-1": {
+        "timing": [
+          {
+            "event": "moss_offline_final_timing",
+            "window_id": 0,
+            "audio_sample_count": 39278,
+            "transcribe_started_at_ms": 224209537,
+            "transcribe_at_ms": 224210367,
+            "verify_round_count": 0,
+            "proposed_draft_token_count": 0,
+            "accepted_draft_token_count": 0,
+            "prompt_embeddings_ms": 581.934791,
+            "prefill_ms": 168.841334,
+            "decode_rounds_ms": 79.753875,
+            "chunk_result_ms": 0.051584
+          }
+        ],
+        "response_sha256": "9e0525d433fce01650c5c452e18ac4c7d2c1b2158ea25067eba774905a971b1d",
+        "server_exit": 0,
+        "result": "pass"
+      },
+      "plain-2": {
+        "timing": [
+          {
+            "event": "moss_offline_final_timing",
+            "window_id": 0,
+            "audio_sample_count": 39278,
+            "transcribe_started_at_ms": 224210898,
+            "transcribe_at_ms": 224211084,
+            "verify_round_count": 0,
+            "proposed_draft_token_count": 0,
+            "accepted_draft_token_count": 0,
+            "prompt_embeddings_ms": 118.585625,
+            "prefill_ms": 17.204959,
+            "decode_rounds_ms": 50.367208,
+            "chunk_result_ms": 0.036917
+          }
+        ],
+        "response_sha256": "9e0525d433fce01650c5c452e18ac4c7d2c1b2158ea25067eba774905a971b1d",
+        "server_exit": 0,
+        "result": "pass"
+      },
+      "dflash": {
+        "timing": [
+          {
+            "event": "moss_offline_final_timing",
+            "window_id": 0,
+            "audio_sample_count": 39278,
+            "transcribe_started_at_ms": 224211617,
+            "transcribe_at_ms": 224211924,
+            "verify_round_count": 5,
+            "proposed_draft_token_count": 35,
+            "accepted_draft_token_count": 18,
+            "prompt_embeddings_ms": 121.0545,
+            "prefill_ms": 24.448208,
+            "decode_rounds_ms": 160.936333,
+            "chunk_result_ms": 0.027083
+          }
+        ],
+        "response_sha256": "9e0525d433fce01650c5c452e18ac4c7d2c1b2158ea25067eba774905a971b1d",
+        "server_exit": 0,
+        "result": "pass"
+      }
+    },
+    "result": "pass",
+    "failures": []
+  },
+  "real_preview": {
+    "head": "1dd8770ce437dea203862c030850a76b03cf891a",
+    "model_download": false,
+    "plain": {
+      "timing": {
+        "event": "moss_preview_timing",
+        "window_id": 0,
+        "kind": "preview",
+        "audio_sample_count": 39278,
+        "append_at_ms": 224284465,
+        "decision_at_ms": 224284465,
+        "submit_at_ms": 224284465,
+        "transcribe_started_at_ms": 224284465,
+        "transcribe_at_ms": 224284615,
+        "publish_at_ms": 224284615,
+        "min_preview_samples": 20000,
+        "verify_round_count": 0,
+        "proposed_draft_token_count": 0,
+        "accepted_draft_token_count": 0,
+        "prompt_embeddings_ms": 123.289791,
+        "prefill_ms": 12.819417,
+        "decode_rounds_ms": 13.808792,
+        "chunk_result_ms": 0.046833
+      },
+      "output_sha256": "a86af2d796bd3f74654519efcf7cfdd306cc103ef2de6edd0dada9ccbe92c084",
+      "result": "pass"
+    },
+    "dflash": {
+      "timing": {
+        "event": "moss_preview_timing",
+        "window_id": 0,
+        "kind": "preview",
+        "audio_sample_count": 39278,
+        "append_at_ms": 224285278,
+        "decision_at_ms": 224285279,
+        "submit_at_ms": 224285279,
+        "transcribe_started_at_ms": 224285279,
+        "transcribe_at_ms": 224285425,
+        "publish_at_ms": 224285425,
+        "min_preview_samples": 20000,
+        "verify_round_count": 2,
+        "proposed_draft_token_count": 14,
+        "accepted_draft_token_count": 4,
+        "prompt_embeddings_ms": 117.943083,
+        "prefill_ms": 15.022084,
+        "decode_rounds_ms": 13.15525,
+        "chunk_result_ms": 0.02225
+      },
+      "output_sha256": "a86af2d796bd3f74654519efcf7cfdd306cc103ef2de6edd0dada9ccbe92c084",
+      "result": "pass"
+    },
+    "outputs_match": true
+  },
+  "real_batch": {
+    "run1": {
+      "head": "1dd8770ce437dea203862c030850a76b03cf891a",
+      "max_batch": 2,
+      "request_count": 3,
+      "timing_event_count": 1,
+      "timing": [
+        {
+          "event": "moss_offline_final_timing",
+          "window_id": 0,
+          "audio_sample_count": 39278,
+          "transcribe_started_at_ms": 224244637,
+          "transcribe_at_ms": 224244831,
+          "verify_round_count": 0,
+          "proposed_draft_token_count": 0,
+          "accepted_draft_token_count": 0,
+          "prompt_embeddings_ms": 128.67575,
+          "prefill_ms": 17.9315,
+          "decode_rounds_ms": 47.151417,
+          "chunk_result_ms": 0.053542
+        }
+      ],
+      "responses": [
+        {
+          "request": "1",
+          "has_transcript": true
+        },
+        {
+          "request": "2",
+          "has_transcript": true
+        },
+        {
+          "request": "3",
+          "has_transcript": true
+        }
+      ]
+    },
+    "run2": {
+      "head": "1dd8770ce437dea203862c030850a76b03cf891a",
+      "max_batch": 2,
+      "request_count": 3,
+      "timing_event_count": 1,
+      "timing": [
+        {
+          "event": "moss_offline_final_timing",
+          "window_id": 0,
+          "audio_sample_count": 39278,
+          "transcribe_started_at_ms": 224252210,
+          "transcribe_at_ms": 224252396,
+          "verify_round_count": 0,
+          "proposed_draft_token_count": 0,
+          "accepted_draft_token_count": 0,
+          "prompt_embeddings_ms": 121.314042,
+          "prefill_ms": 17.271416,
+          "decode_rounds_ms": 47.459209,
+          "chunk_result_ms": 0.044167
+        }
+      ],
+      "responses": [
+        {
+          "request": "1",
+          "has_transcript": true
+        },
+        {
+          "request": "2",
+          "has_transcript": true
+        },
+        {
+          "request": "3",
+          "has_transcript": true
+        }
+      ]
+    },
+    "result": "fail",
+    "expected_events_per_run": 3,
+    "observed_events_per_run": 1,
+    "reproduced_twice": true
+  },
+  "failure": {
+    "file": "sglang_omni_mlx/native/src/moss/moss_transcriber.cpp",
+    "lines": "609-678",
+    "summary": "TranscribeBatch emits no offline Final timing and does not measure the new stage fields. With --max-batch 2, three successful requests produced only the one unbatched request event in each of two runs.",
+    "required_test": "Force jobs.size()>1 and assert one content-free moss_offline_final_timing event per completed request; fails on this head."
+  },
+  "ui": {
+    "release_pr_meetings_trees_match_except_pid_and_focus": true,
+    "pr_restart_and_meetings_navigation": "pass",
+    "screenshots": [
+      "00-release-meetings.png",
+      "01-pr-meetings.png",
+      "02-pr-restart-meetings.png"
+    ]
+  },
+  "not_covered": [
+    "Recordings over 1200 seconds and multi-chunk offline Finals",
+    "Instrumented-versus-uninstrumented performance or benchmark acceptance",
+    "Real microphones, audio devices, permissions, global shortcuts and production-model quality"
+  ]
+}

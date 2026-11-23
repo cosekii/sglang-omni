@@ -1,0 +1,23 @@
+pass 01
+pass 02
+pass 03
+pass 04
+pass 05
+pass 06
+{"event":"moss_preview_timing","window_id":0,"kind":"preview","audio_sample_count":24030,"append_at_ms":224208024,"decision_at_ms":224208025,"submit_at_ms":224208025,"transcribe_started_at_ms":224208025,"transcribe_at_ms":224208025,"publish_at_ms":224208025,"min_preview_samples":20000,"verify_round_count":0,"proposed_draft_token_count":0,"accepted_draft_token_count":0,"prompt_embeddings_ms":0.0,"prefill_ms":0.0,"decode_rounds_ms":0.0,"chunk_result_ms":0.0}
+pass 07
+pass 08
+{"event":"moss_preview_timing","window_id":0,"kind":"preview","audio_sample_count":24030,"append_at_ms":224208050,"decision_at_ms":224208050,"submit_at_ms":224208050,"transcribe_started_at_ms":224208050,"transcribe_at_ms":224208050,"publish_at_ms":224208050,"min_preview_samples":20000,"verify_round_count":0,"proposed_draft_token_count":0,"accepted_draft_token_count":0,"prompt_embeddings_ms":0.0,"prefill_ms":0.0,"decode_rounds_ms":0.0,"chunk_result_ms":0.0}
+pass 09
+pass 10
+pass 11
+{"event":"moss_preview_timing","window_id":0,"kind":"preview","audio_sample_count":24030,"append_at_ms":224208089,"decision_at_ms":224208089,"submit_at_ms":224208089,"transcribe_started_at_ms":224208089,"transcribe_at_ms":224208089,"publish_at_ms":224208089,"min_preview_samples":20000,"verify_round_count":0,"proposed_draft_token_count":0,"accepted_draft_token_count":0,"prompt_embeddings_ms":0.0,"prefill_ms":0.0,"decode_rounds_ms":0.0,"chunk_result_ms":0.0}
+pass 12
+pass 13
+pass 14
+pass 15
+pass 16
+pass 17
+pass 18
+pass 19
+pass 20

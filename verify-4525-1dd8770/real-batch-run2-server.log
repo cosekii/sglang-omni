@@ -1,0 +1,2 @@
+serving voxt-moss_transcribe_diarize-677300c6f8a1 on 127.0.0.1:19254 after 0.379791 s
+{"event":"moss_offline_final_timing","window_id":0,"audio_sample_count":39278,"transcribe_started_at_ms":224252210,"transcribe_at_ms":224252396,"verify_round_count":0,"proposed_draft_token_count":0,"accepted_draft_token_count":0,"prompt_embeddings_ms":121.314042,"prefill_ms":17.271416,"decode_rounds_ms":47.459209,"chunk_result_ms":0.044167}

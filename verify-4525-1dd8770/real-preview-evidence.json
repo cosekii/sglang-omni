@@ -1,0 +1,53 @@
+{
+  "head": "1dd8770ce437dea203862c030850a76b03cf891a",
+  "model_download": false,
+  "plain": {
+    "timing": {
+      "event": "moss_preview_timing",
+      "window_id": 0,
+      "kind": "preview",
+      "audio_sample_count": 39278,
+      "append_at_ms": 224284465,
+      "decision_at_ms": 224284465,
+      "submit_at_ms": 224284465,
+      "transcribe_started_at_ms": 224284465,
+      "transcribe_at_ms": 224284615,
+      "publish_at_ms": 224284615,
+      "min_preview_samples": 20000,
+      "verify_round_count": 0,
+      "proposed_draft_token_count": 0,
+      "accepted_draft_token_count": 0,
+      "prompt_embeddings_ms": 123.289791,
+      "prefill_ms": 12.819417,
+      "decode_rounds_ms": 13.808792,
+      "chunk_result_ms": 0.046833
+    },
+    "output_sha256": "a86af2d796bd3f74654519efcf7cfdd306cc103ef2de6edd0dada9ccbe92c084",
+    "result": "pass"
+  },
+  "dflash": {
+    "timing": {
+      "event": "moss_preview_timing",
+      "window_id": 0,
+      "kind": "preview",
+      "audio_sample_count": 39278,
+      "append_at_ms": 224285278,
+      "decision_at_ms": 224285279,
+      "submit_at_ms": 224285279,
+      "transcribe_started_at_ms": 224285279,
+      "transcribe_at_ms": 224285425,
+      "publish_at_ms": 224285425,
+      "min_preview_samples": 20000,
+      "verify_round_count": 2,
+      "proposed_draft_token_count": 14,
+      "accepted_draft_token_count": 4,
+      "prompt_embeddings_ms": 117.943083,
+      "prefill_ms": 15.022084,
+      "decode_rounds_ms": 13.15525,
+      "chunk_result_ms": 0.02225
+    },
+    "output_sha256": "a86af2d796bd3f74654519efcf7cfdd306cc103ef2de6edd0dada9ccbe92c084",
+    "result": "pass"
+  },
+  "outputs_match": true
+}

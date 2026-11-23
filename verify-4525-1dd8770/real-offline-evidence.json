@@ -1,0 +1,72 @@
+{
+  "head": "1dd8770ce437dea203862c030850a76b03cf891a",
+  "model_download": false,
+  "benchmark": false,
+  "cases": {
+    "plain-1": {
+      "timing": [
+        {
+          "event": "moss_offline_final_timing",
+          "window_id": 0,
+          "audio_sample_count": 39278,
+          "transcribe_started_at_ms": 224209537,
+          "transcribe_at_ms": 224210367,
+          "verify_round_count": 0,
+          "proposed_draft_token_count": 0,
+          "accepted_draft_token_count": 0,
+          "prompt_embeddings_ms": 581.934791,
+          "prefill_ms": 168.841334,
+          "decode_rounds_ms": 79.753875,
+          "chunk_result_ms": 0.051584
+        }
+      ],
+      "response_sha256": "9e0525d433fce01650c5c452e18ac4c7d2c1b2158ea25067eba774905a971b1d",
+      "server_exit": 0,
+      "result": "pass"
+    },
+    "plain-2": {
+      "timing": [
+        {
+          "event": "moss_offline_final_timing",
+          "window_id": 0,
+          "audio_sample_count": 39278,
+          "transcribe_started_at_ms": 224210898,
+          "transcribe_at_ms": 224211084,
+          "verify_round_count": 0,
+          "proposed_draft_token_count": 0,
+          "accepted_draft_token_count": 0,
+          "prompt_embeddings_ms": 118.585625,
+          "prefill_ms": 17.204959,
+          "decode_rounds_ms": 50.367208,
+          "chunk_result_ms": 0.036917
+        }
+      ],
+      "response_sha256": "9e0525d433fce01650c5c452e18ac4c7d2c1b2158ea25067eba774905a971b1d",
+      "server_exit": 0,
+      "result": "pass"
+    },
+    "dflash": {
+      "timing": [
+        {
+          "event": "moss_offline_final_timing",
+          "window_id": 0,
+          "audio_sample_count": 39278,
+          "transcribe_started_at_ms": 224211617,
+          "transcribe_at_ms": 224211924,
+          "verify_round_count": 5,
+          "proposed_draft_token_count": 35,
+          "accepted_draft_token_count": 18,
+          "prompt_embeddings_ms": 121.0545,
+          "prefill_ms": 24.448208,
+          "decode_rounds_ms": 160.936333,
+          "chunk_result_ms": 0.027083
+        }
+      ],
+      "response_sha256": "9e0525d433fce01650c5c452e18ac4c7d2c1b2158ea25067eba774905a971b1d",
+      "server_exit": 0,
+      "result": "pass"
+    }
+  },
+  "result": "pass",
+  "failures": []
+}

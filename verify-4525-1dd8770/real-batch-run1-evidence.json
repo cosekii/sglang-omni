@@ -1,0 +1,36 @@
+{
+  "head": "1dd8770ce437dea203862c030850a76b03cf891a",
+  "max_batch": 2,
+  "request_count": 3,
+  "timing_event_count": 1,
+  "timing": [
+    {
+      "event": "moss_offline_final_timing",
+      "window_id": 0,
+      "audio_sample_count": 39278,
+      "transcribe_started_at_ms": 224244637,
+      "transcribe_at_ms": 224244831,
+      "verify_round_count": 0,
+      "proposed_draft_token_count": 0,
+      "accepted_draft_token_count": 0,
+      "prompt_embeddings_ms": 128.67575,
+      "prefill_ms": 17.9315,
+      "decode_rounds_ms": 47.151417,
+      "chunk_result_ms": 0.053542
+    }
+  ],
+  "responses": [
+    {
+      "request": "1",
+      "has_transcript": true
+    },
+    {
+      "request": "2",
+      "has_transcript": true
+    },
+    {
+      "request": "3",
+      "has_transcript": true
+    }
+  ]
+}
