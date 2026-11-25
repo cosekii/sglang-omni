@@ -298,6 +298,9 @@ func (r *run) cleanUpFirstContext(text string, request cleanupRequest) cleanupOu
 			if livePath && !r.publishCleanupDraft(request, "") {
 				return cleanupOutput{text: text, completedAt: r.now()}
 			}
+			if livePath && r.liveFailed() {
+				return r.cleanUpFallbackContext(text, request.ctx)
+			}
 			return r.cleanUpOutputContext(text, nil, request.ctx)
 		}
 		before = liveContext(compose.JoinParts(parts, answers))
@@ -367,6 +370,27 @@ func (r *run) cleanUp(text string, think *llm.Thinking) (string, string, error) 
 
 func (r *run) cleanUpOutput(text string, think *llm.Thinking) cleanupOutput {
 	return r.cleanUpOutputContext(text, think, r.currentLLMContext())
+}
+
+// fallbackPieceLimit caps one piece's words when the whole text is
+// cleaned at Stop because the live clean-up failed: smaller pieces
+// answer sooner and a slowed-down request stalls less of the dictation.
+const fallbackPieceLimit = 100
+
+// cleanUpFallbackContext is the whole-text clean-up after the live
+// clean-up failed, with pieces capped at fallbackPieceLimit words.
+func (r *run) cleanUpFallbackContext(text string, ctx context.Context) cleanupOutput {
+	in := r.transcribeInput(text)
+	in.PieceLimit = fallbackPieceLimit
+	parts, err := compose.BuildParts(in)
+	if err != nil {
+		return cleanupOutput{text: text, err: err, completedAt: r.now()}
+	}
+	if len(parts) > 1 {
+		r.logf("info", "cleaning up %d characters in %d pieces after the live clean-up failed", len([]rune(text)), len(parts))
+	}
+	result, profile, err := r.cleanPartsContext(text, parts, nil, nil, ctx)
+	return cleanupOutput{text: result, profile: profile, err: err, completedAt: r.now()}
 }
 
 func (r *run) cleanUpOutputContext(text string, think *llm.Thinking, ctx context.Context) cleanupOutput {
