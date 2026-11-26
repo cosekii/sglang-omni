@@ -181,20 +181,28 @@ func TestRewriteCardTypedFollowUpSendsOnce(t *testing.T) {
 	}
 }
 
-// TestRewriteCardTypedFollowUpReadsNativeInputBeforeEnter: typing just
-// before Enter must reach the request even before the card redraws. The
-// tester settles each event, so the reverse ordering has no reliable
-// headless reproduction; this case holds only the bound values behind the
-// native editor to create the pre-redraw state.
+// TestRewriteCardTypedFollowUpReadsNativeInputBeforeEnter: native text
+// and Enter are queued in that order before the view republishes the draft.
+// The view injects Enter while the text event settles, without writing
+// bound state directly.
 func TestRewriteCardTypedFollowUpReadsNativeInputBeforeEnter(t *testing.T) {
 	chat := &fakeChat{texts: []string{"one", "two"}}
 	a, _, _ := rewriteSelecting(t, chat, chatA, "summarize")
-	tt := hudTester(a.boxView, boxWinW, boxWinH)
+	var tt *ui.Tester
+	inject := false
+	view := func(context *ui.Context) {
+		if inject {
+			inject = false
+			tt.Key(0, ui.KeyEnter)
+		}
+		rewriteBoxView(context, a.boxViewState(), a.boxActions(), &a.box.ui)
+	}
+	tt = hudTester(view, boxWinW, boxWinH)
 	frames(tt)
 	tt.Type("shorter")
+	frames(tt)
+	inject = true
 	tt.Type(" please")
-	a.box.text, a.box.ui.text = "shorter", "shorter"
-	tt.Key(0, ui.KeyEnter)
 	frames(tt)
 	if a.box.text != "" || a.box.ui.text != "" {
 		t.Fatalf("after Enter the input holds %q (box) %q (editor)", a.box.text, a.box.ui.text)
@@ -205,5 +213,46 @@ func TestRewriteCardTypedFollowUpReadsNativeInputBeforeEnter(t *testing.T) {
 	}
 	if n := len(chat.requests()); n != 2 {
 		t.Fatalf("%d requests, want 2", n)
+	}
+}
+
+// TestRewriteCardTypedFollowUpSyncsNativeInputAfterEnter: input that lands
+// after Enter but before the next view starts must not include the sent turn.
+func TestRewriteCardTypedFollowUpSyncsNativeInputAfterEnter(t *testing.T) {
+	chat := &fakeChat{texts: []string{"one", "two", "three"}}
+	a, _, _ := rewriteSelecting(t, chat, chatA, "summarize")
+	actions := a.boxActions()
+	send := actions.send
+	inject := false
+	actions.send = func() {
+		send()
+		inject = true
+	}
+	var tt *ui.Tester
+	view := func(context *ui.Context) {
+		if inject {
+			inject = false
+			tt.Type(" please")
+		}
+		rewriteBoxView(context, a.boxViewState(), actions, &a.box.ui)
+	}
+	tt = hudTester(view, boxWinW, boxWinH)
+	frames(tt)
+	tt.Type("shorter")
+	frames(tt)
+	tt.Key(0, ui.KeyEnter)
+	frames(tt)
+	if a.box.text != " please" || a.box.ui.text != " please" {
+		t.Fatalf("after Enter and typing, input holds %q (box) %q (editor)", a.box.text, a.box.ui.text)
+	}
+	a.pump("the first follow-up", func() bool { return a.sess.State.Ended() && a.answer.text == "two" })
+	frames(tt)
+	tt.Key(0, ui.KeyEnter)
+	a.pump("the second follow-up", func() bool { return a.sess.State.Ended() && a.answer.text == "three" })
+	if got := a.answer.turns[len(a.answer.turns)-1].Instruction; got != "please" {
+		t.Fatalf("the second follow-up is %q, want only the new text", got)
+	}
+	if n := len(chat.requests()); n != 3 {
+		t.Fatalf("%d requests, want 3", n)
 	}
 }
