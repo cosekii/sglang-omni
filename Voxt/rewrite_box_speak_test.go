@@ -181,51 +181,29 @@ func TestRewriteCardTypedFollowUpSendsOnce(t *testing.T) {
 	}
 }
 
-// TestRewriteCardTypedFollowUpOrdersNativeInput: typing immediately before
-// or after Enter must reach the right request, even before the card redraws.
-// The editor used to resend the old words or drop the newly typed ones.
-func TestRewriteCardTypedFollowUpOrdersNativeInput(t *testing.T) {
-	for _, typeBeforeEnter := range []bool{false, true} {
-		t.Run(map[bool]string{false: "Enter then type", true: "type then Enter"}[typeBeforeEnter], func(t *testing.T) {
-			chat := &fakeChat{texts: []string{"one", "two", "three"}}
-			a, _, _ := rewriteSelecting(t, chat, chatA, "summarize")
-			tt := hudTester(a.boxView, boxWinW, boxWinH)
-			frames(tt)
-			tt.Type("shorter")
-			// Hold the published value at its pre-redraw state while the native editor takes the queued input.
-			if typeBeforeEnter {
-				tt.Type(" please")
-				a.box.text, a.box.ui.text = "shorter", "shorter"
-				tt.Key(0, ui.KeyEnter)
-			} else {
-				tt.Key(0, ui.KeyEnter)
-				a.box.text, a.box.ui.text = "", ""
-				tt.Type(" please")
-			}
-			frames(tt)
-			wantText, wantInstruction := " please", "shorter"
-			if typeBeforeEnter {
-				wantText, wantInstruction = "", "shorter please"
-			}
-			if a.box.text != wantText || a.box.ui.text != wantText {
-				t.Fatalf("after Enter the input holds %q (box) %q (editor), want %q", a.box.text, a.box.ui.text, wantText)
-			}
-			a.pump("the first follow-up", func() bool { return a.sess.State.Ended() && a.answer.text == "two" })
-			if got := a.answer.turns[len(a.answer.turns)-1].Instruction; got != wantInstruction {
-				t.Fatalf("the first follow-up is %q, want %q", got, wantInstruction)
-			}
-			if typeBeforeEnter {
-				return
-			}
-			frames(tt)
-			tt.Key(0, ui.KeyEnter)
-			a.pump("the second follow-up", func() bool { return a.sess.State.Ended() && a.answer.text == "three" })
-			if got := a.answer.turns[len(a.answer.turns)-1].Instruction; got != "please" {
-				t.Fatalf("the second follow-up is %q, want only the new text", got)
-			}
-			if n := len(chat.requests()); n != 3 {
-				t.Fatalf("%d requests, want 3", n)
-			}
-		})
+// TestRewriteCardTypedFollowUpReadsNativeInputBeforeEnter: typing just
+// before Enter must reach the request even before the card redraws. The
+// tester settles each event, so the reverse ordering has no reliable
+// headless reproduction; this case holds only the bound values behind the
+// native editor to create the pre-redraw state.
+func TestRewriteCardTypedFollowUpReadsNativeInputBeforeEnter(t *testing.T) {
+	chat := &fakeChat{texts: []string{"one", "two"}}
+	a, _, _ := rewriteSelecting(t, chat, chatA, "summarize")
+	tt := hudTester(a.boxView, boxWinW, boxWinH)
+	frames(tt)
+	tt.Type("shorter")
+	tt.Type(" please")
+	a.box.text, a.box.ui.text = "shorter", "shorter"
+	tt.Key(0, ui.KeyEnter)
+	frames(tt)
+	if a.box.text != "" || a.box.ui.text != "" {
+		t.Fatalf("after Enter the input holds %q (box) %q (editor)", a.box.text, a.box.ui.text)
+	}
+	a.pump("the follow-up", func() bool { return a.sess.State.Ended() && a.answer.text == "two" })
+	if got := a.answer.turns[len(a.answer.turns)-1].Instruction; got != "shorter please" {
+		t.Fatalf("the follow-up is %q, want %q", got, "shorter please")
+	}
+	if n := len(chat.requests()); n != 2 {
+		t.Fatalf("%d requests, want 2", n)
 	}
 }
