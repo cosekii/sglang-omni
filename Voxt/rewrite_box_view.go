@@ -343,8 +343,13 @@ func boxTextEditor(context *ui.Context, index int, text *string, state rewriteBo
 	textArea.OnTextKey(func(key ui.TextKey) bool {
 		switch {
 		case key.Key == ui.KeyEnter && key.Mods == 0 && state.EnterSends:
+			// The native editor can be ahead of the bound value until the next frame.
+			*text = key.Text()
 			changed()
 			actions.send()
+			if index == -1 {
+				key.SetText(actions.viewState().Text)
+			}
 			return true
 		case key.Key == ui.KeyV && key.Mods == ui.Cmd:
 			return actions.paste(context.Services())
