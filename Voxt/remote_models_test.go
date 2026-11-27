@@ -191,3 +191,30 @@ func TestKeyedServiceModelMenuListsServer(t *testing.T) {
 		t.Errorf("menu %q, want %q", got, want)
 	}
 }
+
+// TestChatGPTDialogDoesNotDiscoverModels: a saved ChatGPT sign-in must not
+// leak its credential to the OpenAI-compatible model-discovery request.
+func TestChatGPTDialogDoesNotDiscoverModels(t *testing.T) {
+	useKeys(t, &memKeys{m: map[string]string{"llm.codex": signedInItem(t)}})
+	var mu sync.Mutex
+	calls := 0
+	runListModels = func(_ context.Context, _ settings.Provider, _ string, _ *http.Client) ([]string, error) {
+		mu.Lock()
+		defer mu.Unlock()
+		calls++
+		return []string{"unexpected-model"}, nil
+	}
+	t.Cleanup(func() { runListModels = failListModels })
+	a, _, tt := newTestApp(t)
+	a.navigate(remotePath)
+	frames(tt)
+
+	a.openProviderDialog(local.LLM, providers.ChatGPT)
+	frames(tt)
+	mu.Lock()
+	got := calls
+	mu.Unlock()
+	if got != 0 {
+		t.Errorf("model discovery ran %d times with a saved Codex sign-in", got)
+	}
+}
